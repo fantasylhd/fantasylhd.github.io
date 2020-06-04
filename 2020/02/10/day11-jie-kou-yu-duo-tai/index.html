@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>day11接口与多态 | fantasyblog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="day11接口与多态1.1 接口1.1.1 接口的概述 什么是接口 接口（英文：Interface），在JAVA编程语言中是一个抽象类型，是抽象方法的集合，接口通常以interface来声明。一个类通过继承接口的方式，从而来继承接口的抽象方法。  接口中有的东西">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day11接口与多态">
+<meta property="og:url" content="https://fantasylhd.github.io/2020/02/10/day11-jie-kou-yu-duo-tai/index.html">
+<meta property="og:site_name" content="fantasyblog">
+<meta property="og:description" content="day11接口与多态1.1 接口1.1.1 接口的概述 什么是接口 接口（英文：Interface），在JAVA编程语言中是一个抽象类型，是抽象方法的集合，接口通常以interface来声明。一个类通过继承接口的方式，从而来继承接口的抽象方法。  接口中有的东西">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/02/10/day11-jie-kou-yu-duo-tai/01%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB%E4%BB%A5%E5%8F%8A%E4%B8%80%E8%88%AC%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF.png">
+<meta property="article:published_time" content="2020-02-10T05:59:19.000Z">
+<meta property="article:modified_time" content="2020-03-03T09:31:45.298Z">
+<meta property="article:author" content="fantasy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fantasylhd.github.io/2020/02/10/day11-jie-kou-yu-duo-tai/01%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB%E4%BB%A5%E5%8F%8A%E4%B8%80%E8%88%AC%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF.png">
+  
+    <link rel="alternate" href="/atom.xml" title="fantasyblog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpg">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/highlight.css">
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-day11接口与多态" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      day11接口与多态
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2020/02/10/day11-jie-kou-yu-duo-tai/" class="article-date">
+  <time datetime="2020-02-10T05:59:19.000Z" itemprop="datePublished">2020-02-10</time>
+</a>
+    
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h1 id="day11接口与多态"><a href="#day11接口与多态" class="headerlink" title="day11接口与多态"></a>day11接口与多态</h1><h2 id="1-1-接口"><a href="#1-1-接口" class="headerlink" title="1.1 接口"></a>1.1 接口</h2><h3 id="1-1-1-接口的概述"><a href="#1-1-1-接口的概述" class="headerlink" title="1.1.1 接口的概述"></a>1.1.1 接口的概述</h3><ul>
+<li><p>什么是接口</p>
+<p>接口（英文：Interface），在JAVA编程语言中是一个抽象类型，是抽象方法的集合，接口通常以interface来声明。一个类通过继承接口的方式，从而来继承接口的抽象方法。</p>
+</li>
+<li><p>接口中有的东西</p>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>jdk7:<ul>
+<li>被static final修饰的变量–&gt;常量   int i = 10</li>
+<li>被abstract修饰的抽象方法–&gt;不写abstract,也有</li>
+</ul>
+</li>
+<li>jdk8:<br> 默认方法<br> 静态方法</li>
+<li>jdk9:<br> 私有方法</li>
+</ul>
+<ul>
+<li><p>接口的定义和使用</p>
+<ul>
+<li><p>定义:修饰符 abstract 返回值类型 方法名(参数); 即使不写abstract,默认也有。</p>
+</li>
+<li><p>使用:</p>
+<ol>
+<li>创建一个实现类,实现这个接口   –&gt;implements</li>
+<li>重写接口中的抽象方法,去实现这个方法</li>
+<li>创建实现类对象(接口不能创建对象)</li>
+<li>调用重写的方法</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>示例代码</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">InterfaceDemo01</span> <span class="token punctuation">{</span>
+ <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ <span class="token keyword">void</span> <span class="token function">method01</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ <span class="token keyword">public</span> <span class="token keyword">default</span> <span class="token keyword">void</span> <span class="token function">method02</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"新功能被实现了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+</ul>
+<p>public class InterfaceDemo01Impl implements InterfaceDemo01{<br>    @Override<br>    public void method() {<br>        System.out.println(“我是method方法”);<br>    }</p>
+<pre><code>@Override
+public void method01() {
+    System.out.println(&quot;我是method01方法&quot;);
+}</code></pre><p>}</p>
+<p>public class Test {<br>    public static void main(String[] args) {<br>        //创建实现类的对象<br>        InterfaceDemo01Impl interfaceDemo01 = new InterfaceDemo01Impl();<br>        interfaceDemo01.method();<br>        interfaceDemo01.method01();<br>    }<br>}</p>
+<pre><code>
+### 1.1.2 接口中不常见的几个用法
+
+接口中的默认方法的用法及注意事项
+
+定义:
+
+* 修饰符 default 返回值类型 方法名(参数){
+             方法体
+             返回值
+}
+
+使用：
+
+1.创建实现类,实现接口
+
+2.不用重写默认方法
+
+3.创建实现类对象,调用接口中的默认方法
+
+注意:
+
+* 接口中的默认方法可以重写(当实现类觉得接口中的默认方法功能不强大的时候),调用的是重写后的方法
+
+使用场景: 添加新功能
+
+*  示例代码
+```java
+public interface InterfaceDemo01 {
+    public default void method01(){
+        System.out.println(&quot;涛哥最帅!&quot;);
+    }
+}
+
+public class InterfaceDemo01Impl implements InterfaceDemo01{
+    @Override
+    public void method01(){
+        System.out.println(&quot;涛哥最帅,哇咔咔!&quot;);
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        InterfaceDemo01Impl interfaceDemo01 = new InterfaceDemo01Impl();
+        interfaceDemo01.method01();
+    }
+}</code></pre><p>接口中的静态方法</p>
+<p>定义: </p>
+<ul>
+<li>public static 返回值类型 方法名(参数){<pre><code>方法体   返回值</code></pre>}</li>
+</ul>
+<p>使用:   接口名直接调用</p>
+<ul>
+<li>示例代码<pre class=" language-java"><code class="language-java"></code></pre>
+</li>
+</ul>
+<p>public interface InterfaceDemo01 {<br>    public static void method01(){<br>        System.out.println(“我是接口中的静态方法”);<br>    }<br>}</p>
+<p>public class Test {<br>    public static void main(String[] args) {<br>        InterfaceDemo01.method01();<br>    }<br>}</p>
+<pre><code>
+接口中的常量
+
+定义格式:  
+* 修饰符 static final 数据类型 变量名 = 值--&gt;常量
+
+注意:
+* 不写static final 默认也有
+
+使用:接口名直接调用
+
+*  示例代码
+```java
+public interface InterfaceDemo01 {
+    public static final int NUM = 10;
+    //num = 20;
+    int i = 10;
+
+}
+
+public class Test {
+    public static void main(String[] args) {
+        System.out.println(InterfaceDemo01.NUM);
+    }
+}</code></pre><h3 id="1-1-3-接口中的多实现"><a href="#1-1-3-接口中的多实现" class="headerlink" title="1.1.3 接口中的多实现"></a>1.1.3 接口中的多实现</h3><p>类不能多继承,只支持单继承</p>
+<p>接口可以多实现–&gt;一个实现类可以同时实现多个接口</p>
+<p>继承一个类的同时实现多个接口–&gt;子类 extends 父类  implements 接口1,接口2</p>
+<p>注意事项:</p>
+<ol>
+<li>一个类继承一个父类的同时实现一个或者多个接口,要重写所有的抽象方法</li>
+<li>如果两个接口中有重名的抽象方法,那么我们就必须重写一个</li>
+<li>如果两个接口中有重名的默认方法,那么我们必须重写一个</li>
+<li>如果接口中有和父类的方法一样的默认方法,那么我们先执行父类的</li>
+</ol>
+<ul>
+<li>示例代码<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Fu</span> <span class="token punctuation">{</span>
+ <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">methodFu</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"我是父类的methodFu方法"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+</ul>
+<p>public interface InterfaceA {<br>    void method();<br>    public abstract void methodA();<br>    public default void methodDef(){<br>        System.out.println(“我是接口A中的默认方法”);<br>    }<br>}</p>
+<p>public interface InterfaceB {<br>    void method();<br>    public abstract void methodB();<br>    public default void methodDef(){<br>        System.out.println(“我是接口B中的默认方法”);<br>    }<br>}</p>
+<p>public interface InterfaceC {<br>    public default void methodFu(){<br>        System.out.println(“我是接口中的methodFu方法”);<br>    }<br>}</p>
+<p>public class InterfaceImpl implements InterfaceA,InterfaceB{<br>    @Override<br>    public void method() {<br>        System.out.println(“我是重写的接口A,接口B中的重名的抽象方法”);<br>    }</p>
+<pre><code>@Override
+public void methodA() {
+    System.out.println(&quot;我是重写的接口A中的抽象方法&quot;);
+}
+
+@Override
+public void methodDef() {
+    System.out.println(&quot;我是重写的接口A,B中的重名的默认方法&quot;);
+}
+
+@Override
+public void methodB() {
+    System.out.println(&quot;我是重写的接口B中的抽象方法&quot;);
+}</code></pre><p>}</p>
+<p>public class InterfaceImpl02/* extends Fu*/ implements InterfaceA,InterfaceB{<br>    @Override<br>    public void method() {</p>
+<pre><code>}
+
+@Override
+public void methodA() {
+
+}
+
+@Override
+public void methodDef() {
+
+}
+
+@Override
+public void methodB() {
+
+}</code></pre><p>}</p>
+<p>public class InterfaceImpl03 extends Fu implements InterfaceC{<br>}</p>
+<p>public class Test {<br>    public static void main(String[] args) {<br>       /* InterfaceImpl anInterface = new InterfaceImpl();<br>        anInterface.methodDef();*/</p>
+<pre><code>    InterfaceImpl03 interfaceImpl03 = new InterfaceImpl03();
+    interfaceImpl03.methodFu();
+}</code></pre><p>}</p>
+<pre><code>
+### 1.1.4 接口中的多继承
+
+接口不仅能多实现
+
+还可以多继承  但是类不能多继承
+
+注意事项:父接口中如果有重名的默认方法,那么子接口中要重写一次
+
+*  示例代码
+```java
+public interface InterfaceA {
+    public default void method(){
+
+    }
+}
+
+public interface InterfaceB {
+    public default void method(){
+
+    }
+}
+
+public interface InterfaceSon extends InterfaceA,InterfaceB{
+    @Override
+    default void method() {
+        System.out.println(&quot;我是重写默认方法&quot;);
+    }
+}</code></pre><h3 id="1-5-接口与抽象类的区别"><a href="#1-5-接口与抽象类的区别" class="headerlink" title="1.5 接口与抽象类的区别"></a>1.5 接口与抽象类的区别</h3><pre><code> 1. 接口中所有的方法隐含的都是抽象的。而抽象类则可以同时包含抽象和非抽象的方
+
+ 2. 抽象类中的成员变量可以是各种类型的，而接口中的成员变量只能是 public static final 类型的。
+
+ 3. 接口中不能含有静态代码块，而抽象类是可以有静态代码块和静态方法。
+
+ 4. 一个类只能继承一个抽象类，而一个类却可以实现多个接口。</code></pre><ul>
+<li>接口和抽象类的区别以及一般的使用场景<br><img src="/2020/02/10/day11-jie-kou-yu-duo-tai/01%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB%E4%BB%A5%E5%8F%8A%E4%B8%80%E8%88%AC%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF.png" alt="01接口和抽象类的区别以及一般的使用场景图"></li>
+</ul>
+<h2 id="1-2-多态"><a href="#1-2-多态" class="headerlink" title="1.2 多态"></a>1.2 多态</h2><h3 id="1-2-1-多态的概述"><a href="#1-2-1-多态的概述" class="headerlink" title="1.2.1 多态的概述"></a>1.2.1 多态的概述</h3><p>什么是多态</p>
+<ul>
+<li>多态指的是同一个方法调用，由于对象不同可能会有不同的行为</li>
+</ul>
+<p>多态的定义和使用</p>
+<ol>
+<li>定义父类</li>
+<li>定义子类继承父类,重写父类的方法</li>
+<li>父类引用指向子类对象–&gt;父类类名 对象名 = new 子类(),调用重写的方法</li>
+</ol>
+<p>多态的注意事项</p>
+<ol>
+<li>必须有子父类继承关系(实现共同的接口,实现类的关系)</li>
+<li>必须有方法的重写</li>
+<li>父类引用指向子类对象–&gt;父类类名 对象名 = new 子类(),调用重写的方法</li>
+<li>不能调用子类特有的,只能调用重写的</li>
+</ol>
+<ul>
+<li>示例代码<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Animal</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"动物要吃饭"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+</ul>
+<p>public class Dog extends Animal{<br>    public void eat(){<br>        System.out.println(“狗啃骨头”);<br>    }</p>
+<pre><code>public void lookDoor(){
+    System.out.println(&quot;狗会看门&quot;);
+}</code></pre><p>}</p>
+<p>public class Test {<br>    public static void main(String[] args) {<br>        Animal animal = new Dog();<br>        animal.eat();<br>        //animal.lookDoor();<br>    }<br>}</p>
+<pre><code>
+### 1.2.2 多态中成员变量和成员方法的访问特点
+
+多态中成员变量的访问--&gt;看等号左边是谁,就调用谁中的变量
+
+多态中成员方法的访问特点:看new的是谁,先调用谁的方法,子类没有,找父类
+
+### 1.2.3 多态的优缺点
+
+优点更多的体现在当参数传递,调用重写方法
+
+多态和普通new的优点和缺点
+
+普通:
+
+* 优点:既能调用重写的,还能调用自己特有的
+* 缺点:扩展性差
+
+多态:
+
+* 优点:扩展性强
+* 缺点:不能调用子类特有的
+
+* 示例代码
+```java
+public class Animal {
+    public void eat(){
+        System.out.println(&quot;动物吃饭&quot;);
+    }
+}
+
+public class Cat extends Animal{
+    public void eat(){
+        System.out.println(&quot;猫吃鱼&quot;);
+    }
+
+    public void catchMouse(){
+        System.out.println(&quot;猫抓老鼠&quot;);
+    }
+}
+
+public class Dog extends Animal{
+    public void eat(){
+        System.out.println(&quot;狗吃屎&quot;);
+    }
+
+    public void lookDoor(){
+        System.out.println(&quot;狗会看门&quot;);
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        //method01(dog);
+        method(dog);
+
+        Cat cat = new Cat();
+       // method02(cat);
+        method(cat);
+    }
+
+
+public static void method(Animal animal){//Animal animal = cat
+       animal.eat();
+       Dog dog = (Dog) animal;
+       dog.lookDoor();
+   }
+}</code></pre><h3 id="1-2-4-对象的转型"><a href="#1-2-4-对象的转型" class="headerlink" title="1.2.4 对象的转型"></a>1.2.4 对象的转型</h3><p>向上转型:父类引用指向子类对象  (默认)</p>
+<p>弊端:不能调用子类特有的</p>
+<p>向下转型(可以调用子类特有的)</p>
+<p>Animal animal = new Dog()</p>
+<p>Dog dog = (Dog) animal</p>
+<p>Cat cat = (Cat)animal—&gt;将代表狗的animal转成了cat–&gt;ClassCastException(类型转换异常)</p>
+<p>关键字:instanceof</p>
+<p>用于判断对象名 instanceof 对象–&gt;前面的是否属于后面的对象</p>
+<ul>
+<li>示例代码<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Animal</span> <span class="token punctuation">{</span>
+ <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"动物要吃饭"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+</ul>
+<p>public class Cat extends Animal{<br>    public void eat(){<br>        System.out.println(“猫吃鱼”);<br>    }</p>
+<pre><code>public void catchMouse(){
+    System.out.println(&quot;猫捉老鼠&quot;);
+}</code></pre><p>}</p>
+<p>public class Dog extends Animal{<br>    public void eat(){<br>        System.out.println(“狗吃骨头”);<br>    }</p>
+<pre><code>public void lookDoor(){
+    System.out.println(&quot;狗会看门&quot;);
+}</code></pre><p>}</p>
+<p>public class Test {<br>    public static void main(String[] args) {</p>
+<pre><code>   /* Animal animal = new Dog();
+    animal.eat();
+
+    //向下转型
+    Dog dog = (Dog)animal;
+    dog.lookDoor();
+
+    Cat cat = (Cat)animal;
+    cat.catchMouse();*/
+
+    Dog dog = new Dog();
+    method(dog);
+
+   /* Cat cat = new Cat();
+    method(cat);*/
+}
+
+public static void method(Animal animal){
+    if (animal instanceof Dog){
+        animal.eat();
+        Dog dog = (Dog)animal;
+        dog.lookDoor();
+    }
+
+    if (animal instanceof Cat){
+        animal.eat();
+        Cat cat = (Cat)animal;
+        cat.catchMouse();
+    }
+
+}</code></pre><p>}</p>
+<pre><code></code></pre>
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2020/02/11/day12static-he-final-he-nei-bu-lei/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            day12static和final和内部类
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2020/02/10/day10-ji-cheng-yu-chou-xiang-lei/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">day10继承与抽象类</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    <link rel="stylesheet" href="/css/gitment.css"> 
+<script src="/js/gitment.js"></script>
+
+<div id="gitmentContainer"></div>
+
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        清风伴酒
+      
+    </h3>
+    <p class="avatar-slogan">
+      进击的后端渣渣
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javaSE/">javaSE</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">编程语言</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/12/day47-maven/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/gong-han-mo-shi/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day46-redis/">day46_redis</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day45-ajax-json/">day45-AJAX-Json</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day44jquery-gao-ji/">day44jQuery高级</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+      <div class="widget-box">
+    <h3 class="widget-title">友链</h3>
+    <div class="widget">
+      
+        <a style="display: block;" href="https://yiluyanxia.github.io/" title target='_blank'
+        >一路眼瞎</a>
+      
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 fantasy &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity" target="_blank" rel="noopener">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">不蒜子告之   阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

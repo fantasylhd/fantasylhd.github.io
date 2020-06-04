@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>day36Tomcat&amp;Servlet入门 | fantasyblog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="day36Tomcat&amp;http协议1.1 Web开发概述1.1.1 WEB通信WEB采用B&#x2F;S通信模式，通过超文本传送协议(HTTP, Hypertext transport protocol)进行通信。通过浏览器地址栏编写URL，向服务器发送一个请求，服务器端根据请求进行相应的处理，处理完成之后，会向浏览器作出一个响应，及将服务器端资源发送给浏览器。 1.1.2 软件架构C&#x2F;S架构：C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day36Tomcat&amp;Servlet入门">
+<meta property="og:url" content="https://fantasylhd.github.io/2020/03/31/day36tomcat-http-xie-yi/index.html">
+<meta property="og:site_name" content="fantasyblog">
+<meta property="og:description" content="day36Tomcat&amp;http协议1.1 Web开发概述1.1.1 WEB通信WEB采用B&#x2F;S通信模式，通过超文本传送协议(HTTP, Hypertext transport protocol)进行通信。通过浏览器地址栏编写URL，向服务器发送一个请求，服务器端根据请求进行相应的处理，处理完成之后，会向浏览器作出一个响应，及将服务器端资源发送给浏览器。 1.1.2 软件架构C&#x2F;S架构：C">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/03/31/day36tomcat-http-xie-yi/day36Tomcat-http%E5%8D%8F%E8%AE%AE%5C2.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/03/31/day36tomcat-http-xie-yi/day36Tomcat-http%E5%8D%8F%E8%AE%AE%5C1.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/03/31/day36tomcat-http-xie-yi/day36Tomcat-http%E5%8D%8F%E8%AE%AE%5C3.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/03/31/day36tomcat-http-xie-yi/day36Tomcat-http%E5%8D%8F%E8%AE%AE%5C4.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/03/31/day36tomcat-http-xie-yi/day36Tomcat-http%E5%8D%8F%E8%AE%AE%5C5.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/03/31/day36tomcat-http-xie-yi/day36Tomcat-http%E5%8D%8F%E8%AE%AE%5C6.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/03/31/day36tomcat-http-xie-yi/day36Tomcat-http%E5%8D%8F%E8%AE%AE%5C7.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/03/31/day36tomcat-http-xie-yi/day36Tomcat-http%E5%8D%8F%E8%AE%AE%5C8.png">
+<meta property="article:published_time" content="2020-03-31T03:13:27.000Z">
+<meta property="article:modified_time" content="2020-04-04T06:43:48.901Z">
+<meta property="article:author" content="fantasy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fantasylhd.github.io/2020/03/31/day36tomcat-http-xie-yi/day36Tomcat-http%E5%8D%8F%E8%AE%AE%5C2.png">
+  
+    <link rel="alternate" href="/atom.xml" title="fantasyblog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpg">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/highlight.css">
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-day36Tomcat-http协议" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      day36Tomcat&amp;Servlet入门
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2020/03/31/day36tomcat-http-xie-yi/" class="article-date">
+  <time datetime="2020-03-31T03:13:27.000Z" itemprop="datePublished">2020-03-31</time>
+</a>
+    
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h1 id="day36Tomcat-amp-http协议"><a href="#day36Tomcat-amp-http协议" class="headerlink" title="day36Tomcat&amp;http协议"></a>day36Tomcat&amp;http协议</h1><h2 id="1-1-Web开发概述"><a href="#1-1-Web开发概述" class="headerlink" title="1.1 Web开发概述"></a>1.1 Web开发概述</h2><h3 id="1-1-1-WEB通信"><a href="#1-1-1-WEB通信" class="headerlink" title="1.1.1 WEB通信"></a>1.1.1 WEB通信</h3><p>WEB采用B/S通信模式，通过超文本传送协议(HTTP, Hypertext transport protocol)进行通信。通过浏览器地址栏编写URL，向服务器发送一个请求，服务器端根据请求进行相应的处理，处理完成之后，会向浏览器作出一个响应，及将服务器端资源发送给浏览器。</p>
+<h3 id="1-1-2-软件架构"><a href="#1-1-2-软件架构" class="headerlink" title="1.1.2 软件架构"></a>1.1.2 软件架构</h3><p>C/S架构：Client/Server 客户端/服务器。要求客户端电脑安装一个客户端程序。<br>常见应用：QQ，迅雷，360，旺旺等</p>
+<p>优点：</p>
+<ol>
+<li>用户体验好，效果炫</li>
+<li>对信息安全的控制较强</li>
+<li>应用服务器运行数据负荷较轻，部分计算功能在客户端完成。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>占用硬盘空间</li>
+<li>维护麻烦</li>
+<li>安装使用依赖其他条件</li>
+</ol>
+<p>B/S架构：Browser/Server 浏览器/服务器 。通过浏览器与服务器交互，不需要安装其他程序 常见应用：网银系统，淘宝，京东 12306 等</p>
+<p>优点：</p>
+<ol>
+<li>维护和升级简单，无缝升级。</li>
+<li>不用必须安装程序，操作系统内置了浏览器。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>动画效果受浏览器限制</li>
+<li>对信息安装控制较差。例如：网银就需要使用U盾，在浏览器端加密。</li>
+<li>应用服务器运行数据负荷较重。大部分计算都在服务器端，增加服务器压力。使用Ajax可以改善部分用户体验。</li>
+</ol>
+<h3 id="1-1-3-WEB资源介绍"><a href="#1-1-3-WEB资源介绍" class="headerlink" title="1.1.3 WEB资源介绍"></a>1.1.3 WEB资源介绍</h3><p>静态资源：指web页面中供人们浏览的数据始终是不变。比如：HTML、CSS、JS、图片、多媒体。</p>
+<p>动态资源：指web页面中供人们浏览的数据是由程序产生的，不同时间点访问web页面看到的内容各不相同。比如：JSP/Servlet、ASP、PHP</p>
+<h3 id="1-1-4-WEB服务器"><a href="#1-1-4-WEB服务器" class="headerlink" title="1.1.4 WEB服务器"></a>1.1.4 WEB服务器</h3><p>JCP（Java Community Process)Java技术规范制定与更新的国际组织。主要维护规范包括：J2ME、J2SE、J2EE，XML等。</p>
+<p>J2EE 企业级开发Java规范。标准规范包括：servlet、jsp、jdbc、xml、jta、javamail等。在java中规范就是接口。J2EE又称为JavaEE。</p>
+<p>WEB服务器对JavaEE规范部分或全部支持（实现），也就是WEB服务器实现部分或全部接口。</p>
+<p>常见的WEB服务器：</p>
+<ol>
+<li>Tomcat：Apache组织提供一个免费的小型的服务器软件。支持Servlet和JSP规范。</li>
+<li>WebLogic：Bea公司的一个收费的大型的服务器软件，后被Oracle收购。支持EE的所有的规范</li>
+<li>WebSphere：IBM公司的一个收费的大型的服务器软件，支持EE的所有的规范。</li>
+<li>JBoss：是一个基于J2EE的开放源代码的应用服务器。JBoss是一个管理EJB的容器和服务器，JBoss核心服务不<br>包括支持servlet/JSP的WEB容器，一般与Tomcat或Jetty绑定使用。</li>
+</ol>
+<h3 id="1-1-5-URL请求路径"><a href="#1-1-5-URL请求路径" class="headerlink" title="1.1.5 URL请求路径"></a>1.1.5 URL请求路径</h3><p>URL （Uniform ResourceLocator） ，统一资源定位符是对互联网上资源位置的一种表示，互联网上的每个文件都有一个唯一的URL。</p>
+<p>完整格式如下：<br>协议://域名:端口号/资源位置?参数=值</p>
+<ol>
+<li>协议，http、https、ftp等</li>
+<li>域名，域名或IP地址，都可以访问WEB资源</li>
+<li>端口号，程序必须使用端口号，才可以让另一个计算机访问。http协议的默认端：80</li>
+<li>资源位置，用于描述WEB资源再服务器上的位置。</li>
+<li>参数=值，浏览器和服务器交互传递的数据</li>
+</ol>
+<p>例如：常见路径</p>
+<p><a href="http://www.itcast.cn:80/subject/javaeezly/index.shtml" target="_blank" rel="noopener">http://www.itcast.cn:80/subject/javaeezly/index.shtml</a></p>
+<p>百度搜索“传智播客”</p>
+<p><a href="https://www.baidu.com/s?cl=3&amp;wd=%B4%AB%D6%C7%B2%A5%BF%CD" target="_blank" rel="noopener">https://www.baidu.com/s?cl=3&amp;wd=%B4%AB%D6%C7%B2%A5%BF%CD</a></p>
+<h2 id="1-2-Tomcat介绍"><a href="#1-2-Tomcat介绍" class="headerlink" title="1.2 Tomcat介绍"></a>1.2 Tomcat介绍</h2><h3 id="1-2-1-概述"><a href="#1-2-1-概述" class="headerlink" title="1.2.1 概述"></a>1.2.1 概述</h3><p>Tomcat 服务器是一个免费的开放源代码的Web应用服务器，属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP 程序的首选。</p>
+<p>支持Servlet和JSP 规范,且最新的Servlet 和JSP 规范总是能在Tomcat 中得到体现</p>
+<h3 id="1-2-2-Tomcat版本"><a href="#1-2-2-Tomcat版本" class="headerlink" title="1.2.2 Tomcat版本"></a>1.2.2 Tomcat版本</h3><p>tomcat 目前存在很多版本，希望大家了解tomcat的版本，从而知道自己的创建的项目使用的是几版本规范，不同版本的规范技术可能不同。我们学习的JavaEE 8.0，Servlet规范3.1，tomcat至少使用8.5版本。</p>
+<p>官网地址：<a href="http://tomcat.apache.org/whichversion.html" target="_blank" rel="noopener">http://tomcat.apache.org/whichversion.html</a></p>
+<p><img src="day36Tomcat-http%E5%8D%8F%E8%AE%AE%5C2.png" alt></p>
+<h3 id="1-2-3-安装Tomcat"><a href="#1-2-3-安装Tomcat" class="headerlink" title="1.2.3 安装Tomcat"></a>1.2.3 安装Tomcat</h3><p>步骤一：下载一个tomcat服务器软件.<br><a href="https://tomcat.apache.org/download-80.cgi" target="_blank" rel="noopener">https://tomcat.apache.org/download-80.cgi</a></p>
+<p>步骤二：解压下载好的zip文件.<br>将解压后的文件copy到一个没有中文和空格的路径下即可.<br>例如：D:\02_DevelopTools\apache-tomcat-8.5.27</p>
+<p><img src="day36Tomcat-http%E5%8D%8F%E8%AE%AE%5C1.png" alt></p>
+<p>bin：脚本目录</p>
+<ol>
+<li>启动脚本：startup.bat</li>
+<li>停止脚本：shutdown.bat</li>
+</ol>
+<p>conf：配置文件目录 (config /configuration)</p>
+<ol>
+<li>核心配置文件：server.xml</li>
+<li>用户权限配置文件：tomcat-users.xml</li>
+<li>所有web项目默认配置文件：web.xml</li>
+</ol>
+<p>lib：依赖库，tomcat和web项目中需要使用的jar包</p>
+<p>logs：日志文件</p>
+<p>temp：临时文件目录，文件夹内内容可以任意删除。</p>
+<p>webapps：默认情况下发布WEB项目所存放的目录。</p>
+<p>work：tomcat处理JSP的工作目录。</p>
+<h3 id="1-2-5-Tomcat启动和访问"><a href="#1-2-5-Tomcat启动和访问" class="headerlink" title="1.2.5 Tomcat启动和访问"></a>1.2.5 Tomcat启动和访问</h3><ol>
+<li><p>tomcat解压目录/bin/startup.bat 双击运行启动tomcat</p>
+</li>
+<li><p>访问路径：<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a></p>
+</li>
+</ol>
+<h3 id="1-2-6-web项目目录结构"><a href="#1-2-6-web项目目录结构" class="headerlink" title="1.2.6  web项目目录结构"></a>1.2.6  web项目目录结构</h3><p>在JavaEE规范中，WEB项目存在一定的目录结构，具体结构如下：项目名称 （webapps 文件夹）</p>
+<ol>
+<li>静态资源.HTML，CSS，JS</li>
+<li>WEB-INF （不能直接通过浏览器进行访问）</li>
+<li>web.xml 当前WEB项目的核心配置，Servlet2.5必须有，3.0可省略。</li>
+<li>lib 当前WEB项目所需要的第三方的jar的存放位置。</li>
+<li>classes Java源码编译后生成class文件存放的位置。</li>
+</ol>
+<h3 id="1-2-7-idea发布web项目"><a href="#1-2-7-idea发布web项目" class="headerlink" title="1.2.7 idea发布web项目"></a>1.2.7 idea发布web项目</h3><p>不做详细介绍，必需要会配置</p>
+<h2 id="1-3-HTTP协议"><a href="#1-3-HTTP协议" class="headerlink" title="1.3 HTTP协议"></a>1.3 HTTP协议</h2><h3 id="1-3-1-什么是HTTP协议"><a href="#1-3-1-什么是HTTP协议" class="headerlink" title="1.3.1 什么是HTTP协议"></a>1.3.1 什么是HTTP协议</h3><p>HTTP协议：超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。用于定义WEB浏览器与WEB服务器之间交换数据的过程。</p>
+<h3 id="1-3-2-HTTP协议的作用及特点"><a href="#1-3-2-HTTP协议的作用及特点" class="headerlink" title="1.3.2 HTTP协议的作用及特点"></a>1.3.2 HTTP协议的作用及特点</h3><p>作用：</p>
+<p>HTTP协议是学习JavaWEB开发的基石，不深入了解HTTP协议，就不能说掌握了WEB开发，更无法管理和维护一些复杂的WEB站点。</p>
+<p>特点：</p>
+<ol>
+<li><p>基于请求/响应模型的协议。请求和响应必须成对；先有请求后有响应。</p>
+</li>
+<li><p>HTTP协议默认的端口:80</p>
+</li>
+</ol>
+<p>例如：<a href="http://www.itheima.com:80" target="_blank" rel="noopener">http://www.itheima.com:80</a></p>
+<h3 id="1-3-3-HTTP协议的版本："><a href="#1-3-3-HTTP协议的版本：" class="headerlink" title="1.3.3 HTTP协议的版本："></a>1.3.3 HTTP协议的版本：</h3><ol>
+<li><p>HTTP/1.0，发送请求，创建一次连接，获得一个web资源，连接断开。 </p>
+</li>
+<li><p>HTTP/1.1，发送请求，创建一次连接，获得多个web资源，连接断开。</p>
+</li>
+</ol>
+<h3 id="1-3-4-HTTP协议的组成："><a href="#1-3-4-HTTP协议的组成：" class="headerlink" title="1.3.4 HTTP协议的组成："></a>1.3.4 HTTP协议的组成：</h3><ol>
+<li><p>HTTP请求协议、HTTP响应协议。</p>
+</li>
+<li><p>HTTP请求包括：请求行、请求头、请求体</p>
+</li>
+<li><p>HTTP响应包括：响应行、响应头、响应体</p>
+</li>
+</ol>
+<h3 id="1-3-5-HTTP请求的详解"><a href="#1-3-5-HTTP请求的详解" class="headerlink" title="1.3.5 HTTP请求的详解"></a>1.3.5 HTTP请求的详解</h3><p>HTTP请求格式：请求行、请求头、请求体。</p>
+<p>如下图，我们提供两种请求方式抓包结果：（Chrome浏览器）</p>
+<p>GET请求抓包数据：</p>
+<p><img src="day36Tomcat-http%E5%8D%8F%E8%AE%AE%5C3.png" alt></p>
+<p>post请求抓包数据：</p>
+<p><img src="day36Tomcat-http%E5%8D%8F%E8%AE%AE%5C4.png" alt></p>
+<h4 id="请求行"><a href="#请求行" class="headerlink" title="请求行"></a>请求行</h4><ol>
+<li><p>请求行必须在HTTP请求格式的第一行。</p>
+</li>
+<li><p>请求行格式：请求方式 资源路径协议/版本</p>
+</li>
+<li><p>请求方式：协议规定7种，常用两种：GET和POST</p>
+</li>
+</ol>
+<p>GET请求：<br>将请求参数追加在URL后面，不安全。例如：form.html?username=jack&amp;username=1234<br>URL长度限制GET请求方式的数据大小。<br>没有请求体</p>
+<p>POST请求:<br>请求参数显示请求体处，较安全。请求数据大小没有显示。只有表单设置为method=”post”才是post请求.其他的都是get请求。</p>
+<h4 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h4><ol>
+<li><p>请求头从第二行开始，到第一个空行结束。及请求头和请求体之间存在一个空行。</p>
+</li>
+<li><p>请求头通常以键值对(key:value)方式传递数据。</p>
+</li>
+<li><p>key为规范规定的固定值</p>
+</li>
+<li><p>value 为key对应的取值，通常是一个值，可能是一组。</p>
+</li>
+</ol>
+<p><img src="day36Tomcat-http%E5%8D%8F%E8%AE%AE%5C5.png" alt></p>
+<h4 id="请求体"><a href="#请求体" class="headerlink" title="请求体"></a>请求体</h4><p>通常情况下，只有post请求方式才会使用到请求体，请求体中都是用户表单提交的数据，每一项数据都使用键值对（k=v），多组值使用&amp;相连。例如；username=jack&amp;password=1234</p>
+<h3 id="1-3-6-HTTP响应的详解"><a href="#1-3-6-HTTP响应的详解" class="headerlink" title="1.3.6 HTTP响应的详解"></a>1.3.6 HTTP响应的详解</h3><p>HTTP响应格式：响应行、响应头、响应体</p>
+<p>如下图，我们提供的响应的抓包结果（Chrome浏览器）</p>
+<p><img src="day36Tomcat-http%E5%8D%8F%E8%AE%AE%5C6.png" alt></p>
+<p><img src="day36Tomcat-http%E5%8D%8F%E8%AE%AE%5C7.png" alt></p>
+<h4 id="响应行"><a href="#响应行" class="headerlink" title="响应行"></a>响应行</h4><p>状态码：服务器与浏览器用于确定状态的固定数字号码</p>
+<p>200 ：请求成功。</p>
+<p>302 ：请求重定向。</p>
+<p>304 ：请求资源没有改变，访问本地缓存。</p>
+<p>404 ：请求资源不存在。通常是用户路径编写错误，也可能是服务器资源已删除。</p>
+<p>500 ：服务器内部错误。通常程序抛异常。</p>
+<h4 id="响应头"><a href="#响应头" class="headerlink" title="响应头"></a>响应头</h4><p>响应头也是用的键值对k:v</p>
+<p>服务器通过响应头来控制浏览器的行为，不同的头浏览器操作不同。</p>
+<p><img src="day36Tomcat-http%E5%8D%8F%E8%AE%AE%5C8.png" alt></p>
+<h4 id="响应体"><a href="#响应体" class="headerlink" title="响应体"></a>响应体</h4><p>响应体，就是服务器发送给浏览器的正文。</p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2020/04/01/day37servlet/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            day37Servlet
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2020/03/30/day35xml/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">day35XML</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    <link rel="stylesheet" href="/css/gitment.css"> 
+<script src="/js/gitment.js"></script>
+
+<div id="gitmentContainer"></div>
+
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        清风伴酒
+      
+    </h3>
+    <p class="avatar-slogan">
+      进击的后端渣渣
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javaSE/">javaSE</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">编程语言</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/12/day47-maven/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/gong-han-mo-shi/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day46-redis/">day46_redis</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day45-ajax-json/">day45-AJAX-Json</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day44jquery-gao-ji/">day44jQuery高级</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+      <div class="widget-box">
+    <h3 class="widget-title">友链</h3>
+    <div class="widget">
+      
+        <a style="display: block;" href="https://yiluyanxia.github.io/" title target='_blank'
+        >一路眼瞎</a>
+      
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 fantasy &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity" target="_blank" rel="noopener">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">不蒜子告之   阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

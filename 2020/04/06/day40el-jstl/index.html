@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>day40el-jstl | fantasyblog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="day40el-jstl1.1 EL表达式1.1.1 EL表达式的基本概述EL（Express Lanuage）表达式可以嵌入在jsp页面内部，减少jsp脚本的编写，EL 出现的目的是要替代jsp页面中输出脚本的编写。 1.1.2 EL表达式的格式和作用EL表达式的格式：${EL表达式内容} EL表达式的作用：  从域对象中查找指定的数据。 内置对象使用 执行运算符  1.1.3 EL表达式的基本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day40el-jstl">
+<meta property="og:url" content="https://fantasylhd.github.io/2020/04/06/day40el-jstl/index.html">
+<meta property="og:site_name" content="fantasyblog">
+<meta property="og:description" content="day40el-jstl1.1 EL表达式1.1.1 EL表达式的基本概述EL（Express Lanuage）表达式可以嵌入在jsp页面内部，减少jsp脚本的编写，EL 出现的目的是要替代jsp页面中输出脚本的编写。 1.1.2 EL表达式的格式和作用EL表达式的格式：${EL表达式内容} EL表达式的作用：  从域对象中查找指定的数据。 内置对象使用 执行运算符  1.1.3 EL表达式的基本">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/04/06/day40el-jstl/1.jpg">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/04/06/day40el-jstl/2.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/04/06/day40el-jstl/3.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/04/06/day40el-jstl/4.png">
+<meta property="article:published_time" content="2020-04-06T10:02:30.000Z">
+<meta property="article:modified_time" content="2020-04-07T07:19:41.490Z">
+<meta property="article:author" content="fantasy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fantasylhd.github.io/2020/04/06/day40el-jstl/1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="fantasyblog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpg">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/highlight.css">
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-day40el-jstl" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      day40el-jstl
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2020/04/06/day40el-jstl/" class="article-date">
+  <time datetime="2020-04-06T10:02:30.000Z" itemprop="datePublished">2020-04-06</time>
+</a>
+    
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h1 id="day40el-jstl"><a href="#day40el-jstl" class="headerlink" title="day40el-jstl"></a>day40el-jstl</h1><h2 id="1-1-EL表达式"><a href="#1-1-EL表达式" class="headerlink" title="1.1 EL表达式"></a>1.1 EL表达式</h2><h3 id="1-1-1-EL表达式的基本概述"><a href="#1-1-1-EL表达式的基本概述" class="headerlink" title="1.1.1 EL表达式的基本概述"></a>1.1.1 EL表达式的基本概述</h3><p>EL（Express Lanuage）表达式可以嵌入在jsp页面内部，减少jsp脚本的编写，EL 出现的目的是要替代jsp页面中输出脚本的编写。</p>
+<h3 id="1-1-2-EL表达式的格式和作用"><a href="#1-1-2-EL表达式的格式和作用" class="headerlink" title="1.1.2 EL表达式的格式和作用"></a>1.1.2 EL表达式的格式和作用</h3><p>EL表达式的格式：${EL表达式内容}</p>
+<p>EL表达式的作用：</p>
+<ol>
+<li>从域对象中查找指定的数据。</li>
+<li>内置对象使用</li>
+<li>执行运算符</li>
+</ol>
+<h3 id="1-1-3-EL表达式的基本使用"><a href="#1-1-3-EL表达式的基本使用" class="headerlink" title="1.1.3 EL表达式的基本使用"></a>1.1.3 EL表达式的基本使用</h3><h4 id="EL表达式作用一：从域中取出数据"><a href="#EL表达式作用一：从域中取出数据" class="headerlink" title="EL表达式作用一：从域中取出数据"></a>EL表达式作用一：从域中取出数据</h4><ol>
+<li>EL获得request域中的值：${requestScope.key};</li>
+<li>EL获得session域中的值：${sessionScope.key};</li>
+<li>EL获得application域中的值：${applicatioScope.key};</li>
+<li>EL从四个域中获得某个值${key};</li>
+</ol>
+<p>同样是依次从pageContext域，request域，session域，application域中 获取属性，在某个域中获取后将不在向后寻找(从最小的找起)</p>
+<ol>
+<li><p>EL获得普通数据</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">%</span>@ page contentType<span class="token operator">=</span><span class="token string">"text/html;charset=UTF-8"</span> language<span class="token operator">=</span><span class="token string">"java"</span> <span class="token operator">%</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>html<span class="token operator">></span>
+<span class="token operator">&lt;</span>head<span class="token operator">></span>
+ <span class="token operator">&lt;</span>title<span class="token operator">></span>Title<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+<span class="token operator">&lt;</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span>div<span class="token operator">></span>
+ <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 域对象获取值  <span class="token operator">--</span><span class="token operator">></span>
+ <span class="token operator">&lt;</span><span class="token operator">%=</span>application<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"sc_key"</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token operator">></span>
+ <span class="token operator">&lt;</span><span class="token operator">%=</span>session<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"ss_key"</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token operator">></span>
+ <span class="token operator">&lt;</span><span class="token operator">%=</span>request<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"req_key"</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token operator">></span>
+
+ <span class="token operator">&lt;</span>hr <span class="token operator">/</span><span class="token operator">></span>
+ <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>  el 的取值方式 <span class="token operator">--</span><span class="token operator">></span>
+ $<span class="token punctuation">{</span>applicationScope<span class="token punctuation">.</span>sc_key<span class="token punctuation">}</span>
+ $<span class="token punctuation">{</span>sessionScope<span class="token punctuation">.</span>ss_key<span class="token punctuation">}</span>
+ $<span class="token punctuation">{</span>requestScope<span class="token punctuation">.</span>req_key<span class="token punctuation">}</span>
+
+ <span class="token operator">&lt;</span>hr <span class="token operator">/</span><span class="token operator">></span>
+
+ <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>  el 的简化方式 <span class="token punctuation">,</span>只写key <span class="token punctuation">,</span>没有对象 <span class="token operator">--</span><span class="token operator">></span>
+ $<span class="token punctuation">{</span>sc_key<span class="token punctuation">}</span>
+ $<span class="token punctuation">{</span>ss_key<span class="token punctuation">}</span>
+ $<span class="token punctuation">{</span>req_key<span class="token punctuation">}</span>
+
+ <span class="token operator">&lt;</span>hr <span class="token operator">/</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span></code></pre>
+</li>
+<li><p>EL获得javaBean对象的值</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">%</span>@ page contentType<span class="token operator">=</span><span class="token string">"text/html;charset=UTF‐8"</span> language<span class="token operator">=</span><span class="token string">"java"</span> <span class="token operator">%</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>html<span class="token operator">></span>
+<span class="token operator">&lt;</span>head<span class="token operator">></span>
+ <span class="token operator">&lt;</span>title<span class="token operator">></span>Title<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+<span class="token operator">&lt;</span>body<span class="token operator">></span>
+ <span class="token operator">&lt;</span><span class="token operator">%</span>‐‐ 存储User实体数据 ‐‐<span class="token operator">%</span><span class="token operator">></span>
+ <span class="token operator">&lt;</span><span class="token operator">%</span>
+     User user <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token string">"tom"</span><span class="token punctuation">,</span><span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     request<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">,</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token operator">%</span><span class="token operator">></span>
+ <span class="token operator">&lt;</span>h1<span class="token operator">></span>取出User的数据<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+ $<span class="token punctuation">{</span>user<span class="token punctuation">.</span>username<span class="token punctuation">}</span><span class="token operator">==</span>$<span class="token punctuation">{</span>user<span class="token punctuation">.</span>age<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span></code></pre>
+</li>
+<li><p>EL获得List<String>的值<br>```java<br>&lt;%@ page contentType=”text/html;charset=UTF‐8” language=”java” %&gt;</String></p>
+<html>
+<head>
+ <title>Title</title>
+北京市昌平区建材城西路金燕龙办公楼一层 电话：400-618-9090</head></html></li>
+<li><p>EL获得List<User>的值</User></p>
+</li>
+<li><p>EL获得Map&lt;String,User&gt;的值</p>
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="fantasyblog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<body>
+ <%‐‐ 存储list<string>数据 ‐‐%>
+ <% list<string> strList = new ArrayList<>();
+     strList.add("aaa");
+     strList.add("bbb");
+     strList.add("ccc");
+     request.setAttribute("strList",strList);
+ %>
+ <h1>取出strList的数据</h1>
+ ${strList[0]}==${strList[1]}
+</%></%‐‐></body>
+
+```
+</li>
+<li><p>EL获得List<User>的值</User></p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">%</span>@ page contentType<span class="token operator">=</span><span class="token string">"text/html;charset=UTF‐8"</span> language<span class="token operator">=</span><span class="token string">"java"</span> <span class="token operator">%</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>html<span class="token operator">></span>
+<span class="token operator">&lt;</span>head<span class="token operator">></span>
+ <span class="token operator">&lt;</span>title<span class="token operator">></span>Title<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+<span class="token operator">&lt;</span>body<span class="token operator">></span>
+ <span class="token operator">&lt;</span><span class="token operator">%</span>‐‐ 存储List<span class="token operator">&lt;</span>User<span class="token operator">></span>数据 ‐‐<span class="token operator">%</span><span class="token operator">></span>
+ <span class="token operator">&lt;</span><span class="token operator">%</span>
+     List<span class="token operator">&lt;</span>User<span class="token operator">></span> userList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     User user2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token string">"lucy"</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     userList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     userList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>user2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     request<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"userList"</span><span class="token punctuation">,</span>userList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token operator">%</span><span class="token operator">></span>
+ <span class="token operator">&lt;</span>h1<span class="token operator">></span>取出userList的数据<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+$<span class="token punctuation">{</span>userList<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>username<span class="token punctuation">}</span><span class="token operator">==</span>$<span class="token punctuation">{</span>userList<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>age<span class="token punctuation">}</span><span class="token operator">&lt;</span>br<span class="token operator">/</span><span class="token operator">></span>    
+$<span class="token punctuation">{</span>userList<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>username<span class="token punctuation">}</span><span class="token operator">==</span>$<span class="token punctuation">{</span>userList<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>age<span class="token punctuation">}</span><span class="token operator">&lt;</span>br<span class="token operator">/</span><span class="token operator">></span>    
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span></code></pre>
+</li>
+<li><p>EL获得Map&lt;String,User&gt;的值</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">%</span>@ page contentType<span class="token operator">=</span><span class="token string">"text/html;charset=UTF‐8"</span> language<span class="token operator">=</span><span class="token string">"java"</span> <span class="token operator">%</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>html<span class="token operator">></span>
+<span class="token operator">&lt;</span>head<span class="token operator">></span>
+ <span class="token operator">&lt;</span>title<span class="token operator">></span>Title<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+<span class="token operator">&lt;</span>body<span class="token operator">></span>
+ <span class="token operator">&lt;</span><span class="token operator">%</span>‐‐ 存储Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>User<span class="token operator">></span> ‐‐<span class="token operator">%</span><span class="token operator">></span>
+ <span class="token operator">&lt;</span><span class="token operator">%</span>
+     Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>User<span class="token operator">></span> userMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     userMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"user1"</span><span class="token punctuation">,</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     userMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"user2"</span><span class="token punctuation">,</span>user2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     request<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"userMap"</span><span class="token punctuation">,</span>userMap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token operator">%</span><span class="token operator">></span>
+     <span class="token operator">&lt;</span>h1<span class="token operator">></span>取出userMap的数据<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+     $<span class="token punctuation">{</span>userMap<span class="token punctuation">.</span>user1<span class="token punctuation">.</span>username<span class="token punctuation">}</span><span class="token operator">==</span>$<span class="token punctuation">{</span>userMap<span class="token punctuation">.</span>user1<span class="token punctuation">.</span>age<span class="token punctuation">}</span><span class="token operator">&lt;</span>br<span class="token operator">/</span><span class="token operator">></span>
+     $<span class="token punctuation">{</span>userMap<span class="token punctuation">.</span>user2<span class="token punctuation">.</span>username<span class="token punctuation">}</span><span class="token operator">==</span>$<span class="token punctuation">{</span>userMap<span class="token punctuation">.</span>user2<span class="token punctuation">.</span>age<span class="token punctuation">}</span><span class="token operator">&lt;</span>br<span class="token operator">/</span><span class="token operator">></span>
+     $<span class="token punctuation">{</span>userMap<span class="token punctuation">[</span><span class="token string">'user1'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>username<span class="token punctuation">}</span><span class="token operator">==</span>$<span class="token punctuation">{</span>userMap<span class="token punctuation">[</span><span class="token string">'user1'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>age<span class="token punctuation">}</span><span class="token operator">&lt;</span>br<span class="token operator">/</span><span class="token operator">></span>
+     $<span class="token punctuation">{</span>userMap<span class="token punctuation">[</span><span class="token string">'user2'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>username<span class="token punctuation">}</span><span class="token operator">==</span>$<span class="token punctuation">{</span>userMap<span class="token punctuation">[</span><span class="token string">'user2'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>age<span class="token punctuation">}</span><span class="token operator">&lt;</span>br<span class="token operator">/</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span></code></pre>
+</li>
+</ol>
+<h3 id="1-1-4-EL的内置对象"><a href="#1-1-4-EL的内置对象" class="headerlink" title="1.1.4 EL的内置对象"></a>1.1.4 EL的内置对象</h3><p>获取JSP中域中的数据（pageScope,requestScope,sessionScope,applicationScope）</p>
+<p>pageContext - WEB开发中的pageContext.</p>
+<p>在Servlet中获得web应用的名称：request.getContextPath();</p>
+<p>在jsp页面上获得web应用的名称：${pageContext.request.contextPath}</p>
+<h3 id="1-1-5-EL执行运算符"><a href="#1-1-5-EL执行运算符" class="headerlink" title="1.1.5 EL执行运算符"></a>1.1.5 EL执行运算符</h3><ol>
+<li>算数运算符 + - * / %</li>
+<li>逻辑运算符 &amp;&amp; || ！</li>
+<li>比较运算符 &gt; &lt; &gt;= &lt;=</li>
+<li>Null运算符 empty (指向null和size=0都是null)</li>
+<li>三元运算符 ? :</li>
+</ol>
+<h2 id="1-2-JSTL"><a href="#1-2-JSTL" class="headerlink" title="1.2 JSTL"></a>1.2 JSTL</h2><h3 id="1-2-1-jstl标签的基本概述"><a href="#1-2-1-jstl标签的基本概述" class="headerlink" title="1.2.1 jstl标签的基本概述"></a>1.2.1 jstl标签的基本概述</h3><p>JSTL（JSP Standard Tag Library)，JSP标准标签库，可以嵌入在jsp页面中使用标签的形式完成业务逻辑等功能。jstl出现的目的同el一样也是要提到jsp页面中的脚本代码。JSTL标准标准标签库有5个子库，但随着发展，目前常使用的是他的核心库</p>
+<h3 id="1-2-2-jstl标签的安装"><a href="#1-2-2-jstl标签的安装" class="headerlink" title="1.2.2 jstl标签的安装"></a>1.2.2 jstl标签的安装</h3><ol>
+<li><p>导入jar包</p>
+<p> javax.servlet.jsp.jstl.jar</p>
+<p> jstl‐impl.jar</p>
+</li>
+<li><p>使用taglib指令在jsp页面导入要使用的jstl标签库</p>
+<p>&lt;%@ taglib prefix=”c” uri=”<a href="http://java.sun.com/jsp/jstl/core&quot;" target="_blank" rel="noopener">http://java.sun.com/jsp/jstl/core&quot;</a> %&gt;</p>
+</li>
+</ol>
+<h3 id="1-2-3-常用的jstl标签"><a href="#1-2-3-常用的jstl标签" class="headerlink" title="1.2.3 常用的jstl标签"></a>1.2.3 常用的jstl标签</h3><h4 id="lt-c-if-gt-标签"><a href="#lt-c-if-gt-标签" class="headerlink" title="&lt;c:if&gt;标签"></a>&lt;c:if&gt;标签</h4><p>if标签作用：</p>
+<p>起到java代码的判断的作用</p>
+<p>if标签属性介绍：</p>
+<ol>
+<li><p>test：判断是否执行标签内的内容（true——执行标签中的内容，false，不执行）。</p>
+</li>
+<li><p>var：用来保存test属性的结果（使用var属性给他取个名字），这个结果可以保存到指定的容器中。</p>
+</li>
+<li><p>scope：指定保存数据的容器。</p>
+</li>
+</ol>
+<p>if标签演示：</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">%</span>@ page contentType<span class="token operator">=</span><span class="token string">"text/html;charset=UTF‐8"</span> language<span class="token operator">=</span><span class="token string">"java"</span> <span class="token operator">%</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">%</span>@ taglib prefix<span class="token operator">=</span><span class="token string">"c"</span> uri<span class="token operator">=</span><span class="token string">"http://java.sun.com/jsp/jstl/core"</span> <span class="token operator">%</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>html<span class="token operator">></span>
+<span class="token operator">&lt;</span>head<span class="token operator">></span>
+    <span class="token operator">&lt;</span>title<span class="token operator">></span>Title<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+<span class="token operator">&lt;</span>body<span class="token operator">></span>
+    <span class="token operator">&lt;</span>c<span class="token operator">:</span><span class="token keyword">if</span> test<span class="token operator">=</span><span class="token string">"${num>5}"</span><span class="token operator">></span>
+        num大于<span class="token number">5</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>c<span class="token operator">:</span><span class="token keyword">if</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>c<span class="token operator">:</span><span class="token keyword">if</span> test<span class="token operator">=</span><span class="token string">"${num&lt;=5}"</span><span class="token operator">></span>
+        num小于等于<span class="token number">5</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>c<span class="token operator">:</span><span class="token keyword">if</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">%</span>‐‐将<span class="token keyword">if</span>判断的结果存储到指定的域中‐‐<span class="token operator">%</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>c<span class="token operator">:</span><span class="token keyword">if</span> test<span class="token operator">=</span><span class="token string">"${num==100}"</span> var<span class="token operator">=</span><span class="token string">"res"</span> scope<span class="token operator">=</span><span class="token string">"request"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>c<span class="token operator">:</span><span class="token keyword">if</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>h1<span class="token operator">></span>取出结果<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+    $<span class="token punctuation">{</span>res<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span></code></pre>
+<h4 id="forEach标签"><a href="#forEach标签" class="headerlink" title="forEach标签"></a>forEach标签</h4><p>forEach标签作用：</p>
+<p>起到java代码的for循环作用</p>
+<p>forEach标签属性介绍：</p>
+<ol>
+<li>var：在不循环对象的时候，保存的是控制循环的变量；在循环对象的时候，保存的是被循环对象中的元素</li>
+<li>items：指定要循环的对象</li>
+<li>varStatus：保存了当前循环过程中的信息（循环的开始、结束、步长、次数等）</li>
+<li>begin：设置循环的开始<br>end：设置循环的结束</li>
+<li>step：设置步长——间隔几次循环，执行一次循环体中的内容</li>
+</ol>
+<p>foreach演示：</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">%</span>@ page contentType<span class="token operator">=</span><span class="token string">"text/html;charset=UTF‐8"</span> language<span class="token operator">=</span><span class="token string">"java"</span> <span class="token operator">%</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">%</span>@ taglib prefix<span class="token operator">=</span><span class="token string">"c"</span> uri<span class="token operator">=</span><span class="token string">"http://java.sun.com/jsp/jstl/core"</span> <span class="token operator">%</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>html<span class="token operator">></span>
+<span class="token operator">&lt;</span>head<span class="token operator">></span>
+    <span class="token operator">&lt;</span>title<span class="token operator">></span>Title<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+<span class="token operator">&lt;</span>body<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>h1<span class="token operator">></span>模拟增强<span class="token keyword">for</span>循环<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>    
+    <span class="token operator">&lt;</span>c<span class="token operator">:</span>forEach items<span class="token operator">=</span><span class="token string">"${userList}"</span> var<span class="token operator">=</span><span class="token string">"user"</span><span class="token operator">></span>
+        $<span class="token punctuation">{</span>user<span class="token punctuation">.</span>username<span class="token punctuation">}</span><span class="token operator">==</span>$<span class="token punctuation">{</span>user<span class="token punctuation">.</span>age<span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>c<span class="token operator">:</span>forEach<span class="token operator">></span>
+
+    <span class="token operator">&lt;</span>h1<span class="token operator">></span>模拟普通<span class="token keyword">for</span>循环<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+    <span class="token operator">&lt;</span>c<span class="token operator">:</span>forEach begin<span class="token operator">=</span><span class="token string">"0"</span> end<span class="token operator">=</span><span class="token string">"${num}"</span> var<span class="token operator">=</span><span class="token string">"i"</span> step<span class="token operator">=</span><span class="token string">"10"</span><span class="token operator">></span>
+        $<span class="token punctuation">{</span>i<span class="token punctuation">}</span><span class="token operator">&lt;</span>br<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>c<span class="token operator">:</span>forEach<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span></code></pre>
+<p>与java比较图解：<br><img src="/2020/04/06/day40el-jstl/1.jpg" alt></p>
+<h3 id="1-3-三层架构和MVC模式"><a href="#1-3-三层架构和MVC模式" class="headerlink" title="1.3 三层架构和MVC模式"></a>1.3 三层架构和MVC模式</h3><h3 id="1-3-1-JSP开发模式"><a href="#1-3-1-JSP开发模式" class="headerlink" title="1.3.1 JSP开发模式"></a>1.3.1 JSP开发模式</h3><p>当SUN公司推出JSP后，同时也提供相应的开发模式，JavaWeb经历了JSP Model1 第一代，JSPModel2第二代，JSPModel 3 三个时期。</p>
+<h4 id="JSP-Model1-第一代"><a href="#JSP-Model1-第一代" class="headerlink" title="JSP Model1 第一代"></a>JSP Model1 第一代</h4><p>JSP Model1是JavaWeb早期的模型，它适合小型Web项目，开发成本低！Model1第一代时期，服务器端只有JSP页面，所有的操作都在JSP页面中，连访问数据库的API也在JSP页面中完成。也就是说，所有的东西都在一起，对后期的维护和扩展极为不利。</p>
+<p><img src="/2020/04/06/day40el-jstl/2.png" alt></p>
+<h4 id="JSP-Model2-第二代"><a href="#JSP-Model2-第二代" class="headerlink" title="JSP Model2 第二代"></a>JSP Model2 第二代</h4><p>JSP Model1第二代有所改进，把业务逻辑的内容放到了JavaBean中，而JSP页面负责显示以及请求调度的工作。虽然第二代比第一代好了些，但还让JSP做了过多的工作，JSP中把视图工作和请求调度（控制器）的工作耦合在一起了。</p>
+<p>JSP Model 2 Model2使用到的技术有：Servlet、JSP、JavaBean。Model2 是MVC设计模式在Java语言的具体体现。</p>
+<ul>
+<li>JSP：视图层，用来与用户打交道。负责接收用来的数据，以及显示数据给用户；</li>
+<li>ervlet：控制层，负责找到合适的模型对象来处理业务逻辑，转发到合适的视图；</li>
+<li>JavaBean：模型层，完成具体的业务工作，例如：转账等。</li>
+</ul>
+<p><img src="/2020/04/06/day40el-jstl/3.png" alt></p>
+<h4 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h4><p>SP模式是理论基础，但实际开发中，我们常将服务器端程序，根据逻辑进行分层。一般比较常见的是分三层，我们称为：经典三层体系架构。三层分别是：表示层、业务逻辑层、数据访问层。</p>
+<ul>
+<li>表示层：又称为 web层，与浏览器进行数据交互的。</li>
+<li>业务逻辑层：又称为service层，专门用于处理业务数据的。</li>
+<li>数据访问层：又称为dao层，与数据库进行数据交换的。将数据库的一条记录与JavaBean进行对应。</li>
+</ul>
+<p><img src="/2020/04/06/day40el-jstl/4.png" alt></p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2020/04/12/day41filter-listener-baseservlet/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            day41Filter-Listener-BaseServlet
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2020/04/05/day39cookie-session/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">day39Cookie-Session</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    <link rel="stylesheet" href="/css/gitment.css"> 
+<script src="/js/gitment.js"></script>
+
+<div id="gitmentContainer"></div>
+
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        清风伴酒
+      
+    </h3>
+    <p class="avatar-slogan">
+      进击的后端渣渣
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javaSE/">javaSE</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">编程语言</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/12/day47-maven/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/gong-han-mo-shi/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day46-redis/">day46_redis</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day45-ajax-json/">day45-AJAX-Json</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day44jquery-gao-ji/">day44jQuery高级</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+      <div class="widget-box">
+    <h3 class="widget-title">友链</h3>
+    <div class="widget">
+      
+        <a style="display: block;" href="https://yiluyanxia.github.io/" title target='_blank'
+        >一路眼瞎</a>
+      
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 fantasy &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity" target="_blank" rel="noopener">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">不蒜子告之   阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

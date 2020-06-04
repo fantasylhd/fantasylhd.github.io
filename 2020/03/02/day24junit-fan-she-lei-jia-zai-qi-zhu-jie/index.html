@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>day24Junit、反射、类加载器、注解 | fantasyblog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="day24Junit、反射、类加载器、注解1.1 Junit单元测试 测试分类：  黑盒测试：不需要写代码，给输入值，看程序是否能够输出期望的值。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day24Junit、反射、类加载器、注解">
+<meta property="og:url" content="https://fantasylhd.github.io/2020/03/02/day24junit-fan-she-lei-jia-zai-qi-zhu-jie/index.html">
+<meta property="og:site_name" content="fantasyblog">
+<meta property="og:description" content="day24Junit、反射、类加载器、注解1.1 Junit单元测试 测试分类：  黑盒测试：不需要写代码，给输入值，看程序是否能够输出期望的值。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/03/02/day24junit-fan-she-lei-jia-zai-qi-zhu-jie/01_Class%E7%B1%BB%E7%9A%84%E4%BB%8B%E7%BB%8D.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/03/02/day24junit-fan-she-lei-jia-zai-qi-zhu-jie/02_%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BB%8B%E7%BB%8D.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/03/02/day24junit-fan-she-lei-jia-zai-qi-zhu-jie/03%E8%8E%B7%E5%8F%96Class%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E5%BC%8F.png">
+<meta property="article:published_time" content="2020-03-02T06:39:52.000Z">
+<meta property="article:modified_time" content="2020-03-02T11:21:43.319Z">
+<meta property="article:author" content="fantasy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fantasylhd.github.io/2020/03/02/day24junit-fan-she-lei-jia-zai-qi-zhu-jie/01_Class%E7%B1%BB%E7%9A%84%E4%BB%8B%E7%BB%8D.png">
+  
+    <link rel="alternate" href="/atom.xml" title="fantasyblog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpg">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/highlight.css">
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-day24Junit、反射、类加载器、注解" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      day24Junit、反射、类加载器、注解
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2020/03/02/day24junit-fan-she-lei-jia-zai-qi-zhu-jie/" class="article-date">
+  <time datetime="2020-03-02T06:39:52.000Z" itemprop="datePublished">2020-03-02</time>
+</a>
+    
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h1 id="day24Junit、反射、类加载器、注解"><a href="#day24Junit、反射、类加载器、注解" class="headerlink" title="day24Junit、反射、类加载器、注解"></a>day24Junit、反射、类加载器、注解</h1><h2 id="1-1-Junit单元测试"><a href="#1-1-Junit单元测试" class="headerlink" title="1.1 Junit单元测试"></a>1.1 Junit单元测试</h2><ul>
+<li>测试分类：</li>
+</ul>
+<p>黑盒测试：不需要写代码，给输入值，看程序是否能够输出期望的值。</p>
+<a id="more"></a>
+<p>白盒测试：需要写代码的。关注程序具体的执行流程。</p>
+<h3 id="1-1-1-Junit介绍"><a href="#1-1-1-Junit介绍" class="headerlink" title="1.1.1 Junit介绍"></a>1.1.1 Junit介绍</h3><p>Junit是一个Java语言的单元测试框架，属于白盒测试，简单理解为可以用于取代java的main方法。Junit属于第三方工具，需要导入jar包后使用。</p>
+<h3 id="1-1-2-Junit的使用"><a href="#1-1-2-Junit的使用" class="headerlink" title="1.1.2 Junit的使用"></a>1.1.2 Junit的使用</h3><ol>
+<li>编写测试类，简单理解Junit可以用于取代java的main方法</li>
+<li>在测试类方法上添加注解 @Test</li>
+<li>@Test修饰的方法要求：public void 方法名() {…} ，方法名自定义建议test开头，没有参数。</li>
+<li>添加Junit库到lib文件夹中，然后进行jar包关联</li>
+<li>使用：点击方法左侧绿色箭头(idea中)，执行当前方法（方法必须标记@Test）。执行结果红色：代表失败；执行结果绿色：代表成功</li>
+</ol>
+<h3 id="1-1-3-常用注解"><a href="#1-1-3-常用注解" class="headerlink" title="1.1.3 常用注解"></a>1.1.3 常用注解</h3><ul>
+<li>@Test，用于修饰需要执行的测试方法</li>
+<li>@Before，修饰的方法会在测试方法之前被自动执行</li>
+<li>@After，修饰的方法会在测试方法执行之后自动被执行</li>
+</ul>
+<p>*示例代码</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo02Junit</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">myTest1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"myTest1...."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@Before</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">myBefore</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"myBefore...."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@After</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">myAfter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"myAfter...."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">myTest2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"myTest2...."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="1-2-反射"><a href="#1-2-反射" class="headerlink" title="1.2 反射"></a>1.2 反射</h2><h3 id="1-2-1-类的加载"><a href="#1-2-1-类的加载" class="headerlink" title="1.2.1 类的加载"></a>1.2.1 类的加载</h3><p>当程序要使用某个类时，如果该类还未被加载到内存中，则系统会通过加载，连接，初始化三步来实现对这个类进行初始化。</p>
+<ul>
+<li>加载</li>
+</ul>
+<p>就是指将class文件读入内存，并为之创建一个Class对象。<br>任何类被使用时系统都会建立一个Class对象</p>
+<ul>
+<li>连接</li>
+</ul>
+<p>验证是否有正确的内部结构，并和其他类协调一致<br>准备负责为类的静态成员分配内存，并设置默认初始化值<br>解析将类的二进制数据中的符号引用替换为直接引用</p>
+<ul>
+<li>初始化</li>
+</ul>
+<p>就是我们以前讲过的初始化步骤(创建对象)</p>
+<ul>
+<li>Class文件的概念<br><img src="/2020/03/02/day24junit-fan-she-lei-jia-zai-qi-zhu-jie/01_Class%E7%B1%BB%E7%9A%84%E4%BB%8B%E7%BB%8D.png" alt="01_Class类的介绍图"></li>
+</ul>
+<ul>
+<li>什么时候加载类到JVM中</li>
+</ul>
+<ol>
+<li>创建本类的对象</li>
+<li>创建子类对象</li>
+<li>使用java命令,运行主类时(含有main方法的类)</li>
+<li>使用类中的静态内容</li>
+<li>使用反射方式来强制创建某个类或接口对应的java.lang.Class对象。任意类型,都有一个隐藏的class属性</li>
+</ol>
+<h3 id="1-2-2-反射概述"><a href="#1-2-2-反射概述" class="headerlink" title="1.2.2 反射概述"></a>1.2.2 反射概述</h3><ul>
+<li><p>框架：半成品软件。可以在框架的基础上进行软件开发，简化编码</p>
+</li>
+<li><p>反射：将java代码的各个组成部分封装为其他对象，可以在程序运行过程中操作这些对象，这就是java的反射机制，如下图。<br><img src="/2020/03/02/day24junit-fan-she-lei-jia-zai-qi-zhu-jie/02_%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BB%8B%E7%BB%8D.png" alt="02_反射的介绍图"></p>
+</li>
+</ul>
+<p>反射的好处：</p>
+<ol>
+<li>可以在程序运行过程中，操作这些对象。</li>
+<li>可以解耦，提高程序的可扩展性。</li>
+</ol>
+<h3 id="1-2-3-获取Class对象的方式"><a href="#1-2-3-获取Class对象的方式" class="headerlink" title="1.2.3 获取Class对象的方式"></a>1.2.3 获取Class对象的方式</h3><p><img src="/2020/03/02/day24junit-fan-she-lei-jia-zai-qi-zhu-jie/03%E8%8E%B7%E5%8F%96Class%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E5%BC%8F.png" alt="03获取Class对象的方式图"></p>
+<p>提示：同一个字节码文件(*.class)在一次程序运行过程中，只会被加载一次，不论通过哪一种方式获取的Class对象都是同一个。</p>
+<h3 id="1-2-4-获取Class对象的信息"><a href="#1-2-4-获取Class对象的信息" class="headerlink" title="1.2.4 获取Class对象的信息"></a>1.2.4 获取Class对象的信息</h3><p>知道怎么获取Class对象之后，接下来就介绍几个Class类中常用的方法了。</p>
+<p>Class对象相关方法</p>
+<ol>
+<li>String getSimpleName(); 获得简单类名，只是类名，没有包<br>. String getName(); 获取完整类名，包含包名+类名</li>
+<li>T newInstance() ;创建此 Class 对象所表示的类的一个新实例。要求：类必须有public的无参数构造方法</li>
+</ol>
+<h3 id="1-2-5-Constructor类"><a href="#1-2-5-Constructor类" class="headerlink" title="1.2.5 Constructor类"></a>1.2.5 Constructor类</h3><p>Constructor是构造方法类，类中的每一个构造方法都是Constructor的对象，通过Constructor对象可以实例化对象。</p>
+<p>Class类中与Constructor相关方法</p>
+<ol>
+<li>Constructor[] getConstructors()</li>
+</ol>
+<p>获取所有的public修饰的构造方法</p>
+<ol>
+<li>Constructor getConstructor(Class… parameterTypes)</li>
+</ol>
+<p>根据参数类型获取构造方法对象，只能获得public修饰的构造方法。</p>
+<p>如果不存在对应的构造方法，则会抛出 java.lang.NoSuchMethodException 异常。</p>
+<p>参数是可变参数,调用此方法时,可以不写参数,获取的空参构造</p>
+<p>可以写参数,给定的参数必须是Class对象 比如:String.class,int.class</p>
+<p>Constructor类中常用方法</p>
+<ol>
+<li>T newInstance(Object… initargs) 根据指定参数创建对象。</li>
+<li>T newInstance() 空参构造方法创建对象。</li>
+</ol>
+<ul>
+<li><p>示例代码</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo06NewInstance</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">//1.获取Class类型的对象(三种方式,建议使用第三种forName)</span>
+      Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> c <span class="token operator">=</span> Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"domain.Person"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">//2.通过Class类型的对象获取带参构造方法对象</span>
+      <span class="token comment" spellcheck="true">//获取满参构造方法对象</span>
+      Constructor<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> con <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">getConstructor</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">//3.执行带参构造方法对象,创建一个具体的对象</span>
+      Person p <span class="token operator">=</span> <span class="token punctuation">(</span>Person<span class="token punctuation">)</span>con<span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token string">"张三"</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+</ul>
+<p>创建对象的简单方式</p>
+<ul>
+<li><p>示例代码</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo07NewInstance</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">//1.获取Class类型的对象(三种方式,建议使用第三种forName)</span>
+      Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> c <span class="token operator">=</span> Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"domain.Person"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment" spellcheck="true">//2.java.lang.Class类 成员方法: newInstance</span>
+      Person p <span class="token operator">=</span> <span class="token punctuation">(</span>Person<span class="token punctuation">)</span>c<span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+</ul>
+<p>内部原理:</p>
+<ol>
+<li>内部会获取空参构造方法对象,要求类中必须定义空参构造</li>
+<li>空参构造方法对象调用newInstance(Construct类中的),创建一个对象</li>
+</ol>
+<h3 id="1-2-6-Method类"><a href="#1-2-6-Method类" class="headerlink" title="1.2.6 Method类"></a>1.2.6 Method类</h3><p>Method是方法类，类中的每一个方法都是Method的对象，通过Method对象可以调用方法。</p>
+<p>Class类中与Method相关方法</p>
+<ol>
+<li><p>public Method[] getMethods(): 获取所有public修饰的成员方法,包含继承下来的<br>每个成员方法被封装成了一个Method对象,存储Method数组中</p>
+</li>
+<li><p>public Method getMethod(String name, Class… parameterTypes):获取public修饰的指定方法名称,指定参数类型对应的成员方法对象</p>
+</li>
+</ol>
+<p>Method类中常用方法</p>
+<ul>
+<li>public Object invoke(Object obj,Object… args): 对带有指定参数的指定对象调用由此 Method 对象表示的底层方法。</li>
+</ul>
+<p>参数:1.Object obj: 成员方法的执行,必须有对象的支，2.Object… args: 执行方法时,该方法需要的具体的参数</p>
+<p>返回值: 方法执行的结果,被封装成一个Object返回，1.没有返回值的方法: 返回一个null，2.有返回值的方法: Object对象中,封装了具体的结果</p>
+<ul>
+<li><p>示例代码</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo05Invoke</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">//1.获取Class类型的对象(三种方式,建议使用第三种forName)</span>
+      Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> c <span class="token operator">=</span> Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"domain.Person"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment" spellcheck="true">//成员方法的调用,需要对象的支持</span>
+      <span class="token comment" spellcheck="true">//快捷方式,创建一个对象</span>
+      Object obj <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment" spellcheck="true">//2.获取setName方法对象</span>
+      Method setNameMethod <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">getMethod</span><span class="token punctuation">(</span><span class="token string">"setName"</span><span class="token punctuation">,</span> String<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">//3.执行setName方法对象</span>
+      Object result <span class="token operator">=</span> setNameMethod<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token string">"柳岩"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//null</span>
+      <span class="token comment" spellcheck="true">//System.out.println(obj);</span>
+
+      <span class="token comment" spellcheck="true">//2.获取getName方法对象</span>
+      Method getNameMethod <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">getMethod</span><span class="token punctuation">(</span><span class="token string">"getName"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment" spellcheck="true">//3.执行getName方法对象</span>
+      result <span class="token operator">=</span> getNameMethod<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+</ul>
+<h3 id="1-2-7-案例"><a href="#1-2-7-案例" class="headerlink" title="1.2.7 案例"></a>1.2.7 案例</h3><p>需求：写一个”框架”，不能改变该类的任何代码的前提下，可以帮我们创建任意类的对象，并且执行其中任意方法</p>
+<p>实现：</p>
+<ol>
+<li>配置文件</li>
+<li>反射</li>
+</ol>
+<p>步骤：</p>
+<ol>
+<li>将需要创建的对象的全类名和需要执行的方法定义在配置文件中</li>
+<li>在程序中加载读取配置文件</li>
+<li>使用反射技术来加载类文件进内存</li>
+<li>创建对象</li>
+<li>执行方法</li>
+</ol>
+<ul>
+<li><p>示例代码</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo06Reflect</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">//2.读取(IO+Properties)配置文件,获取String类型的类名称和方法名称</span>
+      Properties props <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      props<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span><span class="token string">"day15\\config.properties"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">//类名称</span>
+      String className <span class="token operator">=</span> props<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"ClassName"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      String methodName <span class="token operator">=</span> props<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"MethodName"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">//System.out.println(className);</span>
+      <span class="token comment" spellcheck="true">//System.out.println(methodName);</span>
+
+      <span class="token comment" spellcheck="true">//3.获取Class类型的对象(三种方式,建议使用第三种forName)</span>
+      Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> c <span class="token operator">=</span> Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span>className<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment" spellcheck="true">//4.获取方法对象</span>
+      Method method <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">getMethod</span><span class="token punctuation">(</span>methodName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment" spellcheck="true">//方法的执行,需要对象的支持</span>
+      Object obj <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment" spellcheck="true">//5.执行方法对象</span>
+      method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+</ul>
+<h2 id="1-3-类加载器"><a href="#1-3-类加载器" class="headerlink" title="1.3 类加载器"></a>1.3 类加载器</h2><h3 id="1-3-1-类加载器概念"><a href="#1-3-1-类加载器概念" class="headerlink" title="1.3.1 类加载器概念"></a>1.3.1 类加载器概念</h3><p>类加载器：类加载器是负责加载类的对象。将class文件（硬盘）加载到内存生成Class对象。</p>
+<h3 id="1-3-2-类加载器的组成"><a href="#1-3-2-类加载器的组成" class="headerlink" title="1.3.2 类加载器的组成"></a>1.3.2 类加载器的组成</h3><ul>
+<li><p>BootstrapClassLoader 根类加载器 也被称为引导类加载器，负责Java核心类的加载<br>比如System,String等</p>
+</li>
+<li><p>ExtClassLoader 扩展类加载器负责JRE的扩展目录中jar包的加载。在JDK中JRE的lib目录下ext目录</p>
+</li>
+<li><p>AppClassLoader 系统类加载器负责在JVM启动时加载来自java命令的class文件，以及classpath环境变量所指定的jar包和类路径。</p>
+</li>
+</ul>
+<h3 id="1-3-3-类加载器的继承关系"><a href="#1-3-3-类加载器的继承关系" class="headerlink" title="1.3.3 类加载器的继承关系"></a>1.3.3 类加载器的继承关系</h3><p>所有的类加载器都是 java.lang.ClassLoader 的子类</p>
+<p>AppClassLoader extends ExtClassLoader extends BootstrapClassLoader extends ClassLoader</p>
+<h3 id="1-3-4-类加载器机制"><a href="#1-3-4-类加载器机制" class="headerlink" title="1.3.4 类加载器机制"></a>1.3.4 类加载器机制</h3><p>全盘负责委托机制</p>
+<p>全盘负责：A类如果要使用B类（不存在），A类加载器必须负责加载B类。</p>
+<p>委托机制：</p>
+<p>A类加载器如果要加载资源B，必须询问父类加载是否加载。 如果加载，将直接使用。 如果没有机制，自己再加载。</p>
+<h3 id="1-3-5-获取类加载器"><a href="#1-3-5-获取类加载器" class="headerlink" title="1.3.5 获取类加载器"></a>1.3.5 获取类加载器</h3><ul>
+<li><p>获取类加载器</p>
+<p>  java.lang.Class类 成员方法</p>
+<p>  public ClassLoader getClassLoader(): 返回该类的类加载器。</p>
+</li>
+<li><p>获取父类加载器</p>
+<p>  java.lang.ClassLoader类 成员方法</p>
+<p>  public final ClassLoader getParent(): 返回委托的父类加载器。</p>
+</li>
+<li><p>示例代码</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo07ClassLoader</span> <span class="token punctuation">{</span>
+  <span class="token annotation punctuation">@Test</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">//获取AppClassLoader</span>
+      ClassLoader app <span class="token operator">=</span> Demo07ClassLoader<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//sun.misc.Launcher$AppClassLoader@18b4aac2</span>
+
+      <span class="token comment" spellcheck="true">//获取ExtClassLoader</span>
+      ClassLoader ext <span class="token operator">=</span> app<span class="token punctuation">.</span><span class="token function">getParent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>ext<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//sun.misc.Launcher$ExtClassLoader@452b3a41</span>
+
+      <span class="token comment" spellcheck="true">//获取BootstrapClassLoader</span>
+      ClassLoader boot <span class="token operator">=</span> ext<span class="token punctuation">.</span><span class="token function">getParent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>boot<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//null</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Test</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">app</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">//获取AppClassLoader</span>
+      ClassLoader app <span class="token operator">=</span> Demo07ClassLoader<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//sun.misc.Launcher$AppClassLoader@18b4aac2</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Test</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">ext</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">//直接获取ExtClassLoader</span>
+      ClassLoader ext <span class="token operator">=</span> DNSNameService<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>ext<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//sun.misc.Launcher$ExtClassLoader@452b3a41</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Test</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">boot</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">//直接获取BootstrapClassLoader</span>
+      ClassLoader boot <span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>boot<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//null</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+</ul>
+<h2 id="1-4-注解"><a href="#1-4-注解" class="headerlink" title="1.4 注解"></a>1.4 注解</h2><h3 id="1-4-1-注解概述"><a href="#1-4-1-注解概述" class="headerlink" title="1.4.1 注解概述"></a>1.4.1 注解概述</h3><p>定义：注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明在包、类、字段、方法、局部变量、方法参数等的前面，用来对这些元素进行说明，注释。</p>
+<p>作用分类：</p>
+<ul>
+<li>编写文档：通过代码里标识的注解生成文档【例如，生成文档doc文档】</li>
+<li>代码分析：通过代码里标识的注解对代码进行分析【例如，注解的反射】</li>
+<li>编译检查：通过代码里标识的注解让编译器能够实现基本的编译检查【例如，Override】</li>
+<li>简化配置开发</li>
+</ul>
+<p>常见注解</p>
+<ol>
+<li>@author：用来标识作者名</li>
+<li>@version：用于标识对象的版本号，适用范围：文件、类、方法。</li>
+<li>@Override ：用来修饰方法声明，告诉编译器该方法是重写父类中的方法，如果父类不存在该方法，则编译失败。</li>
+</ol>
+<h3 id="1-4-2-自定义注解"><a href="#1-4-2-自定义注解" class="headerlink" title="1.4.2 自定义注解"></a>1.4.2 自定义注解</h3><p>1.格式</p>
+<p>public @interface 注解名称 {<br>         属性集<br>}</p>
+<p>2.分类</p>
+<ul>
+<li>空注解: 没有属性集</li>
+<li>有属性集的注解</li>
+</ul>
+<p>属性的定义格式:</p>
+<ul>
+<li><p>数据类型 属性名称();    //没有默认值</p>
+</li>
+<li><p>数据类型 属性名称() default 默认值;    //有默认值,default后面的内容</p>
+</li>
+</ul>
+<p>属性的类型都有哪些?</p>
+<ul>
+<li>8种基本类型,String,枚举,Class类型,注解类型,以及以上任意类型的一维数组</li>
+</ul>
+<p>属性的作用</p>
+<ul>
+<li>可以让用户在使用注解时传递参数，让注解的功能更加强大。</li>
+</ul>
+<h3 id="1-4-3-使用自定义注解"><a href="#1-4-3-使用自定义注解" class="headerlink" title="1.4.3 使用自定义注解"></a>1.4.3 使用自定义注解</h3><ul>
+<li><p>使用格式:<br>  @注解名称(属性名称1=属性值1,属性名称2=属性值2…)</p>
+</li>
+<li><p>可以使用在哪些位置? 包、类、字段、方法、局部变量、方法参数等</p>
+</li>
+<li><p>注意事项:</p>
+<p>  (1)空注解可以直接使用</p>
+<p>  (2)属性是数组,使用时,多个值用{}括起来</p>
+<p>  (3)属性是数组,只有一个个值{}可以省略</p>
+<p>  (4)有默认值的属性,可以省略不写</p>
+</li>
+</ul>
+<h3 id="1-4-4-案例"><a href="#1-4-4-案例" class="headerlink" title="1.4.4 案例"></a>1.4.4 案例</h3><ul>
+<li>定义一个注解：Book</li>
+</ul>
+<p>包含属性：String value() 书名</p>
+<p>包含属性：double price() 价格，默认值为 100</p>
+<p>包含属性：String[] authors() 多位作者</p>
+<p>并使用</p>
+<p>*示例代码</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">Book</span> <span class="token punctuation">{</span>
+    String <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">double</span> <span class="token function">price</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token number">100</span><span class="token punctuation">;</span>
+    String<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">authors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Book</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"深入学习java反射技术"</span><span class="token punctuation">,</span>price <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">,</span>authors <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"峰哥"</span><span class="token punctuation">,</span><span class="token string">"响哥"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo08AnnotationBook</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Book</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"深入学习JVM"</span><span class="token punctuation">,</span>authors <span class="token operator">=</span> <span class="token string">"峰哥"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2020/03/03/day25mysql-ji-chu-yue-shu/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            day25mysql基础-约束
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2020/03/01/day23-wang-luo-bian-cheng/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">day23网络编程</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    <link rel="stylesheet" href="/css/gitment.css"> 
+<script src="/js/gitment.js"></script>
+
+<div id="gitmentContainer"></div>
+
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        清风伴酒
+      
+    </h3>
+    <p class="avatar-slogan">
+      进击的后端渣渣
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javaSE/">javaSE</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">编程语言</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/12/day47-maven/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/gong-han-mo-shi/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day46-redis/">day46_redis</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day45-ajax-json/">day45-AJAX-Json</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day44jquery-gao-ji/">day44jQuery高级</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+      <div class="widget-box">
+    <h3 class="widget-title">友链</h3>
+    <div class="widget">
+      
+        <a style="display: block;" href="https://yiluyanxia.github.io/" title target='_blank'
+        >一路眼瞎</a>
+      
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 fantasy &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity" target="_blank" rel="noopener">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">不蒜子告之   阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

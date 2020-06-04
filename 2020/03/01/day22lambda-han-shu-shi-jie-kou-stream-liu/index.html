@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>day22Lambda、函数式接口、Stream流 | fantasyblog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="day22Lambda、函数式接口、Stream流Lambda表达式1.1.1 函数式编程思想概述在数学中，函数就是有输入量、输出量的一套计算方案，也就是“拿什么东西做什么事情”。相对而言，面向对象过分强调“必须通过对象的形式来做事情”，而函数式思想则尽量忽略面向对象的复杂语法——强调做什么，而不是以什么形式做。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day22Lambda、函数式接口、Stream流">
+<meta property="og:url" content="https://fantasylhd.github.io/2020/03/01/day22lambda-han-shu-shi-jie-kou-stream-liu/index.html">
+<meta property="og:site_name" content="fantasyblog">
+<meta property="og:description" content="day22Lambda、函数式接口、Stream流Lambda表达式1.1.1 函数式编程思想概述在数学中，函数就是有输入量、输出量的一套计算方案，也就是“拿什么东西做什么事情”。相对而言，面向对象过分强调“必须通过对象的形式来做事情”，而函数式思想则尽量忽略面向对象的复杂语法——强调做什么，而不是以什么形式做。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/03/01/day22lambda-han-shu-shi-jie-kou-stream-liu/Stream%E6%B5%81%E7%9A%84%E6%A6%82%E5%BF%B5.png">
+<meta property="article:published_time" content="2020-03-01T05:52:39.000Z">
+<meta property="article:modified_time" content="2020-03-01T13:34:34.933Z">
+<meta property="article:author" content="fantasy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fantasylhd.github.io/2020/03/01/day22lambda-han-shu-shi-jie-kou-stream-liu/Stream%E6%B5%81%E7%9A%84%E6%A6%82%E5%BF%B5.png">
+  
+    <link rel="alternate" href="/atom.xml" title="fantasyblog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpg">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/highlight.css">
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-day22Lambda、函数式接口、Stream流" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      day22Lambda、函数式接口、Stream流
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2020/03/01/day22lambda-han-shu-shi-jie-kou-stream-liu/" class="article-date">
+  <time datetime="2020-03-01T05:52:39.000Z" itemprop="datePublished">2020-03-01</time>
+</a>
+    
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h1 id="day22Lambda、函数式接口、Stream流"><a href="#day22Lambda、函数式接口、Stream流" class="headerlink" title="day22Lambda、函数式接口、Stream流"></a>day22Lambda、函数式接口、Stream流</h1><h2 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h2><h3 id="1-1-1-函数式编程思想概述"><a href="#1-1-1-函数式编程思想概述" class="headerlink" title="1.1.1 函数式编程思想概述"></a>1.1.1 函数式编程思想概述</h3><p>在数学中，函数就是有输入量、输出量的一套计算方案，也就是“拿什么东西做什么事情”。相对而言，面向对象过分强调“必须通过对象的形式来做事情”，而函数式思想则尽量忽略面向对象的复杂语法——强调做什么，而不是以什么形式做。</p>
+<a id="more"></a>
+<h3 id="1-1-2-Lambda的优化"><a href="#1-1-2-Lambda的优化" class="headerlink" title="1.1.2 Lambda的优化"></a>1.1.2 Lambda的优化</h3><p>当需要启动一个线程去完成任务时，通常会通过 java.lang.Runnable 接口来定义任务内容，并使用java.lang.Thread 类来启动该线程。</p>
+<p>传统写法,代码如下：</p>
+<pre class=" language-java"><code class="language-java">        <span class="token comment" spellcheck="true">//.创建Runnable接口的匿名内部类对象</span>
+        <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Runnable</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"线程B执行了...."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>本着“一切皆对象”的思想，这种做法是无可厚非的：首先创建一个 Runnable 接口的匿名内部类对象来指定任务内容，再将其交给一个线程来启动。</p>
+<p>代码分析:</p>
+<p>对于 Runnable 的匿名内部类用法，可以分析出几点内容：</p>
+<ul>
+<li>Thread 类需要 Runnable 接口作为参数，其中的抽象 run 方法是用来指定线程任务内容的核心；</li>
+<li>为了指定 run 的方法体，不得不需要 Runnable 接口的实现类；</li>
+<li>为了省去定义一个 RunnableImpl 实现类的麻烦，不得不使用匿名内部类；</li>
+<li>必须覆盖重写抽象 run 方法，所以方法名称、方法参数、方法返回值不得不再写一遍，且不能写错；</li>
+<li>而实际上，似乎只有方法体才是关键所在。</li>
+</ul>
+<p>Lambda表达式写法,代码如下：</p>
+<p>借助Java 8的全新语法，上述 Runnable 接口的匿名内部类写法可以通过更简单的Lambda表达式达到等效：</p>
+<pre class=" language-java"><code class="language-java">  <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span>
+            <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"线程B执行了...."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>这段代码和刚才的执行效果是完全一样的，可以在1.8或更高的编译级别下通过。从代码的语义中可以看出：我们启动了一个线程，而线程任务的内容以一种更加简洁的形式被指定。<br>不再有“不得不创建接口对象”的束缚，不再有“抽象方法覆盖重写”的负担，就是这么简单！</p>
+<h3 id="1-1-3-Lambda的格式"><a href="#1-1-3-Lambda的格式" class="headerlink" title="1.1.3 Lambda的格式"></a>1.1.3 Lambda的格式</h3><p>标准格式:</p>
+<p>Lambda省去面向对象的条条框框，格式由3个部分组成：</p>
+<ol>
+<li>一些参数</li>
+<li>一个箭头</li>
+<li>一段代码</li>
+</ol>
+<p>Lambda表达式的标准格式为：<br>(参数类型 参数名称) -&gt; { 代码语句 }</p>
+<p>格式说明：</p>
+<ul>
+<li>小括号内的语法与传统方法参数列表一致：无参数则留空；多个参数则用逗号分隔。</li>
+<li>-&gt; 是新引入的语法格式，代表指向动作。</li>
+<li>大括号内的语法与传统方法体要求基本一致。</li>
+</ul>
+<p>参数和返回值：</p>
+<p>下面举例演示 java.util.Comparator<T> 接口的使用场景代码，其中的抽象方法定义为：</T></p>
+<ul>
+<li>public abstract int compare(T o1, T o2);</li>
+</ul>
+<p>当需要对一个对象数组进行排序时， Arrays.sort 方法需要一个 Comparator 接口实例来指定排序的规则。假设有一个 Person 类，含有 String name 和 int age 两个成员量：</p>
+<p>匿名内部类对象的方式：</p>
+<pre class=" language-java"><code class="language-java">        Person<span class="token punctuation">[</span><span class="token punctuation">]</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"张三"</span><span class="token punctuation">,</span><span class="token number">28</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"李四"</span><span class="token punctuation">,</span><span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        arr<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"王五"</span><span class="token punctuation">,</span><span class="token number">38</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"排序前: "</span><span class="token operator">+</span> Arrays<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//1.匿名内部类对象的方式</span>
+        Arrays<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Comparator</span><span class="token operator">&lt;</span>Person<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">compare</span><span class="token punctuation">(</span>Person o1<span class="token punctuation">,</span> Person o2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> o1<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> o2<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"年龄升序排序后: "</span><span class="token operator">+</span>Arrays<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>lambda表达式的方式：</p>
+<pre class=" language-java"><code class="language-java">Arrays<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span><span class="token punctuation">(</span>Person p1<span class="token punctuation">,</span>Person p2<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token punctuation">{</span><span class="token keyword">return</span> p2<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> p1<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"年龄降序排序后: "</span><span class="token operator">+</span>Arrays<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>省略格式:</p>
+<p>在Lambda标准格式的基础上，使用省略写法的规则为：</p>
+<ol>
+<li>小括号内参数的类型可以省略；</li>
+<li>如果小括号内有且仅有一个参，则小括号可以省略；</li>
+<li>如果大括号内有且仅有一个语句，则无论是否有返回值，都可以省略大括号、return关键字及语句分号。</li>
+</ol>
+<p>可推导即可省略</p>
+<p>Lambda强调的是“做什么”而不是“怎么做”，所以凡是可以推导得知的信息，都可以省略。</p>
+<h3 id="1-1-4-Lambda的前提条件"><a href="#1-1-4-Lambda的前提条件" class="headerlink" title="1.1.4 Lambda的前提条件"></a>1.1.4 Lambda的前提条件</h3><p>Lambda的语法非常简洁，完全没有面向对象复杂的束缚。但是使用时有几个问题需要特别注意：</p>
+<ol>
+<li>使用Lambda必须具有接口，且要求接口中有且仅有一个抽象方法。无论是JDK内置的 Runnable 、 Comparator 接口还是自定义的接口，只有当接口中的抽象方法存在且唯一时，才可以使用Lambda。</li>
+<li>使用Lambda必须具有接口作为方法参数。也就是方法的参数或局部变量类型必须为Lambda对应的接口类型，才能使用Lambda作为该接口的实例。</li>
+</ol>
+<p>备注：有且仅有一个抽象方法的接口，称为“函数式接口”</p>
+<h2 id="1-2-函数式接口"><a href="#1-2-函数式接口" class="headerlink" title="1.2 函数式接口"></a>1.2 函数式接口</h2><h3 id="1-2-1-概述"><a href="#1-2-1-概述" class="headerlink" title="1.2.1 概述"></a>1.2.1 概述</h3><p>函数式接口在Java中是指：有且仅有一个抽象方法的接口。</p>
+<p>函数式接口，即适用于函数式编程场景的接口。而Java中的函数式编程体现就是Lambda，所以函数式接口就是可以适用于Lambda使用的接口。只有确保接口中有且仅有一个抽象方法，Java中的Lambda才能顺利地进行推导。</p>
+<p>备注:从应用层面来讲，Java中的Lambda可以看做是匿名内部类的简化格式，但是二者在原理上不同。</p>
+<p>格式：</p>
+<p>只要确保接口中有且仅有一个抽象方法即可：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">MyFunctionalInter</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//抽象方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//public abstract void show();//函数是接口中,只能有一个抽象方法</span>
+
+    <span class="token comment" spellcheck="true">//默认方法: 只能用实现类对象调用</span>
+    <span class="token keyword">public</span> <span class="token keyword">default</span> <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"默认方法...print..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//静态方法: 只能接口名称调用</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"静态方法...show..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>自定义函数式接口：</p>
+<p>对于刚刚定义好的 MyFunctionalInterface 函数式接口，典型使用场景就是作为方法的参数：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo03LambdaBase</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//1.匿名内部类对象的方式</span>
+        <span class="token function">fun</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MyFunctionalInter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"A......"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//2.lambda表达式的标准方式</span>
+        <span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"B..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//3.lambda表达式的简化方式</span>
+        <span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"C..."</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">fun</span><span class="token punctuation">(</span>MyFunctionalInter mfi<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//调用抽象方法</span>
+        mfi<span class="token punctuation">.</span><span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//调用默认方法</span>
+        mfi<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//调用静态方法</span>
+        MyFunctionalInter<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>FunctionalInterface注解：</p>
+<p>与 @Override 注解的作用类似，Java 8中专门为函数式接口引入了一个新的注解： @FunctionalInterface 。该注解可用于一个接口的定义上：</p>
+<p>一旦使用该注解来定义接口，编译器将会强制检查该接口是否确实有且仅有一个抽象方法，否则将会报错。不过，即使不使用该注解，只要满足函数式接口的定义，这仍然是一个函数式接口，使用起来都一样。</p>
+<h3 id="1-2-2-常用函数式接口"><a href="#1-2-2-常用函数式接口" class="headerlink" title="1.2.2 常用函数式接口"></a>1.2.2 常用函数式接口</h3><p>JDK提供了大量常用的函数式接口以丰富Lambda的典型使用场景，它们主要在 java.util.function 包中被提供。下面是两个常用的函数式接口及使用示例。</p>
+<p>Consumer接口：</p>
+<p>java.util.function.Consumer<T> 接口，是消费一个数据，其数据类型由泛型参数决定。</T></p>
+<p>抽象方法：accept</p>
+<p>Consumer 接口中包含抽象方法 void accept(T t) : 消费一个指定泛型的数据。</p>
+<p>*示例代码</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo04Consumer</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String str <span class="token operator">=</span> <span class="token string">"Hello World"</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//1.匿名内部类对象的方式</span>
+        <span class="token function">method</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Consumer</span><span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">accept</span><span class="token punctuation">(</span>String s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//2.lambda表达式的标准方式</span>
+        <span class="token function">method</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span><span class="token punctuation">(</span>String s<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"长度: "</span><span class="token operator">+</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//3.lambda表达式的简化方式</span>
+        <span class="token function">method</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span>s <span class="token operator">-</span><span class="token operator">></span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"全部大写: "</span><span class="token operator">+</span>s<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/*
+        定义方法,使用函数式接口Consumer作为参数
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">method</span><span class="token punctuation">(</span>String str<span class="token punctuation">,</span>Consumer<span class="token operator">&lt;</span>String<span class="token operator">></span> con<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//调用抽象方法</span>
+        con<span class="token punctuation">.</span><span class="token function">accept</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Predicate接口</p>
+<p>有时候我们需要对某种类型的数据进行判断，从而得到一个boolean值结果。这时可以使用<br>java.util.function.Predicate<T> 接口。</T></p>
+<p>抽象方法：test</p>
+<p>Predicate 接口中包含一个抽象方法： boolean test(T t) 。用于条件判断的场景：</p>
+<p>*示例代码</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo05Predicate</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String str <span class="token operator">=</span> <span class="token string">"HelloWorld"</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//1.匿名内部类对象的方式</span>
+        <span class="token function">method</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Predicate</span><span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">test</span><span class="token punctuation">(</span>String s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//断字符串长度是否大于5</span>
+                <span class="token keyword">return</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token number">5</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//2.lambda表达式的标准方式</span>
+        <span class="token comment" spellcheck="true">//断字符串长度是否大于5</span>
+        <span class="token function">method</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span><span class="token punctuation">(</span>String s<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token punctuation">{</span><span class="token keyword">return</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token number">5</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//3.lambda表达式的简化方式</span>
+        <span class="token comment" spellcheck="true">//断字符串长度是否大于5</span>
+        <span class="token function">method</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span>s<span class="token operator">-</span><span class="token operator">></span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/*
+        定义方法,使用函数式接口Predicate作为参数
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">method</span><span class="token punctuation">(</span>String str<span class="token punctuation">,</span>Predicate<span class="token operator">&lt;</span>String<span class="token operator">></span> p<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">boolean</span> result <span class="token operator">=</span> p<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="1-3-Stream流"><a href="#1-3-Stream流" class="headerlink" title="1.3 Stream流"></a>1.3 Stream流</h2><p>在Java 8中，得益于Lambda所带来的函数式编程，引入了一个全新的Stream概念，用于解决已有集合类库既有的弊端。</p>
+<h3 id="1-3-1-引言"><a href="#1-3-1-引言" class="headerlink" title="1.3.1 引言"></a>1.3.1 引言</h3><p>传统集合的多步遍历代码</p>
+<p>几乎所有的集合（如 Collection 接口或 Map 接口等）都支持直接或间接的遍历操作。而当我们需要对集合中的元素进行操作的时候，除了必需的添加、删除、获取外，最典型的就是集合遍历。例如：</p>
+<pre class=" language-java"><code class="language-java">   List<span class="token operator">&lt;</span>String<span class="token operator">></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"张无忌"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"周芷若"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"赵敏"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"张强"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"张三丰"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//1. 首先筛选所有姓张的人</span>
+        List<span class="token operator">&lt;</span>String<span class="token operator">></span> zhangList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>String name <span class="token operator">:</span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span></code></pre>
+<p>这是一段非常简单的集合遍历操作：对集合中的每一个字符串都进行打印输出操作。</p>
+<p>循环遍历的弊端</p>
+<p>Java 8的Lambda让我们可以更加专注于做什么（What），而不是怎么做（How），这点此前已经结合内部类进行了对比说明。现在，我们仔细体会一下上例代码，可以发现：</p>
+<ul>
+<li>for循环的语法就是“怎么做”</li>
+<li>for循环的循环体才是“做什么”</li>
+</ul>
+<p>为什么使用循环？因为要进行遍历。但循环是遍历的唯一方式吗？遍历是指每一个元素逐一进行处理，而并不是从第一个到最后一个顺次处理的循环。前者是目的，后者是方式。</p>
+<p>每当我们需要对集合中的元素进行操作的时候，总是需要进行循环、循环、再循环。这是理所当然的么？不是。循环是做事情的方式，而不是目的。另一方面，使用线性循环就意味着只能遍历一次。如果希望再次遍历，只能再使用另一个循环从头开始。</p>
+<p>那，Lambda的衍生物Stream能给我们带来怎样更加优雅的写法呢？</p>
+<h3 id="1-3-2-流式思想概述"><a href="#1-3-2-流式思想概述" class="headerlink" title="1.3.2 流式思想概述"></a>1.3.2 流式思想概述</h3><p>注意：请暂时忘记对传统IO流的固有印象！</p>
+<p>整体来看，流式思想类似于工厂车间的“生产流水线”</p>
+<p>当需要对多个元素进行操作（特别是多步操作）的时候，考虑到性能及便利性，我们应该首先拼好一个“模型”步骤方案，然后再按照方案去执行它。</p>
+<p><img src="/2020/03/01/day22lambda-han-shu-shi-jie-kou-stream-liu/Stream%E6%B5%81%E7%9A%84%E6%A6%82%E5%BF%B5.png" alt="Stream流的概念图"><br>这张图中展示了过滤、映射、跳过、计数等多步操作，这是一种集合元素的处理方案，而方案就是一种“函数模型”。图中的每一个方框都是一个“流”，调用指定的方法，可以从一个流模型转换为另一个流模型。而最右侧的数字3是最终结果。</p>
+<p>这里的 filter 、 map 、 skip 都是在对函数模型进行操作，集合元素并没有真正被处理。只有当终结方法 count执行的时候，整个模型才会按照指定策略执行操作。而这得益于Lambda的延迟执行特性。</p>
+<p>备注：“Stream流”其实是一个集合元素的函数模型，它并不是集合，也不是数据结构，其本身并不存储任何元素（或其地址值）</p>
+<h3 id="1-3-3-获取流方式"><a href="#1-3-3-获取流方式" class="headerlink" title="1.3.3 获取流方式"></a>1.3.3 获取流方式</h3><p>java.util.stream.Stream<T> 是Java 8新加入的最常用的流接口。（这并不是一个函数式接口。）</T></p>
+<p>获取一个流非常简单，有以下几种常用的方式：</p>
+<ol>
+<li><p>方式一:</p>
+<p>java.util.Collection<T> 接口</T></p>
+<p>默认方法: 必须由Collection接口的实现类(ArrayList/LinkedList/HashSet/LinkedHashSet)对象调用</p>
+<p>public default Stream<T> stream(): 获取Collection集合对象对应的Stream流对象</T></p>
+</li>
+<li><p>方式二:</p>
+<p>java.util.stream.Stream<T> 接口:</T></p>
+<p>静态方法</p>
+<p>public static <T> Stream<T> of(T … t): 把方法的可变参数指定的具体数据,转换成Stream流对象</T></T></p>
+<p>参数: T … t: 可变参数   传递数组,参数列表,不传递</p>
+</li>
+</ol>
+<p>*示例代码</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo05GetStream</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//获取List集合的Stream对象</span>
+        List<span class="token operator">&lt;</span>String<span class="token operator">></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Stream<span class="token operator">&lt;</span>String<span class="token operator">></span> s1 <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//获取Set集合的Stream对象</span>
+        Set<span class="token operator">&lt;</span>Integer<span class="token operator">></span> set <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Stream<span class="token operator">&lt;</span>Integer<span class="token operator">></span> s2 <span class="token operator">=</span> set<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>String<span class="token operator">></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//Map键的Set集合</span>
+        Set<span class="token operator">&lt;</span>String<span class="token operator">></span> set2 <span class="token operator">=</span> map<span class="token punctuation">.</span><span class="token function">keySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Stream<span class="token operator">&lt;</span>String<span class="token operator">></span> s3 <span class="token operator">=</span> set2<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//Map值的Collection集合</span>
+        Collection<span class="token operator">&lt;</span>String<span class="token operator">></span> coll <span class="token operator">=</span> map<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Stream<span class="token operator">&lt;</span>String<span class="token operator">></span> s4 <span class="token operator">=</span> coll<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//Map键值对的Set集合</span>
+        Set<span class="token operator">&lt;</span>Map<span class="token punctuation">.</span>Entry<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">>></span> set3 <span class="token operator">=</span> map<span class="token punctuation">.</span><span class="token function">entrySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Stream<span class="token operator">&lt;</span>Map<span class="token punctuation">.</span>Entry<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">>></span> s5 <span class="token operator">=</span> set3<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"----------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> arr <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"Hello"</span><span class="token punctuation">,</span><span class="token string">"World"</span><span class="token punctuation">,</span><span class="token string">"java"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+        Stream<span class="token operator">&lt;</span>String<span class="token operator">></span> s6 <span class="token operator">=</span> Stream<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s6<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Stream<span class="token operator">&lt;</span>String<span class="token operator">></span> s7 <span class="token operator">=</span> Stream<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token string">"Hello"</span><span class="token punctuation">,</span> <span class="token string">"World"</span><span class="token punctuation">,</span> <span class="token string">"java"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s7<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="1-3-4-常用方法"><a href="#1-3-4-常用方法" class="headerlink" title="1.3.4 常用方法"></a>1.3.4 常用方法</h3><p>流模型的操作很丰富，这里介绍一些常用的API。这些方法可以被分成两种：</p>
+<ul>
+<li><p>终结方法：返回值类型不再是 Stream 接口自身类型的方法，因此不再支持类似 StringBuilder 那样的链式调用。本小节中，终结方法包括 count 和 forEach 方法。</p>
+</li>
+<li><p>非终结方法：返回值类型仍然是 Stream 接口自身类型的方法，因此支持链式调用。（除了终结方法外，其余方法均为非终结方法。）</p>
+</li>
+</ul>
+<p>forEach : 逐一处理</p>
+<p>虽然方法名字叫 forEach ，但是与for循环中的“for-each”昵称不同，该方法并不保证元素的逐一消费动作在流中是被有序执行的。</p>
+<p>void forEach(Consumer&lt;? super T&gt; action);</p>
+<ul>
+<li>filter：过滤</li>
+</ul>
+<p>可以通过 filter 方法将一个流转换成另一个子集流。</p>
+<p>方法声明：Stream<T> filter(Predicate&lt;? super T&gt; predicate);</T></p>
+<ul>
+<li>count：统计个数</li>
+</ul>
+<p>正如旧集合 Collection 当中的 size 方法一样，流提供 count 方法来数一数其中的元素个数：</p>
+<p>long count();</p>
+<ul>
+<li>limit：取用前几个</li>
+</ul>
+<p>limit  方法可以对流进行截取，只取用前n个。</p>
+<p>方法声明：Stream<T> limit(long maxSize):获取Stream流对象中的前n个元素,返回一个新的Stream流对象</T></p>
+<ul>
+<li>skip：跳过前几个</li>
+</ul>
+<p>如果希望跳过前几个元素，可以使用 skip 方法获取一个截取之后的新流：</p>
+<p>Stream<T> skip(long n): 跳过Stream流对象中的前n个元素,返回一个新的Stream流对象</T></p>
+<p>如果流的当前长度大于n，则跳过前n个；否则将会得到一个长度为0的空流。</p>
+<ul>
+<li>concat：组合</li>
+</ul>
+<p>如果有两个流，希望合并成为一个流，那么可以使用 Stream 接口的静态方法 concat ：</p>
+<p>static <T> Stream<T> concat(Stream&lt;? extends T&gt; a, Stream&lt;? extends T&gt; b): 把参数列表中的两个Stream流对象a和b,合并成一个新的Stream流对象</T></T></p>
+<h3 id="1-4-5-Stream综合案例"><a href="#1-4-5-Stream综合案例" class="headerlink" title="1.4.5 Stream综合案例"></a>1.4.5 Stream综合案例</h3><p>现在有两个 ArrayList 集合存储队伍当中的多个成员姓名，要求使用传统的for循环（或增强for循环）依次进行以<br>下若干操作步骤：</p>
+<ol>
+<li>第一个队伍只要名字为3个字的成员姓名；</li>
+<li>第一个队伍筛选之后只要前3个人；</li>
+<li>第二个队伍只要姓张的成员姓名；</li>
+<li>第二个队伍筛选之后不要前2个人；</li>
+<li>将两个队伍合并为一个队伍；</li>
+<li>打印整个队伍的姓名信息。</li>
+</ol>
+<p>*示例代码</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo05ListEach</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        List<span class="token operator">&lt;</span>String<span class="token operator">></span> o <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        o<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"迪丽热巴"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        o<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"宋远桥"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        o<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"苏星河"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        o<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"老子"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        o<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"庄子"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        o<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"孙子"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        o<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"洪七公"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        List<span class="token operator">&lt;</span>String<span class="token operator">></span> t <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        t<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"古力娜扎"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        t<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"张无忌"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        t<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"张三丰"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        t<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"赵丽颖"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        t<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"张二狗"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        t<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"张天爱"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        t<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"张三"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Stream<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>
+                o<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>name<span class="token operator">-</span><span class="token operator">></span>name<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">limit</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                t<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>name<span class="token operator">-</span><span class="token operator">></span>name<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"张"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">skip</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>name<span class="token operator">-</span><span class="token operator">></span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2020/03/01/day23-wang-luo-bian-cheng/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            day23网络编程
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2020/02/26/day21-huan-chong-liu-zhuan-huan-liu-xu-lie-hua-liu-da-yin-liu/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">day21缓冲流、转换流、序列化流、打印流</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    <link rel="stylesheet" href="/css/gitment.css"> 
+<script src="/js/gitment.js"></script>
+
+<div id="gitmentContainer"></div>
+
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        清风伴酒
+      
+    </h3>
+    <p class="avatar-slogan">
+      进击的后端渣渣
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javaSE/">javaSE</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">编程语言</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/12/day47-maven/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/gong-han-mo-shi/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day46-redis/">day46_redis</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day45-ajax-json/">day45-AJAX-Json</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day44jquery-gao-ji/">day44jQuery高级</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+      <div class="widget-box">
+    <h3 class="widget-title">友链</h3>
+    <div class="widget">
+      
+        <a style="display: block;" href="https://yiluyanxia.github.io/" title target='_blank'
+        >一路眼瞎</a>
+      
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 fantasy &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity" target="_blank" rel="noopener">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">不蒜子告之   阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

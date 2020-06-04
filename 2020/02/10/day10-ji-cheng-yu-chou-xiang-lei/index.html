@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>day10继承与抽象类 | fantasyblog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="day10继承与抽象类1.1 继承1.1.1 继承概述【理解】 什么是继承 ​继承就是子类继承父类的特征和和行为，使得子类对象（实例）具有父类的实例域和方法，还可以以此基础添加新方法和域来满足需求。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day10继承与抽象类">
+<meta property="og:url" content="https://fantasylhd.github.io/2020/02/10/day10-ji-cheng-yu-chou-xiang-lei/index.html">
+<meta property="og:site_name" content="fantasyblog">
+<meta property="og:description" content="day10继承与抽象类1.1 继承1.1.1 继承概述【理解】 什么是继承 ​继承就是子类继承父类的特征和和行为，使得子类对象（实例）具有父类的实例域和方法，还可以以此基础添加新方法和域来满足需求。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/02/10/day10-ji-cheng-yu-chou-xiang-lei/01.%E7%BB%A7%E6%89%BF%E7%9A%84%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/02/10/day10-ji-cheng-yu-chou-xiang-lei/02.%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/02/10/day10-ji-cheng-yu-chou-xiang-lei/03.%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E4%BB%8B%E7%BB%8D.png">
+<meta property="article:published_time" content="2020-02-09T17:01:10.000Z">
+<meta property="article:modified_time" content="2020-03-03T09:35:21.219Z">
+<meta property="article:author" content="fantasy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fantasylhd.github.io/2020/02/10/day10-ji-cheng-yu-chou-xiang-lei/01.%E7%BB%A7%E6%89%BF%E7%9A%84%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.png">
+  
+    <link rel="alternate" href="/atom.xml" title="fantasyblog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpg">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/highlight.css">
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-day10继承与抽象类" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      day10继承与抽象类
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2020/02/10/day10-ji-cheng-yu-chou-xiang-lei/" class="article-date">
+  <time datetime="2020-02-09T17:01:10.000Z" itemprop="datePublished">2020-02-10</time>
+</a>
+    
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h1 id="day10继承与抽象类"><a href="#day10继承与抽象类" class="headerlink" title="day10继承与抽象类"></a>day10继承与抽象类</h1><h2 id="1-1-继承"><a href="#1-1-继承" class="headerlink" title="1.1 继承"></a>1.1 继承</h2><h3 id="1-1-1-继承概述【理解】"><a href="#1-1-1-继承概述【理解】" class="headerlink" title="1.1.1 继承概述【理解】"></a>1.1.1 继承概述【理解】</h3><ul>
+<li><p>什么是继承</p>
+<p>​继承就是子类继承父类的特征和和行为，使得子类对象（实例）具有父类的实例域和方法，还可以以此基础添加新方法和域来满足需求。</p>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>继承的介绍以及注意事项<br><img src="/2020/02/10/day10-ji-cheng-yu-chou-xiang-lei/01.%E7%BB%A7%E6%89%BF%E7%9A%84%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.png" alt="继承的介绍以及注意事项图"></li>
+</ul>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//员工类</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">YuanGong</span> <span class="token punctuation">{</span>
+    String name<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">YuanGong</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">YuanGong</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> String <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//讲师类</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Teacher</span> <span class="token keyword">extends</span> <span class="token class-name">YuanGong</span><span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">//讲课功能</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">speak</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"东哥讲Java"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//助教类</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ZhuJiao</span> <span class="token keyword">extends</span> <span class="token class-name">YuanGong</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//辅导功能</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fuDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"助教要辅导"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="1-1-2-继承中成员变量和成员方法的访问特点"><a href="#1-1-2-继承中成员变量和成员方法的访问特点" class="headerlink" title="1.1.2 继承中成员变量和成员方法的访问特点"></a>1.1.2 继承中成员变量和成员方法的访问特点</h3><ol>
+<li><p>子类和父类中定义出来的变量不重名</p>
+<p>  当我new父类对象时,只能调用自己的成员,不能调用子类的成员</p>
+<p>  当我们new子类对象时,既能调用继承父类的,也能调用自己特有的</p>
+</li>
+<li><p>重名</p>
+<p>   等号左边是谁,优先调用谁的成员变量,如果子类中没有,找父类</p>
+</li>
+<li><p>总结</p>
+<p>   子债父偿,成员方法同理</p>
+</li>
+</ol>
+<h3 id="示例代码-1"><a href="#示例代码-1" class="headerlink" title="示例代码"></a>示例代码</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Fu</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Zi</span> <span class="token keyword">extends</span> <span class="token class-name">Fu</span><span class="token punctuation">{</span>
+    <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//int i = 30;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//创建父类对象</span>
+        Fu fu <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Fu</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>fu<span class="token punctuation">.</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//        System.out.println(fu.j);</span>
+
+        <span class="token comment" spellcheck="true">//创建子类对象</span>
+        Zi zi <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Zi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>zi<span class="token punctuation">.</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>zi<span class="token punctuation">.</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="1-1-3-方法的重写"><a href="#1-1-3-方法的重写" class="headerlink" title="1.1.3 方法的重写"></a>1.1.3 方法的重写</h3><ol>
+<li>概述:子类有一个和父类一样的方法</li>
+<li>访问特点:看new的是谁,先调用谁,子类没有找父类</li>
+<li>注解:@Override–&gt;可以检测此方法是不是重写方法</li>
+<li>前提:子父类继承关系</li>
+<li>注意事项:<ul>
+<li>子类方法覆盖父类方法，必须要保证权限大于等于父类权限。</li>
+<li>public   protected   默认(default)  private</li>
+<li>子类方法覆盖父类方法，返回值类型、函数名和参数列表都要一模一样。</li>
+<li>私有方法不能被重写(父类私有成员子类是不能继承的)</li>
+<li>子类方法重写父类方法时,子类的方法返回值要是父类方法返回值的子类或者一样</li>
+</ul>
+</li>
+<li>总结：方法的重写写成与父类一样的方法就行</li>
+</ol>
+<h4 id="1-3-1-方法重写的使用场景"><a href="#1-3-1-方法重写的使用场景" class="headerlink" title="1.3.1 方法重写的使用场景"></a>1.3.1 方法重写的使用场景</h4><p><img src="/2020/02/10/day10-ji-cheng-yu-chou-xiang-lei/02.%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF.png" alt="02.方法重写的使用场景"></p>
+<h4 id="示例代码-2"><a href="#示例代码-2" class="headerlink" title="示例代码"></a>示例代码</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OldPhone</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"打电话"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">message</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"发短信"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"显示手机号!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NewPhone</span> <span class="token keyword">extends</span> <span class="token class-name">OldPhone</span><span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">//重写来电显示的功能</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//父类的show方法</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"显示归属地"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"显示头像"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        NewPhone newPhone <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">NewPhone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        newPhone<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        newPhone<span class="token punctuation">.</span><span class="token function">message</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        newPhone<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="1-4-1-继承中this和super的使用"><a href="#1-4-1-继承中this和super的使用" class="headerlink" title="1.4.1 继承中this和super的使用"></a>1.4.1 继承中this和super的使用</h3><ul>
+<li><p>super–&gt;代表的是父类对象</p>
+<ul>
+<li>注意:构造方法中,第一行默认会有一个super()</li>
+<li>super()代表的是父类的空参构造,即使没有手写上,默认也有</li>
+<li>子类中如果写了有参构造,默认第一行会调用父类的有参构造,如果子类的有参构造中将super(参数),去掉,就会去找父类的无参构造</li>
+</ul>
+</li>
+<li><p>特点:可以调用父类的构造方法(只能在子类的构造方法中),普通方法,成员变量</p>
+<ul>
+<li>访问父类的空参构造–&gt;在子类的构造方法中第一行:super()</li>
+<li>访问父类的成员变量–&gt;在子类的方法中:super.成员变量名</li>
+<li>访问父类的方法–&gt;在子类的方法中:super.方法名(参数)</li>
+</ul>
+</li>
+<li><p>this–&gt;代表的是当前对象</p>
+<ul>
+<li>作用:区分成员变量和局部变量重名的问题</li>
+<li>使用本类的成员变量–&gt;在本类中:this.成员变量名</li>
+<li>调用本类的方法–&gt;在本类中:this.方法名(参数)</li>
+<li>调用本类的构造方法–&gt;在本类的构造方法中:this(参数)</li>
+</ul>
+</li>
+<li><p>注意:</p>
+<ul>
+<li>1.使用this调用本类的其他构造方法时,也要写在构造方法的第一行,但是this(参数),不会自动提供的,想使用,自己手写</li>
+<li>2.this和super在构造方法中不能同时出现–&gt;一山不容二虎</li>
+<li>3.在本类中有参和空参不能相互调用</li>
+</ul>
+</li>
+<li><p>总结:</p>
+<ul>
+<li>super多用在子类中,调用父类的成员，this多用在本类中,调用自己的成员</li>
+</ul>
+</li>
+</ul>
+<h4 id="示例代码-3"><a href="#示例代码-3" class="headerlink" title="示例代码"></a>示例代码</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> age <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//this(10);</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"我是空参构造"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"我是有参构造"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">methodPerson</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">int</span> age <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//20</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//10</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"人要吃饭"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Person person <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        person<span class="token punctuation">.</span><span class="token function">methodPerson</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="1-5-1-继承的特点"><a href="#1-5-1-继承的特点" class="headerlink" title="1.5.1 继承的特点"></a>1.5.1 继承的特点</h3><ol>
+<li><p>父类也称作超类、基类、子类也被称作派生类等。</p>
+</li>
+<li><p>Java中只有单继承，没有像C++那样的多继承。多继承会引起混乱，使得继承链过于复杂，系统难于维护。</p>
+</li>
+<li><p>Java中类没有多继承，接口有多继承。</p>
+</li>
+<li><p>子类继承父类，可以得到父类的全部属性和方法 (除了父类的构造方法)，但不见得可以直接访问(比如，父类私有的属性和方法)。</p>
+</li>
+<li><p>如果定义一个类时，没有调用extends，则它的父类是：java.lang.Object。</p>
+</li>
+<li><p>一个父类可以有多个子类</p>
+</li>
+<li><p>提高了类之间的耦合性（继承的缺点，耦合度高就会造成代码之间的联系越紧密，代码独立性越差）。</p>
+</li>
+<li><p>子类可以拥有自己的属性和方法，即子类可以对父类进行扩展。子类可以用自己的方式实现父类的方法。</p>
+</li>
+</ol>
+<h2 id="1-2-抽象类"><a href="#1-2-抽象类" class="headerlink" title="1.2 抽象类"></a>1.2 抽象类</h2><h3 id="抽象类的概述-1-2-1"><a href="#抽象类的概述-1-2-1" class="headerlink" title="抽象类的概述 1.2.1"></a>抽象类的概述 1.2.1</h3><ul>
+<li><p>什么是抽象类和抽象方法</p>
+<p> 抽象类：包含抽象方法的类就是抽象类。 </p>
+<p> 抽象方法：使用abstract修饰的方法，没有方法体，只有声明。定义的是一种“规范”，就是告诉子类必须要给抽象方法提供具体的实现。</p>
+</li>
+<li><p>抽象类的介绍<br><img src="/2020/02/10/day10-ji-cheng-yu-chou-xiang-lei/03.%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E4%BB%8B%E7%BB%8D.png" alt="03.抽象类的介绍"></p>
+</li>
+</ul>
+<h4 id="示例代码-4"><a href="#示例代码-4" class="headerlink" title="示例代码"></a>示例代码</h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/*
+   抽象类的定义  abstract class 类名
+   抽象方法的定义:修饰符  abstract 返回值类型 方法名(参数);
+
+   使用:
+       1.定义子类,继承抽象类
+       2.重写父类中的抽象方法(要重写掉父类中所有的抽象方法)
+       3.创建子类对象,调用重写的方法(抽象类不能new对象)
+
+    注意:
+       1.抽象方法所在类一定是抽象类
+       2.抽象类中不一定非得有抽象方法
+       3.抽象类中除了有抽象方法,还可以有其他普通类的成员
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Animal</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">drink</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Dog</span> <span class="token keyword">extends</span> <span class="token class-name">Animal</span><span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"狗吃屎"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">drink</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"狗喝水"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        Dog dog <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dog<span class="token punctuation">.</span><span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dog<span class="token punctuation">.</span><span class="token function">drink</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="1-2-2-抽象类的注意事项"><a href="#1-2-2-抽象类的注意事项" class="headerlink" title="1.2.2 抽象类的注意事项"></a>1.2.2 抽象类的注意事项</h3><ol>
+<li><p>有抽象方法的类只能定义成抽象类</p>
+</li>
+<li><p>抽象类不能实例化，即不能用new来实例化抽象类，只能创建非抽象的子类的对象。</p>
+<ul>
+<li>理解：假设创建了抽象类的对象，抽象方法也没有实现，所以是无意义的</li>
+</ul>
+</li>
+<li><p>抽象类可以包含属性、方法、构造方法。但是构造方法不能用来new实例，只能用来被子类调用，用来初始化父类的成员变量</p>
+<ul>
+<li>理解：子类的构造方法有默认的super(),需要方法父类的构造方法</li>
+</ul>
+</li>
+<li><p>抽象类只能用来被继承。</p>
+</li>
+<li><p>所有的抽象方法都必须被子类实现，否则会报错，除非该子类也是抽象类</p>
+<ul>
+<li>理解：与继承的特性冲突，调用无实现的方法无意义</li>
+</ul>
+</li>
+<li><p>抽象类不一定包含抽象方法，有抽象方法的必定是抽象类</p>
+<ul>
+<li>理解： 抽象方法定义在抽象类里被子类继承实现才有意义</li>
+</ul>
+</li>
+</ol>
+<h4 id="示例代码-5"><a href="#示例代码-5" class="headerlink" title="示例代码"></a>示例代码</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+   <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+   <span class="token keyword">private</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">Person</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> String <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//public abstract void drink();</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span>  <span class="token keyword">class</span> <span class="token class-name">XiaoMing</span> <span class="token keyword">extends</span> <span class="token class-name">Person</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token function">XiaoMing</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">XiaoMing</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"小明要吃炒面"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        XiaoMing xiaoMing <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XiaoMing</span><span class="token punctuation">(</span><span class="token string">"小明"</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String name <span class="token operator">=</span> xiaoMing<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="1-3-匿名对象"><a href="#1-3-匿名对象" class="headerlink" title="1.3 匿名对象"></a>1.3 匿名对象</h2><p>概述: 没有名字的对象</p>
+<p>使用: new 类名().成员</p>
+<p>注意:</p>
+<ol>
+<li>如果使用匿名对象的话,需要在方法只调用一次的时候</li>
+<li>如果使用匿名对象为属性赋值,再用匿名对象去取值,是不可以的(因为你会3.3. new很多次,会产生多个对象)</li>
+</ol>
+<p>使用场景:一般用于单纯的调方法</p>
+<p>匿名对象作为方法的参数以及返回值：传递以及返回的是地址值         </p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2020/02/10/day11-jie-kou-yu-duo-tai/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            day11接口与多态
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2020/02/08/day09-arraylist-ji-he-xue-sheng-guan-li-xi-tong/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">day09-ArrayList集合&amp;学生管理系统</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    <link rel="stylesheet" href="/css/gitment.css"> 
+<script src="/js/gitment.js"></script>
+
+<div id="gitmentContainer"></div>
+
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        清风伴酒
+      
+    </h3>
+    <p class="avatar-slogan">
+      进击的后端渣渣
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javaSE/">javaSE</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">编程语言</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/12/day47-maven/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/gong-han-mo-shi/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day46-redis/">day46_redis</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day45-ajax-json/">day45-AJAX-Json</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day44jquery-gao-ji/">day44jQuery高级</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+      <div class="widget-box">
+    <h3 class="widget-title">友链</h3>
+    <div class="widget">
+      
+        <a style="display: block;" href="https://yiluyanxia.github.io/" title target='_blank'
+        >一路眼瞎</a>
+      
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 fantasy &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity" target="_blank" rel="noopener">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">不蒜子告之   阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

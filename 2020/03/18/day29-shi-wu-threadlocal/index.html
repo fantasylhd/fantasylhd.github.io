@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>day29-事务-ThreadLocal | fantasyblog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="day29-事务&amp;ThreadLocal1.1 事务1.1.1 事务概述事务指的是逻辑上的一组操作,组成这组操作的各个单元要么全都成功,要么全都失败.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day29-事务-ThreadLocal">
+<meta property="og:url" content="https://fantasylhd.github.io/2020/03/18/day29-shi-wu-threadlocal/index.html">
+<meta property="og:site_name" content="fantasyblog">
+<meta property="og:description" content="day29-事务&amp;ThreadLocal1.1 事务1.1.1 事务概述事务指的是逻辑上的一组操作,组成这组操作的各个单元要么全都成功,要么全都失败.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/03/18/day29-shi-wu-threadlocal/01.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/03/18/day29-shi-wu-threadlocal/02.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/03/18/day29-shi-wu-threadlocal/03.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/03/18/day29-shi-wu-threadlocal/02_%E8%BD%AC%E8%B4%A6%E4%B8%9A%E5%8A%A1%E7%9A%84%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/03/18/day29-shi-wu-threadlocal/03_ThreadLocal%E5%8E%9F%E7%90%86.png">
+<meta property="article:published_time" content="2020-03-18T05:50:35.000Z">
+<meta property="article:modified_time" content="2020-05-17T07:32:30.993Z">
+<meta property="article:author" content="fantasy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fantasylhd.github.io/2020/03/18/day29-shi-wu-threadlocal/01.png">
+  
+    <link rel="alternate" href="/atom.xml" title="fantasyblog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpg">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/highlight.css">
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-day29-事务-ThreadLocal" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      day29-事务-ThreadLocal
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2020/03/18/day29-shi-wu-threadlocal/" class="article-date">
+  <time datetime="2020-03-18T05:50:35.000Z" itemprop="datePublished">2020-03-18</time>
+</a>
+    
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h1 id="day29-事务-amp-ThreadLocal"><a href="#day29-事务-amp-ThreadLocal" class="headerlink" title="day29-事务&amp;ThreadLocal"></a>day29-事务&amp;ThreadLocal</h1><h2 id="1-1-事务"><a href="#1-1-事务" class="headerlink" title="1.1 事务"></a>1.1 事务</h2><h3 id="1-1-1-事务概述"><a href="#1-1-1-事务概述" class="headerlink" title="1.1.1 事务概述"></a>1.1.1 事务概述</h3><p>事务指的是逻辑上的一组操作,组成这组操作的各个单元要么全都成功,要么全都失败.</p>
+<a id="more"></a>
+<p>事务作用：保证在一个事务中多次SQL操作要么全都成功,要么全都失败.</p>
+<h3 id="1-1-2-mysql事务操作"><a href="#1-1-2-mysql事务操作" class="headerlink" title="1.1.2 mysql事务操作"></a>1.1.2 mysql事务操作</h3><p><img src="/2020/03/18/day29-shi-wu-threadlocal/01.png" alt></p>
+<p>MYSQL中可以有两种方式进行事务的管理：</p>
+<ul>
+<li>自动提交：MySql默认自动提交。及执行一条sql语句提交一次事务。</li>
+<li>手动提交：先开启，再提交</li>
+</ul>
+<h3 id="1-1-3-jdbc事务操作"><a href="#1-1-3-jdbc事务操作" class="headerlink" title="1.1.3 jdbc事务操作"></a>1.1.3 jdbc事务操作</h3><p><img src="/2020/03/18/day29-shi-wu-threadlocal/02.png" alt></p>
+<p>代码演示</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo02Account</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//提示变量的作用域</span>
+        Connection con <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        Statement stmt <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//1.获取连接Connection对象</span>
+            con <span class="token operator">=</span> C3P0Util<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//2.Connection对象开启事务</span>
+            con<span class="token punctuation">.</span><span class="token function">setAutoCommit</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//3.Connection对象获取执行sql语句的Statement对象</span>
+            stmt <span class="token operator">=</span> con<span class="token punctuation">.</span><span class="token function">createStatement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//4.定义2条sql语句(2条update语句:扣款,收款)</span>
+            String tomSql <span class="token operator">=</span> <span class="token string">"update account set money=money-1000 where name='tom'"</span><span class="token punctuation">;</span>
+            String jerrySql <span class="token operator">=</span> <span class="token string">"update account set money=money+1000 where name='jerry'"</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//5.Statement对象执行sql语句,获取结果</span>
+            <span class="token keyword">int</span> tomResult <span class="token operator">=</span> stmt<span class="token punctuation">.</span><span class="token function">executeUpdate</span><span class="token punctuation">(</span>tomSql<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//出了异常</span>
+
+            <span class="token keyword">int</span> jerryResult <span class="token operator">=</span> stmt<span class="token punctuation">.</span><span class="token function">executeUpdate</span><span class="token punctuation">(</span>jerrySql<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+            <span class="token comment" spellcheck="true">//7.处理结果</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>tomResult<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"tom账户成功扣款1000元~~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"tom账户扣款1000元失败~~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">if</span><span class="token punctuation">(</span>jerryResult<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"jerry账户收款1000元成功~~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"jerry账户收款1000元失败~~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment" spellcheck="true">//6.如果sql语句正常执行,没有出现问题,提交事务</span>
+            con<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//8.如果sql语句执行过程中出现问题,回滚事务</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>con<span class="token operator">!=</span>null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    con<span class="token punctuation">.</span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e1<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//9.关闭资源</span>
+            C3P0Util<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span>con<span class="token punctuation">,</span>stmt<span class="token punctuation">,</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="1-1-4-DBUtils事务操作"><a href="#1-1-4-DBUtils事务操作" class="headerlink" title="1.1.4 DBUtils事务操作"></a>1.1.4 DBUtils事务操作</h3><p><img src="/2020/03/18/day29-shi-wu-threadlocal/03.png" alt></p>
+<p>代码演示</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo04Account</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Connection con <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//1.空参构造创建QueryRunner对象</span>
+            QueryRunner qr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QueryRunner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//2.获取连接对象</span>
+            con <span class="token operator">=</span> C3P0Util<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//3.连接对象开启事务</span>
+            con<span class="token punctuation">.</span><span class="token function">setAutoCommit</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//定义2条sql语句(2条update语句:扣款,收款)</span>
+            String tomSql <span class="token operator">=</span> <span class="token string">"update account set money=money-? where name=?"</span><span class="token punctuation">;</span>
+            String jerrySql <span class="token operator">=</span> <span class="token string">"update account set money=money+? where name=?"</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//4.QueryRunner对象执行sql语句获取结果</span>
+            <span class="token keyword">int</span> tomResult <span class="token operator">=</span> qr<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>con<span class="token punctuation">,</span> tomSql<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">,</span> <span class="token string">"tom"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//出异常了</span>
+
+            <span class="token keyword">int</span> jerryResult <span class="token operator">=</span> qr<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>con<span class="token punctuation">,</span> jerrySql<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">,</span> <span class="token string">"jerry"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//5.sql语句正常执行,提交事务,处理结果</span>
+            DbUtils<span class="token punctuation">.</span><span class="token function">commitAndCloseQuietly</span><span class="token punctuation">(</span>con<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//提交事务,关闭连接,内部进行try-catch异常处理</span>
+
+            <span class="token keyword">if</span><span class="token punctuation">(</span>tomResult<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"tom账户成功扣款1000元~~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"tom账户扣款1000元失败~~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">if</span><span class="token punctuation">(</span>jerryResult<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"jerry账户收款1000元成功~~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"jerry账户收款1000元失败~~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//6.sql语句出现问题,回滚事务</span>
+            DbUtils<span class="token punctuation">.</span><span class="token function">rollbackAndCloseQuietly</span><span class="token punctuation">(</span>con<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//回滚事务,关闭连接,内部进行try-catch异常处理</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="1-1-5-案例：JDBC事务分层（dao、service、view）"><a href="#1-1-5-案例：JDBC事务分层（dao、service、view）" class="headerlink" title="1.1.5 案例：JDBC事务分层（dao、service、view）"></a>1.1.5 案例：JDBC事务分层（dao、service、view）</h3><p>设计一个页面,输入三个值,一个是付款人,一个是收款人,一个是转账的金额,不能出现付款人的钱被扣而收款人没收到钱的情况发生.而且要使用三层设计思想.</p>
+<p><img src="/2020/03/18/day29-shi-wu-threadlocal/02_%E8%BD%AC%E8%B4%A6%E4%B8%9A%E5%8A%A1%E7%9A%84%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84.png" alt></p>
+<ul>
+<li>开发中，常使用分层思想<ul>
+<li>不同的层次结构分配不同的解决过程，各个层次间组成严密的封闭系统</li>
+</ul>
+</li>
+<li>不同层级结构彼此平等</li>
+<li>分层的目的是：<ul>
+<li>解耦</li>
+<li>可维护性</li>
+<li>可扩展性</li>
+<li>可重用性</li>
+</ul>
+</li>
+<li>不同层次，使用不同的包表示<ul>
+<li>com.itheima 公司域名倒写</li>
+<li>com.itheima.dao dao层</li>
+<li>com.itheima.service service层</li>
+<li>com.itheima.domain javabean</li>
+<li>com.itheima.utils 工具</li>
+</ul>
+</li>
+</ul>
+<p>代码实现</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AccountDao</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//进账方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">in</span><span class="token punctuation">(</span>Connection con<span class="token punctuation">,</span>String inName<span class="token punctuation">,</span><span class="token keyword">double</span> inMoney<span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//1.创建QueryRunner对象</span>
+        QueryRunner qr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QueryRunner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//2.定义sql语句</span>
+        String sql <span class="token operator">=</span> <span class="token string">"update account set money = money + ? where name = ?"</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//3.执行sql语句</span>
+        qr<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>con<span class="token punctuation">,</span>sql<span class="token punctuation">,</span>inMoney<span class="token punctuation">,</span>inName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//出账方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">out</span><span class="token punctuation">(</span>Connection con<span class="token punctuation">,</span>String outName<span class="token punctuation">,</span><span class="token keyword">double</span> outMoney<span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//1.创建QueryRunner对象</span>
+        QueryRunner qr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QueryRunner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//2.定义sql语句</span>
+        String sql <span class="token operator">=</span> <span class="token string">"update account set money = money - ? where name = ?"</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//3.执行sql语句</span>
+        qr<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>con<span class="token punctuation">,</span>sql<span class="token punctuation">,</span>outMoney<span class="token punctuation">,</span>outName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AccountService</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">transfer</span><span class="token punctuation">(</span>String inName<span class="token punctuation">,</span>String outName<span class="token punctuation">,</span><span class="token keyword">double</span> transferMoney<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Connection con <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//1.创建AccountDao类的对象</span>
+            AccountDao dao <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AccountDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//2.获取连接对象</span>
+            con <span class="token operator">=</span> C3P0Util<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//3.开启事务</span>
+            con<span class="token punctuation">.</span><span class="token function">setAutoCommit</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//4.调用方法(进账/出账的方法)</span>
+            <span class="token comment" spellcheck="true">//调用进账方法</span>
+            dao<span class="token punctuation">.</span><span class="token function">in</span><span class="token punctuation">(</span>con<span class="token punctuation">,</span>inName<span class="token punctuation">,</span>transferMoney<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//出现异常</span>
+
+            <span class="token comment" spellcheck="true">//调用出账方法</span>
+            dao<span class="token punctuation">.</span><span class="token function">out</span><span class="token punctuation">(</span>con<span class="token punctuation">,</span>outName<span class="token punctuation">,</span>transferMoney<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//5.方法正常执行,提交事务</span>
+            con<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//6.方法执行出现问题,回滚事务</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>con<span class="token operator">!=</span>null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    con<span class="token punctuation">.</span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e1<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//7.关闭资源</span>
+            C3P0Util<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span>con<span class="token punctuation">,</span>null<span class="token punctuation">,</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AccountPage</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String inName <span class="token operator">=</span> <span class="token string">"jerry"</span><span class="token punctuation">;</span>
+        String outName <span class="token operator">=</span> <span class="token string">"tom"</span><span class="token punctuation">;</span>
+        <span class="token keyword">double</span> transferMoney <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//调用service层</span>
+        <span class="token comment" spellcheck="true">//创建AccountService类的对象</span>
+        AccountService service <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AccountService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//AccountService类的对象调用transfer方法,完成转账</span>
+        service<span class="token punctuation">.</span><span class="token function">transfer</span><span class="token punctuation">(</span>inName<span class="token punctuation">,</span>outName<span class="token punctuation">,</span>transferMoney<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="1-2-ThreadLocal"><a href="#1-2-ThreadLocal" class="headerlink" title="1.2 ThreadLocal"></a>1.2 ThreadLocal</h2><h3 id="1-2-1-分析"><a href="#1-2-1-分析" class="headerlink" title="1.2.1 分析"></a>1.2.1 分析</h3><p>在“事务传递Connection参数案例”中，我们必须传递Connection对象，才可以完成整个事务操作。如果不传递参数，是否可以完成？在JDK中给我们提供了一个工具类ThreadLocal，此类可以在一个线程中共享数据。java.lang.ThreadLocal 该类提供了线程局部 (thread-local) 变量，用于在当前线程中共享数据</p>
+<p>原理和使用图解<br><img src="/2020/03/18/day29-shi-wu-threadlocal/03_ThreadLocal%E5%8E%9F%E7%90%86.png" alt></p>
+<p>案例实现</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConnectionManager</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+        借助ThreadLocal实现线程中局部变量的数据共享
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> ThreadLocal<span class="token operator">&lt;</span>Connection<span class="token operator">></span> tl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ThreadLocal</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token function">ConnectionManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/*
+        定义静态方法,获取连接对象
+        此方法,保证在同一个线程中获取到的是同一个Connection连接对象
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> Connection <span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//首先从ThreadLocal对象中获取Connection对象</span>
+        Connection con <span class="token operator">=</span> tl<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//判断con是否为null</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>con<span class="token operator">==</span>null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//获取一个连接对象</span>
+            con <span class="token operator">=</span> C3P0Util<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//绑定到ThreadLocal中</span>
+            tl<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>con<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> con<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/*
+        定义开启事务的方法
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">setAutoCommit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token punctuation">{</span>
+        Connection con <span class="token operator">=</span> <span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        con<span class="token punctuation">.</span><span class="token function">setAutoCommit</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/*
+        定义提交事务的方法
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token punctuation">{</span>
+        Connection con <span class="token operator">=</span> <span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        con<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/*
+        定义回滚事务的方法
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token punctuation">{</span>
+        Connection con <span class="token operator">=</span> <span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        con<span class="token punctuation">.</span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//从ThreadLocal对象中移除</span>
+        tl<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AccountDao</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//进账方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">in</span><span class="token punctuation">(</span>String inName<span class="token punctuation">,</span><span class="token keyword">double</span> inMoney<span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//1.创建QueryRunner对象</span>
+        QueryRunner qr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QueryRunner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//2.定义sql语句</span>
+        String sql <span class="token operator">=</span> <span class="token string">"update account set money = money + ? where name = ?"</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//3.执行sql语句</span>
+        qr<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>ConnectionManager<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>sql<span class="token punctuation">,</span>inMoney<span class="token punctuation">,</span>inName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//出账方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">out</span><span class="token punctuation">(</span>String outName<span class="token punctuation">,</span><span class="token keyword">double</span> outMoney<span class="token punctuation">)</span> <span class="token keyword">throws</span> SQLException <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//1.创建QueryRunner对象</span>
+        QueryRunner qr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QueryRunner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//2.定义sql语句</span>
+        String sql <span class="token operator">=</span> <span class="token string">"update account set money = money - ? where name = ?"</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//3.执行sql语句</span>
+        qr<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>ConnectionManager<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>sql<span class="token punctuation">,</span>outMoney<span class="token punctuation">,</span>outName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AccountService</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">transfer</span><span class="token punctuation">(</span>String inName<span class="token punctuation">,</span>String outName<span class="token punctuation">,</span><span class="token keyword">double</span> transferMoney<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Connection con <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//1.创建AccountDao类的对象</span>
+            AccountDao dao <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AccountDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//2.获取连接对象</span>
+            con <span class="token operator">=</span> ConnectionManager<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//3.开启事务</span>
+            ConnectionManager<span class="token punctuation">.</span><span class="token function">setAutoCommit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//4.调用方法(进账/出账的方法)</span>
+            <span class="token comment" spellcheck="true">//调用进账方法</span>
+            dao<span class="token punctuation">.</span><span class="token function">in</span><span class="token punctuation">(</span>inName<span class="token punctuation">,</span>transferMoney<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//System.out.println(1/0);//出现异常</span>
+
+            <span class="token comment" spellcheck="true">//调用出账方法</span>
+            dao<span class="token punctuation">.</span><span class="token function">out</span><span class="token punctuation">(</span>outName<span class="token punctuation">,</span>transferMoney<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//5.方法正常执行,提交事务</span>
+            ConnectionManager<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//6.方法执行出现问题,回滚事务</span>
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                ConnectionManager<span class="token punctuation">.</span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                e1<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//7.关闭资源</span>
+            C3P0Util<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span>con<span class="token punctuation">,</span>null<span class="token punctuation">,</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AccountPage</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String inName <span class="token operator">=</span> <span class="token string">"jerry"</span><span class="token punctuation">;</span>
+        String outName <span class="token operator">=</span> <span class="token string">"tom"</span><span class="token punctuation">;</span>
+        <span class="token keyword">double</span> transferMoney <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//调用service层</span>
+        <span class="token comment" spellcheck="true">//创建AccountService类的对象</span>
+        AccountService service <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AccountService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//AccountService类的对象调用transfer方法,完成转账</span>
+        service<span class="token punctuation">.</span><span class="token function">transfer</span><span class="token punctuation">(</span>inName<span class="token punctuation">,</span>outName<span class="token punctuation">,</span>transferMoney<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="1-3-事务总结"><a href="#1-3-事务总结" class="headerlink" title="1.3 事务总结"></a>1.3 事务总结</h2><h3 id="1-3-1-事务特性：ACID"><a href="#1-3-1-事务特性：ACID" class="headerlink" title="1.3.1 事务特性：ACID"></a>1.3.1 事务特性：ACID</h3><ul>
+<li>原子性（Atomicity）原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。</li>
+<li>一致性（Consistency）事务前后数据的完整性必须保持一致。</li>
+<li>隔离性（Isolation）事务的隔离性是指多个用户并发访问数据库时，一个用户的事务不能被其它用户的事务所干扰，多个并发事务之间数据要相互隔离。</li>
+<li>持久性（Durability）持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来即使数据库发生故障也不应该对其有任何影响。</li>
+</ul>
+<h3 id="1-3-2-并发访问问题"><a href="#1-3-2-并发访问问题" class="headerlink" title="1.3.2 并发访问问题"></a>1.3.2 并发访问问题</h3><p>如果不考虑隔离性，事务存在3中并发访问问题。</p>
+<ol>
+<li>脏读：一个事务读到了另一个事务未提交的数据.</li>
+</ol>
+<ol start="2">
+<li>不可重复读：一个事务读到了另一个事务已经提交(update)的数据。引发另一个事务，在事务中的多次查询结果不一致。</li>
+</ol>
+<ol start="3">
+<li>虚读 /幻读：一个事务读到了另一个事务已经提交(insert)的数据。导致另一个事务，在事务中多次查询的结果不一致</li>
+</ol>
+<h3 id="1-3-3-隔离级别：解决问题"><a href="#1-3-3-隔离级别：解决问题" class="headerlink" title="1.3.3 隔离级别：解决问题"></a>1.3.3 隔离级别：解决问题</h3><ul>
+<li>数据库规范规定了4种隔离级别，分别用于描述两个事务并发的所有情况。</li>
+</ul>
+<ol>
+<li><p>read uncommitted 读未提交，一个事务读到另一个事务没有提交的数据。<br>存在：3个问题（脏读、不可重复读、虚读）。解决：0个问题</p>
+</li>
+<li><p>read committed 读已提交，一个事务读到另一个事务已经提交的数据。<br>存在：2个问题（不可重复读、虚读）。解决：1个问题（脏读）</p>
+</li>
+<li><p>repeatable read:可重复读，在一个事务中读到的数据始终保持一致，无论另一个事务是否提交。存在：1个问题（虚读）。解决：2个问题（脏读、不可重复读）</p>
+</li>
+<li><p>serializable 串行化，同时只能执行一个事务，相当于事务中的单线程。<br>存在：0个问题。解决：3个问题（脏读、不可重复读、虚读）</p>
+</li>
+</ol>
+<h3 id="1-3-4-演示演示"><a href="#1-3-4-演示演示" class="headerlink" title="1.3.4 演示演示"></a>1.3.4 演示演示</h3><ul>
+<li>设置数据库的隔离级别<ul>
+<li>set session transactionisolation level 级别字符串</li>
+<li>级别字符串： readuncommitted 、 read committed 、 repeatable read 、 serializable</li>
+<li>例如： set session transaction isolation level read uncommitted;</li>
+<li>例如： set session transaction isolation level read committed;</li>
+<li>例如： set session transaction isolation level repeatable read;</li>
+<li>例如： set session transaction isolation level serializable;</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2020/03/22/day30html/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            day30html
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2020/03/17/day28-jdbc-yu-chu-li-dui-xiang-lian-jie-chi-dbutils/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">day28-jdbc预处理对象-连接池-DBUtils</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    <link rel="stylesheet" href="/css/gitment.css"> 
+<script src="/js/gitment.js"></script>
+
+<div id="gitmentContainer"></div>
+
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        清风伴酒
+      
+    </h3>
+    <p class="avatar-slogan">
+      进击的后端渣渣
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javaSE/">javaSE</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">编程语言</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/12/day47-maven/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/gong-han-mo-shi/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day46-redis/">day46_redis</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day45-ajax-json/">day45-AJAX-Json</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day44jquery-gao-ji/">day44jQuery高级</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+      <div class="widget-box">
+    <h3 class="widget-title">友链</h3>
+    <div class="widget">
+      
+        <a style="display: block;" href="https://yiluyanxia.github.io/" title target='_blank'
+        >一路眼瞎</a>
+      
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 fantasy &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity" target="_blank" rel="noopener">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">不蒜子告之   阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

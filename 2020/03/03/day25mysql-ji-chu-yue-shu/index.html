@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>day25mysql基础-约束 | fantasyblog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="day25mysql基础-约束1.1 数据库介绍1.1.1 数据库概述 什么是数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day25mysql基础-约束">
+<meta property="og:url" content="https://fantasylhd.github.io/2020/03/03/day25mysql-ji-chu-yue-shu/index.html">
+<meta property="og:site_name" content="fantasyblog">
+<meta property="og:description" content="day25mysql基础-约束1.1 数据库介绍1.1.1 数据库概述 什么是数据库">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/03/03/day25mysql-ji-chu-yue-shu/1.png">
+<meta property="article:published_time" content="2020-03-03T09:38:46.000Z">
+<meta property="article:modified_time" content="2020-03-18T08:46:31.666Z">
+<meta property="article:author" content="fantasy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fantasylhd.github.io/2020/03/03/day25mysql-ji-chu-yue-shu/1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="fantasyblog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpg">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/highlight.css">
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-day25mysql基础-约束" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      day25mysql基础-约束
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2020/03/03/day25mysql-ji-chu-yue-shu/" class="article-date">
+  <time datetime="2020-03-03T09:38:46.000Z" itemprop="datePublished">2020-03-03</time>
+</a>
+    
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h1 id="day25mysql基础-约束"><a href="#day25mysql基础-约束" class="headerlink" title="day25mysql基础-约束"></a>day25mysql基础-约束</h1><h2 id="1-1-数据库介绍"><a href="#1-1-数据库介绍" class="headerlink" title="1.1 数据库介绍"></a>1.1 数据库介绍</h2><h3 id="1-1-1-数据库概述"><a href="#1-1-1-数据库概述" class="headerlink" title="1.1.1 数据库概述"></a>1.1.1 数据库概述</h3><ul>
+<li><p>什么是数据库</p>
+<a id="more"></a>  
+<p>数据库就是存储数据的仓库，其本质是一个文件系统，数据按照特定的格式将数据存储起来，用户可以对数据库中的数据进行增加，修改，删除及查询操作</p>
+</li>
+<li><p>什么是数据库管理系统</p>
+</li>
+</ul>
+<p>数据库管理系统（DataBase Management System，DBMS）：指一种操作和管理数据库的大型软件，用于建立、使用和维护数据库，对数据库进行统一管理和控制，以保证数据库的安全性和完整性。用户通过数据库管理系统访问数据库中表内的数据。</p>
+<ul>
+<li>数据库与数据库管理系统的关系</li>
+</ul>
+<h3 id="1-1-2-数据库表"><a href="#1-1-2-数据库表" class="headerlink" title="1.1.2 数据库表"></a>1.1.2 数据库表</h3><p>数据库中以表为组织单位存储数据。表类似我们的Java类，每个字段都有对应的数据类型。</p>
+<p>那么用我们熟悉的java程序来与关系型数据对比，就会发现以下对应关系。</p>
+<p>类———-表</p>
+<p>类中属性———-表中字段</p>
+<p>对象———-记录</p>
+<h2 id="1-2-MySql数据库"><a href="#1-2-MySql数据库" class="headerlink" title="1.2 MySql数据库"></a>1.2 MySql数据库</h2><h3 id="1-2-1-mysql安装"><a href="#1-2-1-mysql安装" class="headerlink" title="1.2.1 mysql安装"></a>1.2.1 mysql安装</h3><p>参考MySQL安装图解.doc</p>
+<h3 id="1-2-2-登录数据库"><a href="#1-2-2-登录数据库" class="headerlink" title="1.2.2 登录数据库"></a>1.2.2 登录数据库</h3><p>MySQL是一个需要账户名密码登录的数据库，登陆后使用，它提供了一个默认的root账号，使用安装时设置的密码即可登录。</p>
+<p>开启mysql服务: net start mysql</p>
+<p>关闭mysql服务: net stop mysql</p>
+<p>格式1：cmd&gt; mysql –u用户名 –p密码</p>
+<p>例如：mysql -uroot –proot</p>
+<p>格式2：cmd&gt; mysql –host=ip地址 –user=用户名 –password=密码</p>
+<p>例如：mysql –host=127.0.0.1 –user=root –password=root</p>
+<h2 id="1-3-SQL语句"><a href="#1-3-SQL语句" class="headerlink" title="1.3 SQL语句"></a>1.3 SQL语句</h2><h3 id="1-3-1-SQL概述"><a href="#1-3-1-SQL概述" class="headerlink" title="1.3.1 SQL概述"></a>1.3.1 SQL概述</h3><p>SQL语句介绍：</p>
+<p>数据库是不认识JAVA语言的，但是我们同样要与数据库交互，这时需要使用到数据库认识的语言SQL语句，它是数据库的代码。 结构化查询语言(Structured Query Language)简称SQL，是关系型数据库管理系统都需要遵循的规范。不同的数据库生产厂商都支持SQL语句，但都有特有内容。</p>
+<p>SQL语句分类：</p>
+<ul>
+<li><p>数据定义语言：简称DDL(Data Definition Language)，用来定义数据库对象：数据库，表，列等。关键字：create，alter，drop等</p>
+</li>
+<li><p>数据操作语言：简称DML(Data Manipulation Language)，用来对数据库中表的记录进行更新。关键字：insert，delete，update等</p>
+</li>
+<li><p>数据控制语言：简称DCL(Data Control Language)，用来定义数据库的访问权限和安全级别，及创建用户。</p>
+</li>
+<li><p>数据查询语言：简称DQL(Data Query Language)，用来查询数据库中表的记录。关键字：select，from，where等</p>
+</li>
+</ul>
+<p>SQL通用语法：</p>
+<ul>
+<li><p>SQL语句可以单行或多行书写，以分号结尾</p>
+</li>
+<li><p>可使用空格和缩进来增强语句的可读性</p>
+</li>
+<li><p>MySQL数据库的SQL语句不区分大小写，关键字建议使用大写</p>
+</li>
+<li><p>同样可以使用/**/的方式完成注释</p>
+</li>
+<li><p>MySQL中的我们常使用的数据类型如下</p>
+</li>
+</ul>
+<p><img src="/2020/03/03/day25mysql-ji-chu-yue-shu/1.png" alt="数据类型图"></p>
+<h3 id="1-3-2-DDL之数据库操作：database"><a href="#1-3-2-DDL之数据库操作：database" class="headerlink" title="1.3.2 DDL之数据库操作：database"></a>1.3.2 DDL之数据库操作：database</h3><p>1.创建数据库</p>
+<pre class=" language-mysql"><code class="language-mysql">create database 数据库名称;#没有指定编码表,使用mysql安装时指定的编码表utf8
+create database 数据库名称 character set 编码表;# 指定编码表</code></pre>
+<p>2.使用数据库</p>
+<pre class=" language-mysql"><code class="language-mysql">use 数据库名称;</code></pre>
+<p>3.查看某个数据库的定义的信息</p>
+<pre class=" language-mysql"><code class="language-mysql">show create database 数据库名称;</code></pre>
+<p>4.查看所有数据库</p>
+<pre class=" language-mysql"><code class="language-mysql">show databases;</code></pre>
+<p>5.查看正在使用的数据库</p>
+<pre class=" language-mysql"><code class="language-mysql">select database();</code></pre>
+<p>6.删除数据库</p>
+<pre class=" language-mysql"><code class="language-mysql">drop database 数据库名称;</code></pre>
+<h3 id="1-3-3-DDL之表操作：table"><a href="#1-3-3-DDL之表操作：table" class="headerlink" title="1.3.3 DDL之表操作：table"></a>1.3.3 DDL之表操作：table</h3><p>1.创建表</p>
+<pre class=" language-mysql"><code class="language-mysql">create table 表名(
+            字段名1 类型(长度) 约束,
+            字段名2 类型(长度) 约束,
+            字段名3 类型(长度) 约束        #最后一个字段后面不用写逗号            
+);
+
+CREATE TABLE student(
+    sid INT,
+    sname VARCHAR(200),
+    sgender VARCHAR(10),
+    sage INT
+);</code></pre>
+<p>2.查看表</p>
+<pre class=" language-mysql"><code class="language-mysql">1.查看数据库中的所有表
+  show tables;
+
+2.查看表结构
+  desc 数据库表名称;</code></pre>
+<p>3.删除表</p>
+<pre class=" language-mysql"><code class="language-mysql">drop table 数据库表名称;</code></pre>
+<p>4.修改表结构</p>
+<pre class=" language-mysql"><code class="language-mysql">1.修改表添加列
+alter table 表名 add 列名(已是关键字可以添加` `来使用) 类型(长度) [约束];
+
+2.修改表修改列的类型长度及约束
+alter table 表名 modify 列名 类型(长度) 约束;
+
+3.修改表修改列名
+alter table 表名 change 旧列名 新列名 类型(长度) 约束;
+
+4.修改表删除列
+alter table 表名 drop 列名;
+
+5.修改表名
+rename table 表名 to 新表名;
+
+6.修改表的字符集
+alter table 表名 character set</code></pre>
+<h3 id="1-3-4-DML数据操作语言"><a href="#1-3-4-DML数据操作语言" class="headerlink" title="1.3.4 DML数据操作语言"></a>1.3.4 DML数据操作语言</h3><p>1.插入表记录</p>
+<pre class=" language-mysql"><code class="language-mysql">1.向表中插入某些字段
+insert into 表 (字段1,字段2,字段3..) values (值1,值2,值3..);
+
+2.向表中插入所有字段,字段的顺序为创建表时的顺序
+insert into 表 values (值1,值2,值3..);</code></pre>
+<p>注意：</p>
+<ol>
+<li>值与字段必须对应，个数相同，类型相同，值的数据大小必须在字段的长度范围内</li>
+<li>除了数值类型外，其它的字段类型的值必须使用引号引起。（建议单引号）</li>
+<li>如果要插入空值，可以不写字段，或者插入null。</li>
+<li>字段的值如果是varchar类型,可以使用单引/双引,但是建议用单引</li>
+<li>指定列值添加 主键自动增长,mysql帮助维护,添加数据时,可以不用写</li>
+</ol>
+<p>2.更新表记录</p>
+<pre class=" language-mysql"><code class="language-mysql">1.更新所有记录的指定字段
+update 表名 set 字段名=值,字段名=值,...;
+
+2.更新符合条件记录的指定字段
+update 表名 set 字段名=值,字段名=值,... where 条件;</code></pre>
+<p>注意：</p>
+<ol>
+<li>列名的类型与修改的值要一致.</li>
+<li>修改值得时候不能超过最大长度.</li>
+<li>除了数值类型外，其它的字段类型的值必须使用引号引起</li>
+</ol>
+<p>3.删除记录</p>
+<pre class=" language-mysql"><code class="language-mysql">1.删除表
+delete from 表名
+
+2.删除指定记录
+delete from 表名 [where 条件];</code></pre>
+<h2 id="1-4-SQL约束"><a href="#1-4-SQL约束" class="headerlink" title="1.4 SQL约束"></a>1.4 SQL约束</h2><h3 id="1-4-1-主键约束"><a href="#1-4-1-主键约束" class="headerlink" title="1.4.1 主键约束"></a>1.4.1 主键约束</h3><p>主键的特点：</p>
+<ul>
+<li>主键必须包含唯一的值。</li>
+<li>主键列不能包含 NULL 值。</li>
+<li>每个表都应该有一个主键，并且每个表只能有一个主键</li>
+</ul>
+<p>添加主键约束：</p>
+<p>方式一：创建表时，在字段描述处，声明指定字段为主键：</p>
+<pre class=" language-mysql"><code class="language-mysql">CREATE    TABLE category(
+    cid INT PRIMARY KEY,
+    cname VARCHAR(100)
+);</code></pre>
+<p>方式二：创建表时，在constraint约束区域，声明指定字段为主键：</p>
+<pre class=" language-mysql"><code class="language-mysql">CREATE    TABLE category(
+    cid INT,
+    cname VARCHAR(100),
+    CONSTRAINT pk_cid PRIMARY KEY(cid)
+);</code></pre>
+<p>注意：</p>
+<ol>
+<li><p>关键字constraint可以省略，如果需要为主键命名，constraint不能省略，主键名称一般没用。</p>
+</li>
+<li><p>字段列表需要使用小括号括住，如果有多字段需要使用逗号分隔。声明两个以上字段为主键，我们称为联合主键</p>
+</li>
+</ol>
+<p>方式三：创建表之后，通过修改表结构，声明指定字段为主键：</p>
+<pre class=" language-mysql"><code class="language-mysql">alter table 表名 add [constraint 主键约束名称] primary key(作为主键的字段名称)</code></pre>
+<h2 id="1-4-2-自动增长列"><a href="#1-4-2-自动增长列" class="headerlink" title="1.4.2 自动增长列"></a>1.4.2 自动增长列</h2><p>我们通常希望在每次插入新记录时，数据库自动生成字段的值。</p>
+<p>我们可以在表中使用 auto_increment（自动增长列）关键字，自动增长列类型必须是整形，自动增长列必须为键(一般是主键)。</p>
+<p>下列 SQL 语句把 “category” 表中的 “cid” 列定义为 auto_increment 主键:</p>
+<pre class=" language-mysql"><code class="language-mysql">CREATE    TABLE category(
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    cname VARCHAR(100)
+);</code></pre>
+<p>向persons添加数据时，可以不为p_id字段设置值，也可以设置成null，数据库将自动维护主键值：</p>
+<pre class=" language-mysql"><code class="language-mysql">INSERT INTO persons (firstname,lastname) VALUES ('Bill','Gates')
+INSERT INTO persons (p_id,firstname,lastname) VALUES (NULL,'Bill','Gates')</code></pre>
+<p>扩展：默认AUTO_INCREMENT 的开始值是 1，如果希望修改起始值，请使用下列 SQL 语法：</p>
+<pre class=" language-mysql"><code class="language-mysql">ALTER TABLE persons AUTO_INCREMENT=100</code></pre>
+<p>面试题</p>
+<p>问：针对auto_increment ，删除表中所有记录使用 delete from 表名 或使用 truncate table 表名，二者有什么区别？</p>
+<p>删除方式：</p>
+<p>delete 一条一条删除，不清空auto_increment记录数。</p>
+<p>truncate 直接将表删除，重新建表，auto_increment将置为零，从新开始</p>
+<h3 id="1-4-3-非空约束"><a href="#1-4-3-非空约束" class="headerlink" title="1.4.3 非空约束"></a>1.4.3 非空约束</h3><p>非空的特点：</p>
+<ul>
+<li><p>NOT NULL 约束强制列不接受NULL值。</p>
+</li>
+<li><p>NOT NULL 约束强制字段始终包含值。这意味着，如果不向字段添加值，就无法插入新记录或者更新记录</p>
+</li>
+<li><p>NOT NULL 可以有多个 </p>
+</li>
+</ul>
+<p>添加方式：</p>
+<ul>
+<li>约束的添加的统一方式</li>
+</ul>
+<h3 id="1-4-4-唯一约束"><a href="#1-4-4-唯一约束" class="headerlink" title="1.4.4 唯一约束"></a>1.4.4 唯一约束</h3><p>UNIQUE 约束唯一标识数据库表中的每条记录。 UNIQUE 和 PRIMARY KEY 约束均为列或列集合提供了唯一性的保证。 PRIMARY KEY 拥有自动定义的 UNIQUE 约束。 请注意，每个表可以有多个 UNIQUE 约束，但是每个表只能有一个 PRIMARY KEY 约束</p>
+<p>添加方式：</p>
+<ul>
+<li>约束的添加的统一方式</li>
+</ul>
+<h2 id="1-5-MySQL数据库密码重置"><a href="#1-5-MySQL数据库密码重置" class="headerlink" title="1.5 MySQL数据库密码重置"></a>1.5 MySQL数据库密码重置</h2><ol>
+<li><p>停止mysql服务器运行输入services.msc 停止mysql服务</p>
+</li>
+<li><p>在cmd下,输入mysqld –console –skip-grant-tables 启动服务器,出现一下页面,不要关闭该窗口</p>
+</li>
+<li><p>新打开cmd,输入mysql -uroot 不需要密码</p>
+</li>
+<li><p>输入：</p>
+<pre class=" language-mysql"><code class="language-mysql">use mysql;
+update user set password=password('abc') WHERE user='root';</code></pre>
+</li>
+</ol>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2020/03/10/day26-mysql-cha-xun-dql-duo-biao-guan-xi/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            day26-mysql查询DQL-多表关系
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2020/03/02/day24junit-fan-she-lei-jia-zai-qi-zhu-jie/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">day24Junit、反射、类加载器、注解</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    <link rel="stylesheet" href="/css/gitment.css"> 
+<script src="/js/gitment.js"></script>
+
+<div id="gitmentContainer"></div>
+
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        清风伴酒
+      
+    </h3>
+    <p class="avatar-slogan">
+      进击的后端渣渣
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javaSE/">javaSE</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">编程语言</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/12/day47-maven/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/gong-han-mo-shi/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day46-redis/">day46_redis</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day45-ajax-json/">day45-AJAX-Json</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day44jquery-gao-ji/">day44jQuery高级</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+      <div class="widget-box">
+    <h3 class="widget-title">友链</h3>
+    <div class="widget">
+      
+        <a style="display: block;" href="https://yiluyanxia.github.io/" title target='_blank'
+        >一路眼瞎</a>
+      
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 fantasy &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity" target="_blank" rel="noopener">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">不蒜子告之   阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>day44jQuery高级 | fantasyblog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="day44jQuery高级1.1 jQuery遍历jQuery对象本身就是数组对象，通过jQuery选择器获得的都是满足该选择器条件的元素对象的集合体。因此在常常需要对jQuery对象进行遍历。我们会学习三种遍历jQuery的方法 1.1.1 传统循环遍历&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;             &#x2F;**              * 传统形式遍历">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day44jQuery高级">
+<meta property="og:url" content="https://fantasylhd.github.io/2020/04/12/day44jquery-gao-ji/index.html">
+<meta property="og:site_name" content="fantasyblog">
+<meta property="og:description" content="day44jQuery高级1.1 jQuery遍历jQuery对象本身就是数组对象，通过jQuery选择器获得的都是满足该选择器条件的元素对象的集合体。因此在常常需要对jQuery对象进行遍历。我们会学习三种遍历jQuery的方法 1.1.1 传统循环遍历&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;             &#x2F;**              * 传统形式遍历">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/04/12/day44jquery-gao-ji/1.jpg">
+<meta property="article:published_time" content="2020-04-12T09:41:24.000Z">
+<meta property="article:modified_time" content="2020-04-17T09:56:12.272Z">
+<meta property="article:author" content="fantasy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fantasylhd.github.io/2020/04/12/day44jquery-gao-ji/1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="fantasyblog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpg">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/highlight.css">
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-day44jQuery高级" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      day44jQuery高级
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2020/04/12/day44jquery-gao-ji/" class="article-date">
+  <time datetime="2020-04-12T09:41:24.000Z" itemprop="datePublished">2020-04-12</time>
+</a>
+    
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h1 id="day44jQuery高级"><a href="#day44jQuery高级" class="headerlink" title="day44jQuery高级"></a>day44jQuery高级</h1><h2 id="1-1-jQuery遍历"><a href="#1-1-jQuery遍历" class="headerlink" title="1.1 jQuery遍历"></a>1.1 jQuery遍历</h2><p>jQuery对象本身就是数组对象，通过jQuery选择器获得的都是满足该选择器条件的元素对象的集合体。因此在常常需要对jQuery对象进行遍历。我们会学习三种遍历jQuery的方法</p>
+<h3 id="1-1-1-传统循环遍历"><a href="#1-1-1-传统循环遍历" class="headerlink" title="1.1.1 传统循环遍历"></a>1.1.1 传统循环遍历</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+            <span class="token comment" spellcheck="true">/**
+             * 传统形式遍历
+             */</span>
+            window<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//dom对象获取所有的标签option</span>
+                <span class="token keyword">var</span> options <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"option"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>options<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    <span class="token function">alert</span><span class="token punctuation">(</span>options<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>innerHTML<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>    
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<h3 id="1-1-2-jQuery对象的方法"><a href="#1-1-2-jQuery对象的方法" class="headerlink" title="1.1.2 jQuery对象的方法"></a>1.1.2 jQuery对象的方法</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+            <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//jQuery方式获取option标签</span>
+                <span class="token keyword">var</span> $option <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"option"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//jQuery对象调用函数each</span>
+                <span class="token comment" spellcheck="true">/**
+                 *  匿名函数,回调函数
+                 *  each函数调用
+                 *  参数: 索引, 遍历到的元素
+                 *  each遍历数组,遍历一次调用一次匿名函数
+                 */</span>
+                $option<span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span>element<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">//alert(index+"==="+element);</span>
+                    <span class="token comment" spellcheck="true">//jQuery对象本质数组,遍历的元素DOM对象</span>
+                    <span class="token function">alert</span><span class="token punctuation">(</span>  <span class="token function">$</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<h3 id="1-1-3-jQuery全局函数each遍历"><a href="#1-1-3-jQuery全局函数each遍历" class="headerlink" title="1.1.3 jQuery全局函数each遍历"></a>1.1.3 jQuery全局函数each遍历</h3><p>  jQuery框架定义函数,each</p>
+<p>  不需要jQuery对象调用, $调用的</p>
+<p>  $.each()  </p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+            <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//jQuery方式获取option标签</span>
+                <span class="token keyword">var</span> $option <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"option"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
+                <span class="token keyword">var</span> options <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"option"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
+                <span class="token comment" spellcheck="true">//jQuery符号$直接调用全局函数each</span>
+                <span class="token comment" spellcheck="true">/**
+                 * 全局函数each的参数
+                 * 被遍历的对象
+                 * 回调函数,传递索引和元素
+                 * 好处: 遍历的容器可以是jQuery对象,也可以是DOM对象
+                 */</span>
+                $<span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span>options<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span>element<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">alert</span><span class="token punctuation">(</span> <span class="token function">$</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<h3 id="1-1-4-增强for"><a href="#1-1-4-增强for" class="headerlink" title="1.1.4 增强for"></a>1.1.4 增强for</h3><pre class=" language-java"><code class="language-java">格式<span class="token operator">:</span>  
+<span class="token keyword">for</span><span class="token punctuation">(</span> 元素  of  容器<span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+ <span class="token punctuation">}</span>
+
+举例<span class="token operator">:</span> 
+<span class="token keyword">for</span><span class="token punctuation">(</span>element of $<span class="token punctuation">(</span><span class="token string">"options"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    执行语句<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span></code></pre>
+<h2 id="1-2-jQuery的事件"><a href="#1-2-jQuery的事件" class="headerlink" title="1.2 jQuery的事件"></a>1.2 jQuery的事件</h2><h3 id="1-2-1-常用事件"><a href="#1-2-1-常用事件" class="headerlink" title="1.2.1 常用事件"></a>1.2.1 常用事件</h3><p><img src="/2020/04/12/day44jquery-gao-ji/1.jpg" alt></p>
+<h3 id="1-2-2-DOM对象绑定事件"><a href="#1-2-2-DOM对象绑定事件" class="headerlink" title="1.2.2 DOM对象绑定事件"></a>1.2.2 DOM对象绑定事件</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+            window<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//获取按钮</span>
+                <span class="token keyword">var</span> btn <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"btn"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//DOM对象的事件属性</span>
+                btn<span class="token punctuation">.</span>onclick  <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"按钮被点击"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<h3 id="1-2-3-jQuery对象绑定事件"><a href="#1-2-3-jQuery对象绑定事件" class="headerlink" title="1.2.3 jQuery对象绑定事件"></a>1.2.3 jQuery对象绑定事件</h3><p>on(events,selector,fn(data))函数绑定</p>
+<ol>
+<li>参数events：事件名称，多个事件之间空格分开。”click mouseover”</li>
+<li>参数selector：绑定事件元素的子代元素，不传递参数，表示该元素自己绑定事件</li>
+<li>参数data：事件中要传递给响应函数的参数</li>
+<li>参数fn：事件相应的函数</li>
+</ol>
+<p>  jQuery对象中函数,实现对一个事件源同时绑定多个事件 on</p>
+<pre class=" language-javascript"><code class="language-javascript">    <span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+
+          绑定一个事件 <span class="token punctuation">:</span> 
+          <span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"事件名称"</span> <span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+           <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#b1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"click"</span> <span class="token punctuation">,</span>  <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> 
+                        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"always  on ... "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
+
+
+        <span class="token operator">*</span> 绑定多个事件<span class="token punctuation">,</span> 做多个事情<span class="token punctuation">.</span>  相当于是绑定多个键值对<span class="token punctuation">.</span> 
+         <span class="token operator">*</span>   <span class="token function">on</span><span class="token punctuation">(</span><span class="token punctuation">{</span> key<span class="token punctuation">:</span>value <span class="token punctuation">,</span> key<span class="token punctuation">:</span>value <span class="token punctuation">,</span>key<span class="token punctuation">:</span>value<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token operator">*</span> 
+         <span class="token operator">*</span>  <span class="token function">on</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"事件名"</span><span class="token punctuation">:</span>f <span class="token function">unction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> 
+         <span class="token operator">*</span>         <span class="token operator">...</span> 
+         <span class="token operator">*</span>       <span class="token punctuation">}</span>  <span class="token punctuation">,</span>
+         <span class="token operator">*</span>      <span class="token string">"事件名2"</span> <span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> 
+         <span class="token operator">*</span>          <span class="token operator">...</span>  
+         <span class="token operator">*</span>     <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token operator">*</span>  
+
+             <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                <span class="token string">"mouseover"</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// 改变颜色 </span>
+                    <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"background-color"</span><span class="token punctuation">,</span> <span class="token string">"green"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token string">"mouseout"</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"background-color"</span><span class="token punctuation">,</span> <span class="token string">"yellow"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token string">"click"</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
+                <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<h3 id="1-2-4-jQuery解绑事件"><a href="#1-2-4-jQuery解绑事件" class="headerlink" title="1.2.4 jQuery解绑事件"></a>1.2.4 jQuery解绑事件</h3><p>  jQuery对象的函数 off</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+            <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+            对象<span class="token punctuation">.</span><span class="token function">off</span><span class="token punctuation">(</span><span class="token string">"事件名称"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+             <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#f"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">off</span><span class="token punctuation">(</span><span class="token string">"mouseover"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<h2 id="1-3-validate表单验证插件"><a href="#1-3-validate表单验证插件" class="headerlink" title="1.3 validate表单验证插件"></a>1.3 validate表单验证插件</h2><p>网络上有许多成熟的插件共使用者参考，插件就是将jquery实现的常用操作进行封装，封装后的“小框架“就可以叫做插件，按照插件的语法去操作可以实现很多复杂 的功能，而我们需要做的是学会该插件的使用语法即可。我们仅是要使用的是jquery关于表单校验的插件。</p>
+<p>使用步骤</p>
+<ol>
+<li>下载jquery-validation插件</li>
+<li>将该插件（也就是一个js文件）导入到我们的工程中</li>
+<li>在要使用校验插件的html中引入该js文件</li>
+</ol>
+<h3 id="1-3-1-表单验证案例"><a href="#1-3-1-表单验证案例" class="headerlink" title="1.3.1 表单验证案例"></a>1.3.1 表单验证案例</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+            <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#empForm"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">//表单验证的规则</span>
+                    rules<span class="token punctuation">:</span><span class="token punctuation">{</span>
+                        <span class="token comment" spellcheck="true">//真实姓名,必须填写</span>
+                        realname<span class="token punctuation">:</span><span class="token string">"required"</span><span class="token punctuation">,</span>
+                        <span class="token comment" spellcheck="true">//登录名,必须填写,长度5-8</span>
+                        username<span class="token punctuation">:</span><span class="token punctuation">{</span>
+                            required<span class="token punctuation">:</span><span class="token boolean">true</span><span class="token punctuation">,</span>
+                            rangelength<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">]</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                        <span class="token comment" spellcheck="true">//密码规则,必须填写,长度6-12</span>
+                        psw<span class="token punctuation">:</span><span class="token punctuation">{</span>
+                            required<span class="token punctuation">:</span><span class="token boolean">true</span><span class="token punctuation">,</span>
+                            rangelength<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">]</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                        <span class="token comment" spellcheck="true">//确认密码,必须填写,和密码一致</span>
+                        psw2<span class="token punctuation">:</span><span class="token punctuation">{</span>
+                            required<span class="token punctuation">:</span><span class="token boolean">true</span><span class="token punctuation">,</span>
+                            equalTo<span class="token punctuation">:</span><span class="token string">"#psw"</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                        <span class="token comment" spellcheck="true">//性别规则,必须选择一个</span>
+                        gender<span class="token punctuation">:</span><span class="token string">"required"</span><span class="token punctuation">,</span>
+                        <span class="token comment" spellcheck="true">//年龄规则,必须填写,范围26-50之间</span>
+                        age<span class="token punctuation">:</span><span class="token punctuation">{</span>
+                            required<span class="token punctuation">:</span><span class="token boolean">true</span><span class="token punctuation">,</span>
+                            range<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">]</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                        <span class="token comment" spellcheck="true">//学历规则,必须选一个</span>
+                        edu<span class="token punctuation">:</span><span class="token string">"required"</span><span class="token punctuation">,</span>
+                        <span class="token comment" spellcheck="true">//生日规则,必须填写,格式正确,合法 </span>
+                        birthday<span class="token punctuation">:</span><span class="token punctuation">{</span>
+                            required<span class="token punctuation">:</span><span class="token boolean">true</span><span class="token punctuation">,</span>
+                            dateISO<span class="token punctuation">:</span><span class="token boolean">true</span><span class="token punctuation">,</span>
+                            date<span class="token punctuation">:</span><span class="token boolean">true</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                        <span class="token comment" spellcheck="true">//爱好规则,必须选一个</span>
+                        checkbox1<span class="token punctuation">:</span><span class="token string">"required"</span><span class="token punctuation">,</span>
+                        <span class="token comment" spellcheck="true">//邮箱规则,必须填写,符号邮件地址规则</span>
+                        email<span class="token punctuation">:</span><span class="token punctuation">{</span>
+                            required<span class="token punctuation">:</span><span class="token boolean">true</span><span class="token punctuation">,</span>
+                            email<span class="token punctuation">:</span><span class="token boolean">true</span>
+                        <span class="token punctuation">}</span>
+
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token comment" spellcheck="true">//验证消息</span>
+                    messages<span class="token punctuation">:</span><span class="token punctuation">{</span>
+                        <span class="token comment" spellcheck="true">//真实姓名消息</span>
+                        realname<span class="token punctuation">:</span><span class="token string">"请填写真实姓名"</span><span class="token punctuation">,</span>
+                        <span class="token comment" spellcheck="true">//登录名消息</span>
+                        username<span class="token punctuation">:</span><span class="token punctuation">{</span>
+                            required<span class="token punctuation">:</span><span class="token string">"必须填写登录名"</span><span class="token punctuation">,</span>
+                            rangelength<span class="token punctuation">:</span><span class="token string">"用户名长度必须5-8位"</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                        <span class="token comment" spellcheck="true">//密码消息</span>
+                        psw<span class="token punctuation">:</span><span class="token punctuation">{</span>
+                            required<span class="token punctuation">:</span><span class="token string">"必须填写密码"</span><span class="token punctuation">,</span>
+                            rangelength<span class="token punctuation">:</span><span class="token string">"密码长度必须6-12位"</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                        <span class="token comment" spellcheck="true">//确认密码消息</span>
+                        psw2<span class="token punctuation">:</span><span class="token punctuation">{</span>
+                            required<span class="token punctuation">:</span><span class="token string">"必须填写密码"</span><span class="token punctuation">,</span>
+                            equalTo<span class="token punctuation">:</span><span class="token string">"两次密码不一致"</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                        <span class="token comment" spellcheck="true">//姓名消息</span>
+                        gender<span class="token punctuation">:</span><span class="token string">"必须选"</span><span class="token punctuation">,</span>
+                        <span class="token comment" spellcheck="true">//年龄消息</span>
+                        age<span class="token punctuation">:</span><span class="token punctuation">{</span>
+                            required<span class="token punctuation">:</span><span class="token string">"必须填写年龄"</span><span class="token punctuation">,</span>
+                            range<span class="token punctuation">:</span><span class="token string">"年龄必须在26-50之间"</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                        <span class="token comment" spellcheck="true">//学历消息</span>
+                        edu<span class="token punctuation">:</span><span class="token string">"请选择一个学历"</span><span class="token punctuation">,</span>
+                        <span class="token comment" spellcheck="true">//生日消息</span>
+                        birthday<span class="token punctuation">:</span><span class="token punctuation">{</span>
+                            required<span class="token punctuation">:</span><span class="token string">"必须填写生日"</span><span class="token punctuation">,</span>
+                            dateISO<span class="token punctuation">:</span><span class="token string">"日期格式不正确"</span><span class="token punctuation">,</span>
+                            date<span class="token punctuation">:</span><span class="token string">"日期不存在"</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                        <span class="token comment" spellcheck="true">//爱好消息</span>
+                        checkbox1<span class="token punctuation">:</span><span class="token string">"请选择一个爱好"</span><span class="token punctuation">,</span>
+                        <span class="token comment" spellcheck="true">//邮箱消息</span>
+                        email<span class="token punctuation">:</span><span class="token punctuation">{</span>
+                            required<span class="token punctuation">:</span><span class="token string">"必须填写邮箱"</span><span class="token punctuation">,</span>
+                            email<span class="token punctuation">:</span><span class="token string">"邮箱格式不正确"</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<h3 id="1-3-2-自定义验证规则"><a href="#1-3-2-自定义验证规则" class="headerlink" title="1.3.2 自定义验证规则"></a>1.3.2 自定义验证规则</h3><p>  标准语法规则, jQuery选择符号$调用插件属性validator</p>
+<p>  属性调用插件函数 addMethod()</p>
+<p>  参数:</p>
+<ul>
+<li>规则名</li>
+<li>回调函数</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"> <span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+
+            <span class="token comment" spellcheck="true">/*
+             * 匿名函数中具有三个参数
+             * value   : 文本框输入的值
+             * element : 文本框标签对象
+             * param   : 规则后面的参数   range:[5,10]
+             */</span>
+            <span class="token comment" spellcheck="true">//自定义身份证号的15位规则</span>
+            $<span class="token punctuation">.</span>validator<span class="token punctuation">.</span><span class="token function">addMethod</span><span class="token punctuation">(</span><span class="token string">"cart15"</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span>element<span class="token punctuation">,</span>param<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//文本框输入的值 value判断</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span>length<span class="token operator">==</span><span class="token number">18</span><span class="token punctuation">)</span>
+                  <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//定义15位规则,全数字</span>
+                <span class="token keyword">var</span> reg<span class="token operator">=</span><span class="token regex">/^[0-9]{15}$/</span><span class="token punctuation">;</span>
+
+                <span class="token keyword">return</span> reg<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//自定义身份证号的是18位规则</span>
+            $<span class="token punctuation">.</span>validator<span class="token punctuation">.</span><span class="token function">addMethod</span><span class="token punctuation">(</span><span class="token string">"cart18"</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span>element<span class="token punctuation">,</span>param<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                 <span class="token keyword">if</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span>length<span class="token operator">==</span><span class="token number">15</span><span class="token punctuation">)</span>
+                   <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//定义18位规则,前17个数字,最后一位可以是数字,可以是X</span>
+                <span class="token keyword">var</span> reg <span class="token operator">=</span> <span class="token regex">/^[0-9]{17}[0-9X]{1}$/</span><span class="token punctuation">;</span>
+
+                <span class="token keyword">return</span> reg<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//自定义身份证的长度规则</span>
+            $<span class="token punctuation">.</span>validator<span class="token punctuation">.</span><span class="token function">addMethod</span><span class="token punctuation">(</span><span class="token string">"cartlength"</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span>element<span class="token punctuation">,</span>param<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">15</span> <span class="token operator">||</span> value<span class="token punctuation">.</span>length<span class="token operator">==</span><span class="token number">18</span><span class="token punctuation">)</span>
+                    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>    
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//身份证号规则</span>
+cart<span class="token punctuation">:</span><span class="token punctuation">{</span>
+    required<span class="token punctuation">:</span><span class="token string">"必须填写身份证号"</span><span class="token punctuation">,</span>
+    cartlength<span class="token punctuation">:</span><span class="token string">"身份证号码长度只能是15或18位"</span><span class="token punctuation">,</span>
+    cart15<span class="token punctuation">:</span><span class="token string">"15位格式全数字"</span><span class="token punctuation">,</span>
+    cart18<span class="token punctuation">:</span><span class="token string">"18位格式全数字,最后一位可以是X"</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="1-3-3-日期插件"><a href="#1-3-3-日期插件" class="headerlink" title="1.3.3 日期插件"></a>1.3.3 日期插件</h3><pre class=" language-java"><code class="language-java">    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>
+                     引入第三方提供的日期插件 <span class="token punctuation">.</span>
+                     <span class="token number">1</span><span class="token punctuation">.</span> 拷贝 My97DatePicker 目录 到 js目录下 
+                     <span class="token number">2</span><span class="token punctuation">.</span> 引入 WdatePicker<span class="token punctuation">.</span>js 文件 
+                     <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"../js/My97DatePicker/WdatePicker.js"</span> type<span class="token operator">=</span><span class="token string">"text/javascript"</span> charset<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+
+                     <span class="token number">3</span><span class="token punctuation">.</span> 文本框绑定点击事件 <span class="token punctuation">,</span> 调用 <span class="token function">WdatePicker</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token operator">--</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>tr<span class="token operator">></span>
+    <span class="token operator">&lt;</span>td<span class="token operator">></span>出生日期<span class="token punctuation">(</span><span class="token number">1982</span><span class="token operator">/</span><span class="token number">09</span><span class="token operator">/</span><span class="token number">21</span><span class="token punctuation">)</span><span class="token operator">:</span><span class="token operator">&lt;</span><span class="token operator">/</span>td<span class="token operator">></span>
+    <span class="token operator">&lt;</span>td<span class="token operator">></span><span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">"text"</span> id<span class="token operator">=</span><span class="token string">"birthday"</span> name<span class="token operator">=</span><span class="token string">"birthday"</span> value<span class="token operator">=</span><span class="token string">""</span> onclick<span class="token operator">=</span><span class="token string">"WdatePicker()"</span> <span class="token operator">/</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>td<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>tr<span class="token operator">></span></code></pre>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2020/04/12/day45-ajax-json/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            day45-AJAX-Json
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2020/04/12/day43jquery-ji-chu/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">day43jQuery基础</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    <link rel="stylesheet" href="/css/gitment.css"> 
+<script src="/js/gitment.js"></script>
+
+<div id="gitmentContainer"></div>
+
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        清风伴酒
+      
+    </h3>
+    <p class="avatar-slogan">
+      进击的后端渣渣
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javaSE/">javaSE</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">编程语言</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/12/day47-maven/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/gong-han-mo-shi/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day46-redis/">day46_redis</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day45-ajax-json/">day45-AJAX-Json</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day44jquery-gao-ji/">day44jQuery高级</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+      <div class="widget-box">
+    <h3 class="widget-title">友链</h3>
+    <div class="widget">
+      
+        <a style="display: block;" href="https://yiluyanxia.github.io/" title target='_blank'
+        >一路眼瞎</a>
+      
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 fantasy &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity" target="_blank" rel="noopener">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">不蒜子告之   阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

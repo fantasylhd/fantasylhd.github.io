@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>day17List、Set、数据结构、Collections | fantasyblog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="day17List、Set、数据结构、Collections1.1 List集合1.1.1 List接口介绍java.util.List 接口继承自 Collection 接口，是单列集合的一个重要分支，习惯性地会将实现了 List 接口的对象称为List集合。在List集合中允许出现重复的元素，所有的元素是以一种线性方式进行存储的，在程序中可以通过索引来访问集合中的指定元素。另外List集合还有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day17List、Set、数据结构、Collections">
+<meta property="og:url" content="https://fantasylhd.github.io/2020/02/19/day17list-set-shu-ju-jie-gou-collections/index.html">
+<meta property="og:site_name" content="fantasyblog">
+<meta property="og:description" content="day17List、Set、数据结构、Collections1.1 List集合1.1.1 List接口介绍java.util.List 接口继承自 Collection 接口，是单列集合的一个重要分支，习惯性地会将实现了 List 接口的对象称为List集合。在List集合中允许出现重复的元素，所有的元素是以一种线性方式进行存储的，在程序中可以通过索引来访问集合中的指定元素。另外List集合还有">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/02/19/day17list-set-shu-ju-jie-gou-collections/06_HashSet%E5%AD%98%E5%82%A8%E5%85%83%E7%B4%A0%E7%9A%84%E5%8E%9F%E7%90%86.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/02/19/day17list-set-shu-ju-jie-gou-collections/03_%E6%95%B0%E7%BB%84%E7%BB%93%E6%9E%84%E7%89%B9%E7%82%B9.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/02/19/day17list-set-shu-ju-jie-gou-collections/01_%E6%A0%88%E7%BB%93%E6%9E%84%E7%89%B9%E7%82%B9.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/02/19/day17list-set-shu-ju-jie-gou-collections/02_%E9%98%9F%E5%88%97%E7%BB%93%E6%9E%84%E7%89%B9%E7%82%B9.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/02/19/day17list-set-shu-ju-jie-gou-collections/04_%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%BB%93%E6%9E%84%E7%89%B9%E7%82%B9.png">
+<meta property="article:published_time" content="2020-02-19T08:23:19.000Z">
+<meta property="article:modified_time" content="2020-02-19T12:06:12.246Z">
+<meta property="article:author" content="fantasy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fantasylhd.github.io/2020/02/19/day17list-set-shu-ju-jie-gou-collections/06_HashSet%E5%AD%98%E5%82%A8%E5%85%83%E7%B4%A0%E7%9A%84%E5%8E%9F%E7%90%86.png">
+  
+    <link rel="alternate" href="/atom.xml" title="fantasyblog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpg">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/highlight.css">
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-day17List、Set、数据结构、Collections" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      day17List、Set、数据结构、Collections
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2020/02/19/day17list-set-shu-ju-jie-gou-collections/" class="article-date">
+  <time datetime="2020-02-19T08:23:19.000Z" itemprop="datePublished">2020-02-19</time>
+</a>
+    
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h1 id="day17List、Set、数据结构、Collections"><a href="#day17List、Set、数据结构、Collections" class="headerlink" title="day17List、Set、数据结构、Collections"></a>day17List、Set、数据结构、Collections</h1><h2 id="1-1-List集合"><a href="#1-1-List集合" class="headerlink" title="1.1 List集合"></a>1.1 List集合</h2><h3 id="1-1-1-List接口介绍"><a href="#1-1-1-List接口介绍" class="headerlink" title="1.1.1 List接口介绍"></a>1.1.1 List接口介绍</h3><p>java.util.List 接口继承自 Collection 接口，是单列集合的一个重要分支，习惯性地会将实现了 List 接口的对象称为List集合。在List集合中允许出现重复的元素，所有的元素是以一种线性方式进行存储的，在程序中可以通过索引来访问集合中的指定元素。另外List集合还有一个特点就是元素有序，即元素的存入顺序和取出顺序一致。</p>
+<h3 id="1-1-2-List接口的特点"><a href="#1-1-2-List接口的特点" class="headerlink" title="1.1.2 List接口的特点"></a>1.1.2 List接口的特点</h3><p>1.有序(保证存入和取出元素的顺序是一致的)</p>
+<a id="more"></a>
+<p>2.有索引</p>
+<p>3.可重复</p>
+<h3 id="1-1-3-List接口常用的实现类"><a href="#1-1-3-List接口常用的实现类" class="headerlink" title="1.1.3 List接口常用的实现类"></a>1.1.3 List接口常用的实现类</h3><h4 id="1-1-1-1-ArrayList"><a href="#1-1-1-1-ArrayList" class="headerlink" title="1.1.1.1 ArrayList"></a>1.1.1.1 ArrayList</h4><p>ArrayList的特点</p>
+<p>1.底层采用是数组的数据结构</p>
+<p>2.数组的数据结构: 查询快,增删慢</p>
+<p>3.查询快的原因: 有索引,元素内存连续分配</p>
+<p>4.线程不同步,不安全,但是效率高，还有一个不常用的Vector类是线程安全但效率不高</p>
+<h4 id="1-1-1-2-LinkedList"><a href="#1-1-1-2-LinkedList" class="headerlink" title="1.1.1.2 LinkedList"></a>1.1.1.2 LinkedList</h4><p>LinkedList特点:</p>
+<p>1.底层采用链表数据结构</p>
+<p>2.链表数据结构: 增删快,查询慢</p>
+<p>3.线程不同步,不安全,但是效率高</p>
+<p>LinkedList集合,操作头和尾节点的方法</p>
+<ul>
+<li>public void addFirst(E e):将指定元素插入此列表的开头。</li>
+<li>public void addLast(E e):将指定元素添加到此列表的结尾。</li>
+<li>public E getFirst():返回此列表的第一个元素。</li>
+<li>public E getLast():返回此列表的最后一个元素。</li>
+<li>public E removeFirst():移除并返回此列表的第一个元素。</li>
+<li>public E removeLast():移除并返回此列表的最后一个元素。</li>
+</ul>
+<p>LinkedList集合中,具有栈结构特点(先进后出)的方法</p>
+<ul>
+<li><p>public E pop():从此列表所表示的堆栈处弹出一个元素。       底层原理 调用removeFirst</p>
+</li>
+<li><p>public void push(E e):将元素推入此列表所表示的堆栈。     底层原理 调用addFirst</p>
+</li>
+</ul>
+<h2 id="2-1-set集合"><a href="#2-1-set集合" class="headerlink" title="2.1 set集合"></a>2.1 set集合</h2><h3 id="2-2-1-HashSet集合介绍"><a href="#2-2-1-HashSet集合介绍" class="headerlink" title="2.2.1 HashSet集合介绍"></a>2.2.1 HashSet集合介绍</h3><p>java.util.Set 接口和 java.util.List 接口一样，同样继承自 Collection 接口，它与 Collection 接口中的方法基本一致，并没有对 Collection 接口进行功能上的扩充，只是比 Collection 接口更加严格了。与List 接口不同的是， Set 接口中元素无序，并且都会以某种规则保证存入的元素不出现重复。Set集合有多个子类，这里我们介绍其中的 java.util.HashSet 、 java.util.LinkedHashSet 这两个集合。</p>
+<h4 id="2-2-2-1-hashcode"><a href="#2-2-2-1-hashcode" class="headerlink" title="2.2.2.1 hashcode"></a>2.2.2.1 hashcode</h4><p>java.lang.Object类 成员方法</p>
+<p>public int hashCode(): 返回该对象的哈希码值。就是一个int数字</p>
+<p>Object类中的hashCode方法,根据对象的地址值,计算一个int数字,叫哈希码值(哈希地址值)所以只要使用new创建对象,地址值不相同,所以计算的哈希值也不相同</p>
+<p>注意:<br>1.子类不重写hashCode方法,调用Object类的hashCode方法,根据对象地址值计算哈希值</p>
+<p>2.子类根据地址值计算哈希值,没有意义,需要根据内容计算哈希值</p>
+<p>3.所以子类一般需要覆盖重写hashCode方法,根据对象的内容计算哈希值</p>
+<p>4.根据对String的代码测试,发现String覆盖重写了hashCode方法,重写方式: 根据String中的每个字符的ASCII码值,按照一定的算法(存在漏洞)进行相加得来</p>
+<p>5.所以比较String的哈希值,其实就是在比较String的内容</p>
+<p>假设: String根据内部的每个字符的ASCII码值相加计算哈希值</p>
+<p>“abc”       哈希值: 97 + 98 + 99 = 294</p>
+<p>“bac”       哈希值: 98 + 97 + 99 = 294</p>
+<p>总结:</p>
+<p>1.如果两个对象的哈希值不同,能否说明两个对象的内容一定不同?</p>
+<p>可以: 哈希值不同,内容必然不相同</p>
+<p>2.如果两个对象的哈希值相同,能否说明两个对象的内容一定相同?</p>
+<p>必须要调用equals方法:</p>
+<p>true: 相同</p>
+<p>false: 不相同</p>
+<p>3.加入hashCode方法后,可以减少对equals方法的调用,提高效率</p>
+<h3 id="2-2-2-Set接口常用的实现类"><a href="#2-2-2-Set接口常用的实现类" class="headerlink" title="2.2.2 Set接口常用的实现类"></a>2.2.2 Set接口常用的实现类</h3><h4 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h4><p>java.util.HashSet 是 Set 接口的一个实现类，它所存储的元素是不可重复的，并且元素都是无序的(即存取顺序不能保证不一致)。 java.util.HashSet 底层的实现其实是一个 java.util.HashMap 支持，由于我们暂时还未学习，先做了解。HashSet 是根据对象的哈希值来确定元素在集合中的存储位置，因此具有良好的存储和查找性能。保证元素唯一性的方式依赖于： hashCode 与 equals 方法。</p>
+<p>特点</p>
+<p>1.无索引</p>
+<p>2.不可重复(唯一)</p>
+<p>3.无序: 不保证存入和取出的顺序是一致的</p>
+<p>底层数据结构:</p>
+<p>1.底层数据结构: 哈希表</p>
+<p>2.哈希表: 数组+链表/红黑树(节点数量&gt;8)</p>
+<p>3.查询速度非常快</p>
+<p>hashSet存储原理<br><img src="/2020/02/19/day17list-set-shu-ju-jie-gou-collections/06_HashSet%E5%AD%98%E5%82%A8%E5%85%83%E7%B4%A0%E7%9A%84%E5%8E%9F%E7%90%86.png" alt="HashSet存储元素的原理图"></p>
+<p>案例 使用HashSet存储自定义的Student类</p>
+<p>给HashSet中存放自定义类型元素时，需要重写对象中的hashCode和equals方法，建立自己的比较方式，才能保证HashSet集合中的对象唯一</p>
+<h4 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span>Object o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> o<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>o <span class="token operator">==</span> null <span class="token operator">||</span> <span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> o<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        Student student <span class="token operator">=</span> <span class="token punctuation">(</span>Student<span class="token punctuation">)</span> o<span class="token punctuation">;</span>
+        <span class="token keyword">boolean</span> result <span class="token operator">=</span> age <span class="token operator">==</span> student<span class="token punctuation">.</span>age <span class="token operator">&amp;&amp;</span>
+                Objects<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> student<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">"....equals...."</span><span class="token operator">+</span>student<span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">"   : "</span><span class="token operator">+</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> h <span class="token operator">=</span> Objects<span class="token punctuation">.</span><span class="token function">hash</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"计算 "</span><span class="token operator">+</span>name<span class="token operator">+</span><span class="token string">" 的哈希值: "</span><span class="token operator">+</span>h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> h<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"Student{"</span> <span class="token operator">+</span>
+                <span class="token string">"name='"</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
+                <span class="token string">", age="</span> <span class="token operator">+</span> age <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">Student</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+
+    <span class="token keyword">public</span> String <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo03HashSetStudent</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//2.创建HashSet集合对象,泛型Student</span>
+        HashSet<span class="token operator">&lt;</span>Student<span class="token operator">></span> set <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//3.HashSet集合对象调用add方法,添加多个Student对象</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"小军子"</span><span class="token punctuation">,</span><span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"小军子"</span><span class="token punctuation">,</span><span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"小文字"</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"小文字"</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"大亮子"</span><span class="token punctuation">,</span><span class="token number">17</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"大亮子"</span><span class="token punctuation">,</span><span class="token number">17</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"大欢子"</span><span class="token punctuation">,</span><span class="token number">19</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"大欢子"</span><span class="token punctuation">,</span><span class="token number">19</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//4.遍历输出: 迭代器/增强for</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>Student stu <span class="token operator">:</span> set<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>stu<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h4><p>我们知道HashSet保证元素唯一，可是元素存放进去是没有顺序的，那么我们要保证有序，怎么办呢？在HashSet下面有一个子类 java.util.LinkedHashSet ，它是链表和哈希表组合的一个数据存储结构。</p>
+<p>特点:</p>
+<p>1.无索引</p>
+<p>2.不可重复(唯一)</p>
+<p>3.有序: 保证存入和取出的顺序是一致的</p>
+<p>底层数据结构:</p>
+<p>1.底层数据结构: 哈希表 + 链表</p>
+<p>2.哈希表: 保证元素唯一</p>
+<p>3.链表: 保证元素有序</p>
+<h2 id="3-1-数据结构"><a href="#3-1-数据结构" class="headerlink" title="3.1 数据结构"></a>3.1 数据结构</h2><h3 id="3-3-1-数据结构介绍"><a href="#3-3-1-数据结构介绍" class="headerlink" title="3.3.1 数据结构介绍"></a>3.3.1 数据结构介绍</h3><p>数据结构 : 数据用什么样的方式组合在一起。</p>
+<h3 id="3-3-2-常见数据结构"><a href="#3-3-2-常见数据结构" class="headerlink" title="3.3.2 常见数据结构"></a>3.3.2 常见数据结构</h3><p>数据存储的常用结构有：栈、队列、数组、链表和红黑树。我们分别来了解一下：</p>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><ul>
+<li><p>数组:Array,是有序的元素序列，数组是在内存中开辟一段连续的空间，并在此空间存放元素。就像是一排出租屋，有100个房间，从001到100每个房间都有固定编号，通过编号就可以快速找到租房子的人。<br>简单的说,采用该结构的集合，对元素的存取有如下的特点：</p>
+</li>
+<li><p>查找元素快：通过索引，可以快速访问指定位置的元素</p>
+</li>
+<li><p>增删元素慢</p>
+</li>
+<li><p>示例图<br><img src="/2020/02/19/day17list-set-shu-ju-jie-gou-collections/03_%E6%95%B0%E7%BB%84%E7%BB%93%E6%9E%84%E7%89%B9%E7%82%B9.png" alt="数组结构特点图"></p>
+</li>
+</ul>
+<h4 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h4><ul>
+<li>栈：stack,又称堆栈，它是运算受限的线性表，其限制是仅允许在标的一端进行插入和删除操作，不允许在其他任何位置进行添加、查找、删除等操作。</li>
+</ul>
+<p>简单的说：采用该结构的集合，对元素的存取有如下的特点：</p>
+<ul>
+<li><p>先进后出（即，存进去的元素，要在后它后面的元素依次取出后，才能取出该元素）。例如，子弹压进弹夹，先压进去的子弹在下面，后压进去的子弹在上面，当开枪时，先弹出上面的子弹，然后才能弹出下面的子弹。</p>
+</li>
+<li><p>栈的入口、出口的都是栈的顶端位置。</p>
+</li>
+<li><p>示例图<br><img src="/2020/02/19/day17list-set-shu-ju-jie-gou-collections/01_%E6%A0%88%E7%BB%93%E6%9E%84%E7%89%B9%E7%82%B9.png" alt="栈结构特点图"></p>
+</li>
+</ul>
+<h4 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h4><ul>
+<li>队列：queue,简称队，它同堆栈一样，也是一种运算受限的线性表，其限制是仅允许在表的一端进行插入，<br>而在表的另一端进行删除。</li>
+</ul>
+<p>简单的说，采用该结构的集合，对元素的存取有如下的特点：</p>
+<ul>
+<li><p>先进先出（即，存进去的元素，要在后它前面的元素依次取出后，才能取出该元素）。例如，小火车过山洞，车头先进去，车尾后进去；车头先出来，车尾后出来。</p>
+</li>
+<li><p>队列的入口、出口各占一侧。例如，下图中的左侧为入口，右侧为出口。</p>
+</li>
+<li><p>示例图<br><img src="/2020/02/19/day17list-set-shu-ju-jie-gou-collections/02_%E9%98%9F%E5%88%97%E7%BB%93%E6%9E%84%E7%89%B9%E7%82%B9.png" alt="队列结构特点图"></p>
+</li>
+</ul>
+<h4 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h4><ul>
+<li>链表:linked list,由一系列结点node（链表中每一个元素称为结点）组成，结点可以在运行时i动态生成。每个结点包括两个部分：一个是存储数据元素的数据域，另一个是存储下一个结点地址的指针域。我们常说的链表结构有单向链表与双向链表，那么这里给大家介绍的是单向链表</li>
+</ul>
+<p>简单的说，采用该结构的集合，对元素的存取有如下的特点：</p>
+<ul>
+<li><p>多个结点之间，通过地址进行连接。例如，多个人手拉手，每个人使用自己的右手拉住下个人的左手，依次类推，这样多个人就连在一起了。</p>
+</li>
+<li><p>查找元素慢：想查找某个元素，需要通过连接的节点，依次向后查找指定元素</p>
+</li>
+<li><p>增删元素快：</p>
+</li>
+<li><p>示例图<br><img src="/2020/02/19/day17list-set-shu-ju-jie-gou-collections/04_%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%BB%93%E6%9E%84%E7%89%B9%E7%82%B9.png" alt="链表结构特点图"></p>
+</li>
+</ul>
+<h4 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h4><ul>
+<li>暂不做深究</li>
+</ul>
+<h2 id="4-1-Collections类"><a href="#4-1-Collections类" class="headerlink" title="4.1 Collections类"></a>4.1 Collections类</h2><h3 id="4-4-1-Collections常用功能"><a href="#4-4-1-Collections常用功能" class="headerlink" title="4.4.1 Collections常用功能"></a>4.4.1 Collections常用功能</h3><p>java.utils.Collections 是集合工具类，用来对集合进行操作。常用方法如下：</p>
+<p>public static void shuffle(List&lt;?&gt; list) :打乱集合顺序。</p>
+<p>public static <T> void sort(List<T> list) :将集合中元素按照默认规则排序。</T></T></p>
+<p>public static <T> void sort(List<T> list，Comparator&lt;? super T&gt; ) :将集合中元素按照指定规则排序</T></T></p>
+<h3 id="4-4-2-Comparator比较器"><a href="#4-4-2-Comparator比较器" class="headerlink" title="4.4.2 Comparator比较器"></a>4.4.2 Comparator比较器</h3><p>public static <T> void sort(List<T> list，Comparator<T> comp):将集合中元素按照指定规则排序。<br>参数:<br>1.List<T> list: 接口,传递实现类对象 ArrayList和LinkedList</T></T></T></T></p>
+<p>2.Comparator<T> comp: 接口,用来指定比较规则的</T></p>
+<p>抽象方法:<br>public abstract int compare(T t1,T t2): T是引用类型,不能直接相减,必须获取到属性</p>
+<p>第一个参数-第二个参数: 升序</p>
+<p>第二个参数-第一个参数: 降序序</p>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p>例如 创建一个学生类，存储到ArrayList集合中完成指定排序操作</p>
+<h4 id="示例代码-1"><a href="#示例代码-1" class="headerlink" title="示例代码"></a>示例代码</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span>Object o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> o<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>o <span class="token operator">==</span> null <span class="token operator">||</span> <span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> o<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        Student student <span class="token operator">=</span> <span class="token punctuation">(</span>Student<span class="token punctuation">)</span> o<span class="token punctuation">;</span>
+        <span class="token keyword">boolean</span> result <span class="token operator">=</span> age <span class="token operator">==</span> student<span class="token punctuation">.</span>age <span class="token operator">&amp;&amp;</span>
+                Objects<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> student<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">"....equals...."</span><span class="token operator">+</span>student<span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">"   : "</span><span class="token operator">+</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> h <span class="token operator">=</span> Objects<span class="token punctuation">.</span><span class="token function">hash</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"计算 "</span><span class="token operator">+</span>name<span class="token operator">+</span><span class="token string">" 的哈希值: "</span><span class="token operator">+</span>h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> h<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"Student{"</span> <span class="token operator">+</span>
+                <span class="token string">"name='"</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
+                <span class="token string">", age="</span> <span class="token operator">+</span> age <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">Student</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+
+    <span class="token keyword">public</span> String <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyComparator</span> <span class="token keyword">implements</span> <span class="token class-name">Comparator</span><span class="token operator">&lt;</span>Student<span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">compare</span><span class="token punctuation">(</span>Student o1<span class="token punctuation">,</span> Student o2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//年龄升序: 第一个对象的年龄 - 第二个对象的年龄</span>
+        <span class="token keyword">return</span> o1<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> o2<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo07Collections</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//2.创建List集合对象,泛型Student</span>
+        List<span class="token operator">&lt;</span>Student<span class="token operator">></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//3.List集合对象调用add方法,添加多个Student对象</span>
+        list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"zs"</span><span class="token punctuation">,</span><span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"ls"</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"ww"</span><span class="token punctuation">,</span><span class="token number">26</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"zl"</span><span class="token punctuation">,</span><span class="token number">23</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"排序前: "</span><span class="token operator">+</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">/*
+            调用sort方法,按照年龄age属性排序
+            sort方法,需要一个Comparator接口类型的参数,必须传递实现类对象
+            定义Comparator接口的实现类,指定排序规则: 年龄升序
+
+         */</span>
+        Collections<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>list<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">MyComparator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"年龄升序排序后: "</span><span class="token operator">+</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/*
+            调用sort方法,按照年龄age属性排序
+            sort方法,需要一个Comparator接口类型的参数,可以传递匿名内部类对象
+            指定排序规则: 年龄降序
+         */</span>
+        Collections<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>list<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Comparator</span><span class="token operator">&lt;</span>Student<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">compare</span><span class="token punctuation">(</span>Student o1<span class="token punctuation">,</span> Student o2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//指定排序规则: 年龄降序</span>
+                <span class="token comment" spellcheck="true">//第二个参数的年龄 - 第一个参数的年龄</span>
+                <span class="token keyword">return</span> o2<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> o1<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"年龄降序排序后: "</span><span class="token operator">+</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2020/02/21/day18map/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            day18Map
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2020/02/17/day16collection-fan-xing/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">day16Collection、泛型</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    <link rel="stylesheet" href="/css/gitment.css"> 
+<script src="/js/gitment.js"></script>
+
+<div id="gitmentContainer"></div>
+
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        清风伴酒
+      
+    </h3>
+    <p class="avatar-slogan">
+      进击的后端渣渣
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javaSE/">javaSE</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">编程语言</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/12/day47-maven/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/gong-han-mo-shi/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day46-redis/">day46_redis</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day45-ajax-json/">day45-AJAX-Json</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day44jquery-gao-ji/">day44jQuery高级</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+      <div class="widget-box">
+    <h3 class="widget-title">友链</h3>
+    <div class="widget">
+      
+        <a style="display: block;" href="https://yiluyanxia.github.io/" title target='_blank'
+        >一路眼瞎</a>
+      
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 fantasy &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity" target="_blank" rel="noopener">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">不蒜子告之   阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

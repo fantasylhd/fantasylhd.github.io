@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>day13常用类 | fantasyblog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="day13常用类1.1 Object类概述：顶级父类。 toString方法：如果一个类没有重写Object类中的toString方法，那么直接输出对象的时候是，是一个地址值（因为默认调用了Object类中toString方法）因为Object类中的toString就是返回了一个地址值 如果一个类重写了Object类中的toString方法，就直接调用重写后的toString方法。Alt+Lnse">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day13常用类">
+<meta property="og:url" content="https://fantasylhd.github.io/2020/02/12/day13-chang-yong-lei/index.html">
+<meta property="og:site_name" content="fantasyblog">
+<meta property="og:description" content="day13常用类1.1 Object类概述：顶级父类。 toString方法：如果一个类没有重写Object类中的toString方法，那么直接输出对象的时候是，是一个地址值（因为默认调用了Object类中toString方法）因为Object类中的toString就是返回了一个地址值 如果一个类重写了Object类中的toString方法，就直接调用重写后的toString方法。Alt+Lnse">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/02/12/day13-chang-yong-lei/%E5%8C%85%E8%A3%85%E7%B1%BB.png">
+<meta property="article:published_time" content="2020-02-12T09:48:43.000Z">
+<meta property="article:modified_time" content="2020-03-18T08:42:31.437Z">
+<meta property="article:author" content="fantasy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fantasylhd.github.io/2020/02/12/day13-chang-yong-lei/%E5%8C%85%E8%A3%85%E7%B1%BB.png">
+  
+    <link rel="alternate" href="/atom.xml" title="fantasyblog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpg">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/highlight.css">
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-day13常用类" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      day13常用类
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2020/02/12/day13-chang-yong-lei/" class="article-date">
+  <time datetime="2020-02-12T09:48:43.000Z" itemprop="datePublished">2020-02-12</time>
+</a>
+    
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h1 id="day13常用类"><a href="#day13常用类" class="headerlink" title="day13常用类"></a>day13常用类</h1><h2 id="1-1-Object类"><a href="#1-1-Object类" class="headerlink" title="1.1 Object类"></a>1.1 Object类</h2><p>概述：顶级父类。</p>
+<h3 id="toString方法："><a href="#toString方法：" class="headerlink" title="toString方法："></a>toString方法：</h3><p>如果一个类没有重写Object类中的toString方法，那么直接输出对象的时候是，是一个地址值（因为默认调用了Object类中toString方法）因为Object类中的toString就是返回了一个地址值</p>
+<p>如果一个类重写了Object类中的toString方法，就直接调用重写后的toString方法。<br>Alt+Lnsert–&gt;toString（自动生成）</p>
+<a id="more"></a>
+<h3 id="equals方法："><a href="#equals方法：" class="headerlink" title="equals方法："></a>equals方法：</h3><p>==</p>
+<p>针对基本数据类型比较：值</p>
+<p>针对引用数据类型：地址值</p>
+<p>1.不重写Object类中的equals方法，调用equals方法的时候，默认走Object类中的，比较地址值<br>2.重写了equals方法之后，我们应该比较的是属性值，我们就调用重写的equals方法。</p>
+<p>Alt+Lnsert–&gt;equals…</p>
+<h3 id="在自己的类中重写equals方法的注意事项"><a href="#在自己的类中重写equals方法的注意事项" class="headerlink" title="在自己的类中重写equals方法的注意事项"></a>在自己的类中重写equals方法的注意事项</h3><pre><code>    问题1:传递的实参是p1,Object参数接收的就是Person类型
+        我们应该调用Person中的name和age去比较值是否相等
+        那么Object obj = p2,无法调用Person中特有的name,age
+    解决:向下转型
+
+    问题2:如果我们传递的不是Person类型,那么向下转型的时候,会因为类型不一致而报错
+         ClassCastException
+    解决:利用instanceof去判断，还可以使用getClass()。
+
+    问题3:如果传递的是null,那么我们还得去判断一下,效率较低
+    解决:我从上面做非空判断
+
+    问题4:如果传递的是自己呢?就不要获取自己的name age了
+    解决:直接比较自己的地址值,提高判断效率</code></pre><ul>
+<li>示例代码</li>
+</ul>
+<pre class=" language-java"><code class="language-java"> <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span>Object o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> o<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>o <span class="token operator">==</span> null <span class="token operator">||</span> <span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> o<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        Person person <span class="token operator">=</span> <span class="token punctuation">(</span>Person<span class="token punctuation">)</span> o<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> age <span class="token operator">==</span> person<span class="token punctuation">.</span>age <span class="token operator">&amp;&amp;</span>
+                Objects<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> person<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
+<h2 id="1-2-Date类"><a href="#1-2-Date类" class="headerlink" title="1.2 Date类"></a>1.2 Date类</h2><p>概述：类 Date 代表日期，精确到毫秒。</p>
+<p>瞬间：一刹那</p>
+<p>毫秒：时间单位    1秒=1000毫秒</p>
+<p>作用：表示时间   测试代码的运行效率</p>
+<p>获取毫秒：  System.currentTimeMillis（）；</p>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><p>  Date（）;  –&gt;直接获取当前时间</p>
+<p>  Daet（long date）; –&gt; 根据毫秒获取时间</p>
+<h3 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h3><p>  Ctrl+Alt+M（方法快速生成）</p>
+<p> public long getTime（）把日期对象转换成时间毫秒值</p>
+<p> public void setTime（long time） 把方法参数给定的毫秒值设置给日期对象</p>
+<h2 id="1-3-DeteFormat类"><a href="#1-3-DeteFormat类" class="headerlink" title="1.3 DeteFormat类"></a>1.3 DeteFormat类</h2><p> 1.概述：是一个日期格式化的类，是一个抽象类</p>
+<p> 2.使用的时候创建子类对象  SimpleDateFormat</p>
+<p> 3.new SimpleDateFormat（需要给一个格式）</p>
+<p> 注意：大小写不能写错，中间连接符随便写</p>
+<p> 例：  yyyy-MM-dd-HH-mm-ss</p>
+<h3 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h3><p> public string format（Date date）</p>
+<p> Date对象格式化成字符串</p>
+<p> public Date parse（string suorce）</p>
+<p> 字符串解析为Date对象</p>
+<h2 id="1-4-Calendar类"><a href="#1-4-Calendar类" class="headerlink" title="1.4 Calendar类"></a>1.4 Calendar类</h2><p>概述：可以为在某一特定时刻和一组之间的转换的方法calendar fields如YEAR ， MONTH ， DAY_OF_MONTH ， HOUR ，等等，以及用于操纵该日历字段，如获取的日期下个星期。 时间上的瞬间可以表示为毫秒值，该值与1970年1月1日00：00：00.000 GMT（格里高利）的Epoch偏移。  </p>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>Calendar rightNow = Calendar.getInstance();</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>public int get(int field)：返回给定日历字段的值。</p>
+<p>public void set(int field, int value)：将给定的日历字段设置为给定值。</p>
+<p>public abstract void add(int field, int amount)：根据日历的规则，为给定的日历字段添加或减去指定的时间量。</p>
+<p>public Date getTime()：返回一个表示此Calendar时间值（从历元到现在的毫秒偏移量）的Date对象。</p>
+<h2 id="1-5-Math-数学类"><a href="#1-5-Math-数学类" class="headerlink" title="1.5 Math 数学类"></a>1.5 Math 数学类</h2><h3 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h3><p> 所有方法都是静态的</p>
+<p> 类名直接调用</p>
+<p> min 返回最小</p>
+<p> max 返回最大</p>
+<p> abs 返回绝对值</p>
+<p> ceil  返回大于等于参数最小值，等于一个整数</p>
+<p> floor  返回小于等于参数最小值，等于一个整数</p>
+<p> round 四舍五入</p>
+<h2 id="1-6-System类"><a href="#1-6-System类" class="headerlink" title="1.6 System类"></a>1.6 System类</h2><p> out–&gt;是system里的成员变量，被static final修饰</p>
+<p>方法:</p>
+<pre><code>  public   static void exit(int status)终止当前运行的   Java   虚拟机，非零表示异常终止
+
+  public   static long currentTimeMillis()返回当前时间(以毫秒为单位)--&gt;测试效率
+
+  public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)
+  复制数组元素:
+      src:原数组
+      srcPos:从原数组的第几个索引开始复制
+      dest:目的数组
+      destPos:从目的数组的那个所以开始粘贴
+      length:复制多长</code></pre><h2 id="1-7-包装类"><a href="#1-7-包装类" class="headerlink" title="1.7 包装类"></a>1.7 包装类</h2><p> 概述： 基本数据类型所对应的引用数据类型</p>
+<h3 id="Integer"><a href="#Integer" class="headerlink" title="Integer"></a>Integer</h3><p> 概述：包装一个对象的原始类型int类</p>
+<p> <img src="/2020/02/12/day13-chang-yong-lei/%E5%8C%85%E8%A3%85%E7%B1%BB.png" alt="包装类"></p>
+<p>用法：</p>
+<p> public Integer（int value）</p>
+<p>public Integer（stringvalue） 将字符串转成包装类，只能写数字</p>
+<p>基本数据类型和字符串进行转换</p>
+<p>  基本–&gt;字符串:拼接””<br>                String类静态方法valueOf()</p>
+<p>  字符串–&gt;基本数据类型<br>            parsexxx()</p>
+<h3 id="拆箱和装箱"><a href="#拆箱和装箱" class="headerlink" title="拆箱和装箱"></a>拆箱和装箱</h3><p>装箱：Valueof–&gt;将基本数据类型转换成剧本数据类型</p>
+<p>拆箱：intValue –&gt;把包装类转成对应的基本数据类型</p>
+<h3 id="自动拆箱和装箱"><a href="#自动拆箱和装箱" class="headerlink" title="自动拆箱和装箱"></a>自动拆箱和装箱</h3><p>自动装箱：</p>
+<p>基本类型的数据处于需要对象的环境中时，会自动转为“对象”。</p>
+<pre><code> 如 Integer i = 5</code></pre><p>自动拆箱：<br>  每当需要一个值时，对象会自动转成基本数据类型，没必要再去显式调用intValue()、doubleValue()等转型方法。</p>
+<pre><code>  如 Integer i = 5;int j = i; 这样的过程就是自动拆箱。</code></pre>
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2020/02/13/day14-yi-chang-ji-zhi/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            day14异常机制
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2020/02/11/day12static-he-final-he-nei-bu-lei/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">day12static和final和内部类</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    <link rel="stylesheet" href="/css/gitment.css"> 
+<script src="/js/gitment.js"></script>
+
+<div id="gitmentContainer"></div>
+
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        清风伴酒
+      
+    </h3>
+    <p class="avatar-slogan">
+      进击的后端渣渣
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javaSE/">javaSE</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">编程语言</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/12/day47-maven/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/gong-han-mo-shi/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day46-redis/">day46_redis</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day45-ajax-json/">day45-AJAX-Json</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day44jquery-gao-ji/">day44jQuery高级</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+      <div class="widget-box">
+    <h3 class="widget-title">友链</h3>
+    <div class="widget">
+      
+        <a style="display: block;" href="https://yiluyanxia.github.io/" title target='_blank'
+        >一路眼瞎</a>
+      
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 fantasy &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity" target="_blank" rel="noopener">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">不蒜子告之   阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

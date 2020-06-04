@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>day39Cookie-Session | fantasyblog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="day39Cookie-Session1.1 Cookie1.1.1 什么是cookieCookie 是在 HTTP 协议下，服务器或脚本可以维护客户工作站上信息的一种方式。Cookie 是由 Web 服务器保存在用户浏览器（客户端）上的小文本文件，它可以包含有关用户的信息。无论何时用户链接到服务器，Web 站点都可以访问 Cookie 信息 。 Cookie技术是将用户的数据由服务端存储到客户端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day39Cookie-Session">
+<meta property="og:url" content="https://fantasylhd.github.io/2020/04/05/day39cookie-session/index.html">
+<meta property="og:site_name" content="fantasyblog">
+<meta property="og:description" content="day39Cookie-Session1.1 Cookie1.1.1 什么是cookieCookie 是在 HTTP 协议下，服务器或脚本可以维护客户工作站上信息的一种方式。Cookie 是由 Web 服务器保存在用户浏览器（客户端）上的小文本文件，它可以包含有关用户的信息。无论何时用户链接到服务器，Web 站点都可以访问 Cookie 信息 。 Cookie技术是将用户的数据由服务端存储到客户端">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/04/05/day39cookie-session/1.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/04/05/day39cookie-session/2.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/04/05/day39cookie-session/3.png">
+<meta property="article:published_time" content="2020-04-05T04:47:38.000Z">
+<meta property="article:modified_time" content="2020-04-07T06:44:50.048Z">
+<meta property="article:author" content="fantasy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fantasylhd.github.io/2020/04/05/day39cookie-session/1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="fantasyblog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpg">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/highlight.css">
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-day39Cookie-Session" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      day39Cookie-Session
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2020/04/05/day39cookie-session/" class="article-date">
+  <time datetime="2020-04-05T04:47:38.000Z" itemprop="datePublished">2020-04-05</time>
+</a>
+    
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h1 id="day39Cookie-Session"><a href="#day39Cookie-Session" class="headerlink" title="day39Cookie-Session"></a>day39Cookie-Session</h1><h2 id="1-1-Cookie"><a href="#1-1-Cookie" class="headerlink" title="1.1 Cookie"></a>1.1 Cookie</h2><h3 id="1-1-1-什么是cookie"><a href="#1-1-1-什么是cookie" class="headerlink" title="1.1.1 什么是cookie"></a>1.1.1 什么是cookie</h3><p>Cookie 是在 HTTP 协议下，服务器或脚本可以维护客户工作站上信息的一种方式。Cookie 是由 Web 服务器保存在用户浏览器（客户端）上的小文本文件，它可以包含有关用户的信息。无论何时用户链接到服务器，Web 站点都可以访问 Cookie 信息 。</p>
+<p>Cookie技术是将用户的数据由服务端存储到客户端的技术，我们分为两方面学习： 第一，服务器端怎样将一个Cookie发送到客户端 . 第二，服务器端怎样接受客户端携带的Cookie </p>
+<h3 id="1-1-2-Cookie的应用场景"><a href="#1-1-2-Cookie的应用场景" class="headerlink" title="1.1.2 Cookie的应用场景"></a>1.1.2 Cookie的应用场景</h3><ol>
+<li><p>记住用户名</p>
+</li>
+<li><p>自动登录（记住用户名和密码）</p>
+</li>
+</ol>
+<h3 id="1-1-3-Cookie的基本使用"><a href="#1-1-3-Cookie的基本使用" class="headerlink" title="1.1.3 Cookie的基本使用"></a>1.1.3 Cookie的基本使用</h3><h4 id="cookie常用的方法介绍"><a href="#cookie常用的方法介绍" class="headerlink" title="cookie常用的方法介绍"></a>cookie常用的方法介绍</h4><p>Cookie(String name, String value) 创建cookie对象</p>
+<ol>
+<li><p>String getName()  获取cookie的名称</p>
+</li>
+<li><p>String getValue()  获取cookie的值</p>
+</li>
+<li><p>void setPath(String uri)  设置cookie的路径——浏览器根据这个路径判断哪些cookie要发送给服务器</p>
+</li>
+</ol>
+<p>HttpServletResponse</p>
+<ol>
+<li>void addCookie(Cookie cookie)  将cookie发送给浏览器</li>
+</ol>
+<p>HttpServletRequest</p>
+<ol>
+<li>Cookie[] getCookies()  获取浏览器发送的cookie</li>
+</ol>
+<p>cookie技术原理分析：<br><img src="/2020/04/05/day39cookie-session/1.png" alt></p>
+<p>删除cookie</p>
+<p>void setMaxAge(int expiry)  设置cookie的最大生存时间（单位：秒）</p>
+<p>void setPath(String uri)  设置cookie的路径——浏览器根据这个路径判断那些cookie要发送给服务器</p>
+<p>删除cookie步骤 :</p>
+<ol>
+<li>设置生存时间为 0</li>
+<li>后一个用来覆盖cookie必须名称与路径与原来的cookie一致</li>
+</ol>
+<h2 id="1-2-Session"><a href="#1-2-Session" class="headerlink" title="1.2 Session"></a>1.2 Session</h2><h3 id="1-2-1-基本概念"><a href="#1-2-1-基本概念" class="headerlink" title="1.2.1 基本概念"></a>1.2.1 基本概念</h3><p>当人们去医院就诊时，就诊病人需要办理医院的就诊卡，该卡上只有卡号，而没有其它信息。但病人每次去该医院就诊时，只要出示就诊卡，医务人员便可根据卡号查询到病人的就诊信息。Session技术就好比医院发放给病人的就医卡和医院为每个病人保留病例档案的过程。当浏览器访问Web服务器时，Servlet容器就会创建一个Session对象和ID属性，其中，Session对象就相当于病历档案，ID就相当于就诊卡号。当客户端后续访问服务器时，只要将标识号传递给服务器，服务器就能判断出该请求是哪个客户端发送的，从而选择与之对应的Session对象为其服务。</p>
+<p>需要注意的是，由于客户端需要接收、记录和回送Session对象的ID，因此，通常情况下，Session是借助Cookie技术来传递ID属性的。那么哪些数据存在session中呢 ?</p>
+<ul>
+<li>使用servlet生成验证码时，我们需要在服务器记录一份生成的随机字符，当用户提交填写的数据时，将用户输入的数据和服务器缓存的数据进行比对。</li>
+</ul>
+<h3 id="1-2-2-应用场景"><a href="#1-2-2-应用场景" class="headerlink" title="1.2.2 应用场景"></a>1.2.2 应用场景</h3><ol>
+<li>保存购物车数据</li>
+<li>保存用户浏览器记录数据</li>
+<li>保存用户登录信息数据</li>
+<li>保存验证码</li>
+</ol>
+<h3 id="1-2-3-基本使用"><a href="#1-2-3-基本使用" class="headerlink" title="1.2.3 基本使用"></a>1.2.3 基本使用</h3><h4 id="存储数据与获取数据"><a href="#存储数据与获取数据" class="headerlink" title="存储数据与获取数据"></a>存储数据与获取数据</h4><p>HttpServletRequest</p>
+<ol>
+<li>HttpSession getSession()  获取session对象</li>
+</ol>
+<p>HttpSession</p>
+<ol>
+<li>void setAttribute(String name, Object value) 在session中保存数据</li>
+<li>Object getAttribute(String name)  从session中获取数据</li>
+<li>void removeAttribute(String name)  从session中移除数据</li>
+</ol>
+<p>注意：</p>
+<p>getAttribute方法返回值是Object，因此需要将返回值强制转换才能方便使用。</p>
+<p>原理分析<br><img src="/2020/04/05/day39cookie-session/2.png" alt></p>
+<h3 id="1-2-4-session的持久化"><a href="#1-2-4-session的持久化" class="headerlink" title="1.2.4 session的持久化"></a>1.2.4 session的持久化</h3><p>通过上面的原理图，我们发现记录sessionid的cookie在关闭浏览器之后就到期了，那么如果我们希望——关闭浏览器继续可以访问session数据，该怎么做呢？</p>
+<p>实现步骤：</p>
+<ol>
+<li>创建一个servlet</li>
+<li>通过request对象获取session的id</li>
+<li>自定义一个cookie对象，保存session的id，注意cookie名称为”JSESSIONID”，设置一个比较长的生存时间</li>
+<li>发送给浏览器</li>
+</ol>
+<h3 id="1-2-5-session生命周期"><a href="#1-2-5-session生命周期" class="headerlink" title="1.2.5 session生命周期"></a>1.2.5 session生命周期</h3><p>session对象什么时候创建</p>
+<ul>
+<li>当调用request.getSession()方法时 .请求没有携带jsessionid或者携带的不匹配 , 就会创建.</li>
+</ul>
+<p>session对象什么时候销毁</p>
+<ul>
+<li><p>默认30分钟销毁, tomcat全局配置文件web.xml , 从最后一次访问时间计时.</p>
+</li>
+<li><p>手动销毁 : 调用方法session.invalidate();</p>
+</li>
+<li><p>关闭服务器 , 不考虑钝化的情况.</p>
+</li>
+</ul>
+<h3 id="1-2-6-三大域对象对比"><a href="#1-2-6-三大域对象对比" class="headerlink" title="1.2.6 三大域对象对比"></a>1.2.6 三大域对象对比</h3><p>三个域对象的生命周期的比较？</p>
+<ol>
+<li><p>ServletContext 创建：服务器启动 销毁：服务器关闭 作用范围：整个web应用</p>
+</li>
+<li><p>session 创建：本质jsessionid与服务器端的任何session都不匹配时，调用request.getSession()时创建 销毁：服务器关闭/ session失效/ 手动关闭 作用范围：默认一次会话</p>
+</li>
+<li><p>request 创建：请求 销毁：请求结束 作用范围：一次请求链</p>
+</li>
+<li><p>是否浏览器关闭对应的session就销毁了？ 不对. 只不过是jsessionid默认会消失。</p>
+</li>
+<li><p>存储到session中的数据丢失了，有什么可能？ id丢失 或者 session销毁了。</p>
+</li>
+</ol>
+<h3 id="1-2-7-session的与cookie的区别"><a href="#1-2-7-session的与cookie的区别" class="headerlink" title="1.2.7 session的与cookie的区别"></a>1.2.7 session的与cookie的区别</h3><p><img src="/2020/04/05/day39cookie-session/3.png" alt></p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2020/04/06/day40el-jstl/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            day40el-jstl
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2020/04/02/day38response-request-jsp/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">day38Response-Request-JSP</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    <link rel="stylesheet" href="/css/gitment.css"> 
+<script src="/js/gitment.js"></script>
+
+<div id="gitmentContainer"></div>
+
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        清风伴酒
+      
+    </h3>
+    <p class="avatar-slogan">
+      进击的后端渣渣
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javaSE/">javaSE</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">编程语言</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/12/day47-maven/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/gong-han-mo-shi/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day46-redis/">day46_redis</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day45-ajax-json/">day45-AJAX-Json</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day44jquery-gao-ji/">day44jQuery高级</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+      <div class="widget-box">
+    <h3 class="widget-title">友链</h3>
+    <div class="widget">
+      
+        <a style="display: block;" href="https://yiluyanxia.github.io/" title target='_blank'
+        >一路眼瞎</a>
+      
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 fantasy &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity" target="_blank" rel="noopener">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">不蒜子告之   阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

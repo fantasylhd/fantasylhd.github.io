@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>day43jQuery基础 | fantasyblog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="day43jQuery基础1.1  jQuery入门1.1.1 jQuery介绍jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀JavaScript代码库（或JavaScript框架）。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day43jQuery基础">
+<meta property="og:url" content="https://fantasylhd.github.io/2020/04/12/day43jquery-ji-chu/index.html">
+<meta property="og:site_name" content="fantasyblog">
+<meta property="og:description" content="day43jQuery基础1.1  jQuery入门1.1.1 jQuery介绍jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀JavaScript代码库（或JavaScript框架）。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScr">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-12T09:40:51.000Z">
+<meta property="article:modified_time" content="2020-04-17T09:56:17.166Z">
+<meta property="article:author" content="fantasy">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="fantasyblog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpg">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/highlight.css">
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-day43jQuery基础" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      day43jQuery基础
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2020/04/12/day43jquery-ji-chu/" class="article-date">
+  <time datetime="2020-04-12T09:40:51.000Z" itemprop="datePublished">2020-04-12</time>
+</a>
+    
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h1 id="day43jQuery基础"><a href="#day43jQuery基础" class="headerlink" title="day43jQuery基础"></a>day43jQuery基础</h1><h2 id="1-1-jQuery入门"><a href="#1-1-jQuery入门" class="headerlink" title="1.1  jQuery入门"></a>1.1  jQuery入门</h2><h3 id="1-1-1-jQuery介绍"><a href="#1-1-1-jQuery介绍" class="headerlink" title="1.1.1 jQuery介绍"></a>1.1.1 jQuery介绍</h3><p>jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀JavaScript代码库（或JavaScript框架）。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。jQuery实现了跨越浏览器，开发者不需要在关注浏览器的兼容性了，但是从2.0版本开始，不在兼容IE6，7，8</p>
+<h3 id="1-1-2-jQuery基本使用方式"><a href="#1-1-2-jQuery基本使用方式" class="headerlink" title="1.1.2 jQuery基本使用方式"></a>1.1.2 jQuery基本使用方式</h3><p>页面中引入jQuery文件</p>
+<pre class=" language-javaScript"><code class="language-javaScript"><script src="../js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script></code></pre>
+<p>首先调用jQuery中的核心函数，函数的名就是jQuery，在此函数的参数中传递匿名函数，这<br>个匿名函数将在页面加载完成后执行，相当于window.onload(在页面中只能执行一次)，同事函数名jQuery可以简写为$。同时$也是jQuery中的选择器，可以查找页面中的标签元素。</p>
+<pre class=" language-javaScript"><code class="language-javaScript">        <script type="text/javascript">
+
+        $(function(){
+            alert("hello jQuery !!!")
+        });
+
+        $(function(){
+            alert("hello jQuery222 !!!")
+        });
+
+        </script></code></pre>
+<h3 id="1-1-3-DOM对象和jQuery对象的相互转换"><a href="#1-1-3-DOM对象和jQuery对象的相互转换" class="headerlink" title="1.1.3 DOM对象和jQuery对象的相互转换"></a>1.1.3 DOM对象和jQuery对象的相互转换</h3><p>DOM对象和jQuery对象相互是不通用的，也就是说document.getXXX()获取到的元素，属于<br>DOM对象，只能调用DOM对象中提供的方法和属性。而使用$(“XX”)获取到的元素属于jQuery对象，只能调用jQuery对象的方法。</p>
+<p>将DOM对象转成jQuery对象，使用$包裹即可</p>
+<pre class=" language-javaScript"><code class="language-javaScript">var $jquery = $(dom对象)；</code></pre>
+<p>jQuery对象转成DOM对象</p>
+<pre class=" language-javaScript"><code class="language-javaScript">var dom = $jquery[0];</code></pre>
+<h2 id="1-2-jQuery选择器"><a href="#1-2-jQuery选择器" class="headerlink" title="1.2 jQuery选择器"></a>1.2 jQuery选择器</h2><p>jQuery的选择器与css的选择器的作用是完全一样的，目的是精确快速的定位到某个html元素上并获取该元素对象，进而使用jQuery的方法对该html进行操作。jQuery常用的选择器有如下：基本选择器，层级选择器，属性选择器，基本过滤选择器，表单属性选择器等</p>
+<h3 id="1-2-1-基本选择器"><a href="#1-2-1-基本选择器" class="headerlink" title="1.2.1 基本选择器"></a>1.2.1 基本选择器</h3><ol>
+<li>标签选择器（元素选择器）：$(“html标签名”)</li>
+<li>id选择器：$(“#id的属性值”)</li>
+<li>类选择器：$(“.class的属性值”)</li>
+</ol>
+<h3 id="1-2-2-层级选择器"><a href="#1-2-2-层级选择器" class="headerlink" title="1.2.2 层级选择器"></a>1.2.2 层级选择器</h3><ol>
+<li>获得A元素内部的所有的B元素：$(“A B “)</li>
+<li>获得A元素下面的所有B子元素：$(“A &gt; B”)</li>
+<li>获得A元素同级下一个B元素：$(“A + B”)</li>
+<li>获得A元素同级所有后面B元素：$(“A ~ B”)</li>
+</ol>
+<p>siblings方法,选择所有的同级标签</p>
+<h3 id="1-2-3-属性选择器"><a href="#1-2-3-属性选择器" class="headerlink" title="1.2.3 属性选择器"></a>1.2.3 属性选择器</h3><ol>
+<li>$(“标签名[属性名]”)  包含这个属性就选择</li>
+</ol>
+<ol start="2">
+<li>$(“标签名[属性名=值]”) 有这个属性的值就选择</li>
+</ol>
+<ol start="3">
+<li>标签名[属性名!=’属性值’]  不含某种属性值 ,就选择</li>
+</ol>
+<ol start="4">
+<li>标签名[属性名*=’属性值’]  *=  包含属性值 包含属性就选择</li>
+</ol>
+<ol start="5">
+<li>标签名[属性名$=’属性值’]  $=  以属性值结束 以什么结束就选择</li>
+</ol>
+<ol start="6">
+<li>标签名[属性名^=’属性值’]  ^=  以属性值开始. 以什么开始就选择</li>
+</ol>
+<ol start="7">
+<li>$(“标签名[属性名!=值][属性名!=值][属性名!=值]”) 含有多个满足的元素就选择</li>
+</ol>
+<h3 id="1-2-4-基本过滤选择器"><a href="#1-2-4-基本过滤选择器" class="headerlink" title="1.2.4 基本过滤选择器"></a>1.2.4 基本过滤选择器</h3><ol>
+<li>$(“div:first”).css(“background-color”, “red”);  first：  第一个标签</li>
+</ol>
+<ol start="2">
+<li>$(“div:last”).css(“background-color”, “red”);   last：   最后一个标签’</li>
+</ol>
+<ol start="3">
+<li>$(“div:not(.one)”).css(“background-color”, “red”);  not： 取反</li>
+</ol>
+<ol start="4">
+<li>$(“div:even”).css(“background-color”, “red”);     even:  下标为偶数</li>
+</ol>
+<ol start="5">
+<li>$(“div:odd”).css(“background-color”, “green”);    odd:    下标为奇数</li>
+</ol>
+<ol start="6">
+<li>$(“div:gt(3)”).css(“background-color”, “green”);  gt(index): 大于index的<br>标签</li>
+</ol>
+<ol start="7">
+<li>$(“div:lt(3)”).css(“background-color”, “green”);   lt(index)：小于index的标签</li>
+</ol>
+<ol start="8">
+<li>$(“div:eq(3)”).css(“background-color”, “green”);   eq(index) 等于index的标签</li>
+</ol>
+<ol start="9">
+<li><p>$(“:header”).css(“background-color”, “green”);  header：获得标题</p>
+</li>
+<li><p>$(“:animated”).css(“background-color”, “green”);  animated：获得正在执行的动画标签</p>
+</li>
+</ol>
+<h3 id="1-2-5-表单属性选择器"><a href="#1-2-5-表单属性选择器" class="headerlink" title="1.2.5 表单属性选择器"></a>1.2.5 表单属性选择器</h3><ol>
+<li>可用： :enabled</li>
+</ol>
+<ol start="2">
+<li>不可用： :disabled</li>
+</ol>
+<ol start="3">
+<li>选中（单选radio ，多选checkbox）： :checked</li>
+</ol>
+<ol start="4">
+<li>选择（下列列表 select ）： :selected</li>
+</ol>
+<p>注意：这些选择器可以适当的结合使用</p>
+<h2 id="1-3-jQuery的DOM方法操作"><a href="#1-3-jQuery的DOM方法操作" class="headerlink" title="1.3 jQuery的DOM方法操作"></a>1.3 jQuery的DOM方法操作</h2><h3 id="1-3-1-文本-值操作"><a href="#1-3-1-文本-值操作" class="headerlink" title="1.3.1 文本/值操作"></a>1.3.1 文本/值操作</h3><ol>
+<li>html() === innerHTML</li>
+</ol>
+<ol start="2">
+<li>text() === innerText</li>
+</ol>
+<ol start="3">
+<li>val() === value</li>
+</ol>
+<p>注意：括号内 传递参数代表赋值 空参代表获取</p>
+<h3 id="1-3-2-属性操作"><a href="#1-3-2-属性操作" class="headerlink" title="1.3.2 属性操作"></a>1.3.2 属性操作</h3><ol>
+<li>attr() === setAttribute和getAttribute</li>
+</ol>
+<ol start="2">
+<li>attr(属性名称); — 获取属性的值</li>
+</ol>
+<ol start="3">
+<li>attr(属性名称,属性值) — 设置的属性的值</li>
+</ol>
+<ol start="4">
+<li>removeAttr(“属性名称”);— 移除属性</li>
+</ol>
+<ol start="5">
+<li>prop(“属性名称”));— 表单内使用获得属性值</li>
+</ol>
+<h3 id="1-3-3-css操作"><a href="#1-3-3-css操作" class="headerlink" title="1.3.3 css操作"></a>1.3.3 css操作</h3><ol>
+<li>addClass（值） === attr(“class”,值)</li>
+</ol>
+<ol start="2">
+<li>removeClass（class值） === removeAttr（“class值”）：不传参全部移除</li>
+</ol>
+<ol start="3">
+<li>css() ==== js对象.style.属性</li>
+</ol>
+<ol start="4">
+<li>css(css属性名) 获取css属性名称对应值</li>
+</ol>
+<ol start="5">
+<li>css(css属性名,值) 设置css样式</li>
+</ol>
+<ol start="6">
+<li>toggleClass(“属性值”);</li>
+</ol>
+<h3 id="1-3-4-元素创建-内部插入"><a href="#1-3-4-元素创建-内部插入" class="headerlink" title="1.3.4 元素创建/内部插入"></a>1.3.4 元素创建/内部插入</h3><ol>
+<li>append() 追加子节点</li>
+</ol>
+<ol start="2">
+<li>prepend() 追加子节点，在最前</li>
+</ol>
+<ol start="3">
+<li>remove() 移除节点</li>
+</ol>
+<ol start="4">
+<li>empty() 清空所有子节点</li>
+</ol>
+<h3 id="1-3-5-动画效果"><a href="#1-3-5-动画效果" class="headerlink" title="1.3.5 动画效果"></a>1.3.5 动画效果</h3><h4 id="元素的显示与隐藏"><a href="#元素的显示与隐藏" class="headerlink" title="元素的显示与隐藏"></a>元素的显示与隐藏</h4><ol>
+<li>show(speed ,fn) 显示参数 speed，显示速度，单位：毫秒。固定字符串：slow, normal, orfast参数 fn，显示成功之后回调函数。</li>
+</ol>
+<ol start="2">
+<li>hide() 隐藏</li>
+</ol>
+<ol start="3">
+<li>toggle() 切换</li>
+</ol>
+<h4 id="元素的滑动显示与隐藏"><a href="#元素的滑动显示与隐藏" class="headerlink" title="元素的滑动显示与隐藏"></a>元素的滑动显示与隐藏</h4><ol>
+<li>slideDown() 显示，高度变大。</li>
+</ol>
+<ol start="2">
+<li>slideUp() 隐藏，高度变小。</li>
+</ol>
+<ol start="3">
+<li>slideToggle() 切换</li>
+</ol>
+<h4 id="元素的淡入淡出的显示与隐藏"><a href="#元素的淡入淡出的显示与隐藏" class="headerlink" title="元素的淡入淡出的显示与隐藏"></a>元素的淡入淡出的显示与隐藏</h4><ol>
+<li>fadeIn() 显示</li>
+</ol>
+<ol start="2">
+<li>fadeOut() 隐藏</li>
+</ol>
+<ol start="3">
+<li>fadeToggle() 切换</li>
+</ol>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2020/04/12/day44jquery-gao-ji/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            day44jQuery高级
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2020/04/12/day42jdbc-tiao-jian-cha-xun-fen-ye/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">day42jdbc条件查询-分页</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    <link rel="stylesheet" href="/css/gitment.css"> 
+<script src="/js/gitment.js"></script>
+
+<div id="gitmentContainer"></div>
+
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        清风伴酒
+      
+    </h3>
+    <p class="avatar-slogan">
+      进击的后端渣渣
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javaSE/">javaSE</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">编程语言</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/12/day47-maven/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/gong-han-mo-shi/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day46-redis/">day46_redis</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day45-ajax-json/">day45-AJAX-Json</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day44jquery-gao-ji/">day44jQuery高级</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+      <div class="widget-box">
+    <h3 class="widget-title">友链</h3>
+    <div class="widget">
+      
+        <a style="display: block;" href="https://yiluyanxia.github.io/" title target='_blank'
+        >一路眼瞎</a>
+      
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 fantasy &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity" target="_blank" rel="noopener">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">不蒜子告之   阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

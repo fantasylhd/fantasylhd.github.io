@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>day37Servlet | fantasyblog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="day37Servlet1.1 Servlet的概述1.1.1 什么是ServletServlet 运行在服务端的Java小程序，是sun公司提供一套规范，用来处理客户端请求、响应给浏览器的动态资源。Servlet是JavaWeb三大组件之一（Servlet、Filter、Listener），且最重要。 1.1.2 Servlet的作用用来处理从客户端发送过来的请求,并对该请求作出响应。 Serv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day37Servlet">
+<meta property="og:url" content="https://fantasylhd.github.io/2020/04/01/day37servlet/index.html">
+<meta property="og:site_name" content="fantasyblog">
+<meta property="og:description" content="day37Servlet1.1 Servlet的概述1.1.1 什么是ServletServlet 运行在服务端的Java小程序，是sun公司提供一套规范，用来处理客户端请求、响应给浏览器的动态资源。Servlet是JavaWeb三大组件之一（Servlet、Filter、Listener），且最重要。 1.1.2 Servlet的作用用来处理从客户端发送过来的请求,并对该请求作出响应。 Serv">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/04/01/day37servlet/day37Servlet%5C2.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/04/01/day37servlet/day37Servlet%5C3.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/04/01/day37servlet/day37Servlet%5C4.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/04/01/day37servlet/day37Servlet%5C5.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/04/01/day37servlet/day37Servlet%5C6.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/04/01/day37servlet/day37Servlet%5C7.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/04/01/day37servlet/day37Servlet%5C8.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/04/01/day37servlet/day37Servlet%5C9.png">
+<meta property="og:image" content="https://fantasylhd.github.io/2020/04/01/day37servlet/day37Servlet%5C10.png">
+<meta property="article:published_time" content="2020-04-01T09:42:14.000Z">
+<meta property="article:modified_time" content="2020-04-04T06:47:04.212Z">
+<meta property="article:author" content="fantasy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fantasylhd.github.io/2020/04/01/day37servlet/day37Servlet%5C2.png">
+  
+    <link rel="alternate" href="/atom.xml" title="fantasyblog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpg">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/highlight.css">
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title
+        
+        >首页</a>
+      
+        <a class="nav-item" href="/archives" title
+        
+        >归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-day37Servlet" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      day37Servlet
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2020/04/01/day37servlet/" class="article-date">
+  <time datetime="2020-04-01T09:42:14.000Z" itemprop="datePublished">2020-04-01</time>
+</a>
+    
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h1 id="day37Servlet"><a href="#day37Servlet" class="headerlink" title="day37Servlet"></a>day37Servlet</h1><h2 id="1-1-Servlet的概述"><a href="#1-1-Servlet的概述" class="headerlink" title="1.1 Servlet的概述"></a>1.1 Servlet的概述</h2><h3 id="1-1-1-什么是Servlet"><a href="#1-1-1-什么是Servlet" class="headerlink" title="1.1.1 什么是Servlet"></a>1.1.1 什么是Servlet</h3><p>Servlet 运行在服务端的Java小程序，是sun公司提供一套规范，用来处理客户端请求、响应给浏览器的动态资源。<br>Servlet是JavaWeb三大组件之一（Servlet、Filter、Listener），且最重要。</p>
+<h3 id="1-1-2-Servlet的作用"><a href="#1-1-2-Servlet的作用" class="headerlink" title="1.1.2 Servlet的作用"></a>1.1.2 Servlet的作用</h3><p>用来处理从客户端发送过来的请求,并对该请求作出响应。</p>
+<p>Servlet的任务有：</p>
+<ol>
+<li>获取请求数据</li>
+<li>处理请求</li>
+<li>完成响应</li>
+</ol>
+<h2 id="1-2-Servlet的入门"><a href="#1-2-Servlet的入门" class="headerlink" title="1.2 Servlet的入门"></a>1.2 Servlet的入门</h2><h3 id="1-2-1-准备工作"><a href="#1-2-1-准备工作" class="headerlink" title="1.2.1 准备工作"></a>1.2.1 准备工作</h3><p>Servlet规范要求：Servlet程序需要编写实现类，并在web.xml进行配置。</p>
+<ol>
+<li>实现类：通常继承javax.servlet.http.HttpServlet类，并复写doGet和doPost方法。</li>
+</ol>
+<ul>
+<li>doGet()方法用于处理get请求。</li>
+<li>doPost()方法用于处理post请求。</li>
+</ul>
+<ol start="2">
+<li>配置信息：在web.xml进行配置</li>
+</ol>
+<h3 id="1-2-2-编写步骤"><a href="#1-2-2-编写步骤" class="headerlink" title="1.2.2 编写步骤"></a>1.2.2 编写步骤</h3><ol>
+<li>创建类，继承HttpServlet，复写doGet和doPost方法</li>
+</ol>
+<p><img src="/2020/04/01/day37servlet/day37Servlet%5C2.png" alt></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloServlet</span> <span class="token keyword">extends</span> <span class="token class-name">HttpServlet</span> <span class="token punctuation">{</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doPost</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"get请求将执行"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doGet</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"post请求将执行"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<ol start="2">
+<li>编写配置文件</li>
+</ol>
+<p><img src="/2020/04/01/day37servlet/day37Servlet%5C3.png" alt></p>
+<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-app</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://xmlns.jcp.org/xml/ns/javaee<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd<span class="token punctuation">"</span></span>
+         <span class="token attr-name">version</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>4.0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">></span></span>helloServlet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-class</span><span class="token punctuation">></span></span>cn.itcast.demo01.a_servlet.HelloServlet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-class</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-mapping</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">></span></span>helloServlet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">></span></span>/hello<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-mapping</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-app</span><span class="token punctuation">></span></span></code></pre>
+<ol start="3">
+<li>启动Tomcat </li>
+</ol>
+<p>在浏览器访问：<a href="http://localhost:8080/web07/hello" target="_blank" rel="noopener">http://localhost:8080/web07/hello</a></p>
+<p>浏览器显示空白页面</p>
+<p><img src="/2020/04/01/day37servlet/day37Servlet%5C4.png" alt></p>
+<p>控制台打印信息</p>
+<p><img src="/2020/04/01/day37servlet/day37Servlet%5C5.png" alt></p>
+<h3 id="1-2-3-Servlet的执行的流程详解"><a href="#1-2-3-Servlet的执行的流程详解" class="headerlink" title="1.2.3 Servlet的执行的流程详解"></a>1.2.3 Servlet的执行的流程详解</h3><p><img src="/2020/04/01/day37servlet/day37Servlet%5C6.png" alt></p>
+<h2 id="1-3-Servlet的生命周期"><a href="#1-3-Servlet的生命周期" class="headerlink" title="1.3 Servlet的生命周期"></a>1.3 Servlet的生命周期</h2><p>生命周期:就是一个对象从创建到销毁的过程.</p>
+<p>Servlet生命周期:Servlet从创建到销毁的过程.</p>
+<p>何时创建:用户第一次访问Servlet创建Servlet的实例 (单实例)</p>
+<p>何时销毁:当项目从服务器中移除的时候，或者关闭服务器的时候.</p>
+<p>Servlet规范规定，所有的servlet必须实现 javax.servlet.Servlet接口。</p>
+<p><img src="/2020/04/01/day37servlet/day37Servlet%5C7.png" alt></p>
+<ol>
+<li>第一次调用时，将执行初始化方法：init(ServletConfig)</li>
+<li>每一次调用，都将执行service(ServletRequest，ServletResponse)方法</li>
+<li>服务器关闭，或项目移除：destroy()方法</li>
+</ol>
+<p>JavaEE规范中提供Servlet接口实现类：</p>
+<ol>
+<li>GenericServlet：通用servlet实现。没有实现service</li>
+</ol>
+<ol start="2">
+<li>HttpServlet：与Http协议有关的实现。实现service方法，完成与http协议有关的操作。</li>
+</ol>
+<p>request.getMethod() 获得请求方式（get、post）</p>
+<p>如果是get，将调用doGet()</p>
+<p>如果是post，将调用doPost()</p>
+<p>servlet被访问过程描述：</p>
+<ol>
+<li>用户第一次访问Servlet的时候，首先服务器会创建一个Servlet的实例</li>
+<li>创建servlet实例同时执行Servlet的init方法。</li>
+<li>然后，每一次请求服务器都会创建一个新的线程访问Servlet中的service的方法，在service方法内部根据请求的方式的不同调用doXxx的方法(get请求调用doGet,post请求调用doPost)。</li>
+<li>当Servlet从服务器中被移除，或者关闭服务器，Servlet的实例就会被销毁，同时destroy方法将会执行。</li>
+</ol>
+<h2 id="1-4-Servlet的相关的配置"><a href="#1-4-Servlet的相关的配置" class="headerlink" title="1.4 Servlet的相关的配置"></a>1.4 Servlet的相关的配置</h2><h3 id="1-4-1-启动时创建Servlet"><a href="#1-4-1-启动时创建Servlet" class="headerlink" title="1.4.1 启动时创建Servlet"></a>1.4.1 启动时创建Servlet</h3><p>Servlet默认是在第一次访问的时候创建的.现在让Servlet在服务器启动的时候创建好.进行对Servlet的配置:<br>在web.xml中在&lt; servlet&gt;&lt; /servlet&gt;标签中配置:</p>
+<ul>
+<li>&lt; load-on-startup&gt;2&lt; /load-on-startup&gt; — 传入正整数,整数越小,被创建的优先级就越高.</li>
+</ul>
+<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-app</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://xmlns.jcp.org/xml/ns/javaee<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd<span class="token punctuation">"</span></span>
+         <span class="token attr-name">version</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>4.0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">></span></span>helloServlet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-class</span><span class="token punctuation">></span></span>cn.itcast.demo01.a_servlet.HelloServlet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-class</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>load-on-startup</span><span class="token punctuation">></span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>load-on-startup</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-app</span><span class="token punctuation">></span></span></code></pre>
+<h3 id="1-4-2-url-pattern的配置"><a href="#1-4-2-url-pattern的配置" class="headerlink" title="1.4.2 url-pattern的配置"></a>1.4.2 url-pattern的配置</h3><ol>
+<li>完全路径匹配 ：以 / 开始</li>
+</ol>
+<p>例如:  /ServletDemo4 , /aaa/ServletDemo5 , /aaa/bbb/ServletDemo6</p>
+<ol start="2">
+<li>目录匹配 ：以 / 开始 需要以 * 结束</li>
+</ol>
+<p>例如: /* （所有） ,/aaa/* （aaa目录下的所有） ,/aaa/bbb/*</p>
+<ol start="3">
+<li>扩展名匹配 ：不能以 / 开始 以 * 开始的</li>
+</ol>
+<p>例如: <em>.do , .action 、.jsp 、</em>.jpg</p>
+<ol start="4">
+<li>缺省路径 /</li>
+</ol>
+<p>通常情况访问 html页面时，首先从当前web项目的web.xml文件寻找匹配路径，如果如果没有找到，再从tomcat默认的web.xml匹配，将使用缺省servlet</p>
+<p>tomcat获得匹配路径时，优先级顺序：1 &gt; 2 &gt; 3 &gt; 4</p>
+<h2 id="1-5-Servlet3-0-注解"><a href="#1-5-Servlet3-0-注解" class="headerlink" title="1.5 Servlet3.0 注解"></a>1.5 Servlet3.0 注解</h2><h3 id="1-5-1-Servlet3-0"><a href="#1-5-1-Servlet3-0" class="headerlink" title="1.5.1 Servlet3.0"></a>1.5.1 Servlet3.0</h3><p>Servlet3.0新增了一些注解，用来简化的javaweb代码开发:</p>
+<ol>
+<li>可以省略web.xml配置文件</li>
+<li>支持异步处理（多线程技术）</li>
+<li>支持可插性特性（书写的代码编译后生成的class文件可以直接部署到其他项目的，自动加载执行）</li>
+</ol>
+<p>@WebServlet</p>
+<ul>
+<li><p>创建servlet，在@WebServlet注解中添加urlPatterns = “/hello”，作为请求路径</p>
+</li>
+<li><p>就不可以不用在web.xml中进行配置虚拟路径了</p>
+</li>
+</ul>
+<h2 id="1-6-ServletConfig对象"><a href="#1-6-ServletConfig对象" class="headerlink" title="1.6 ServletConfig对象"></a>1.6 ServletConfig对象</h2><p>ServletConfig 对象是Servlet对象的相关配置信息封装而成的 ,通过继承的getServletConfig()方法即可获取.</p>
+<ol>
+<li>getServletName() : 获取Servlet的名字</li>
+<li>getInitParameter() : 获取 Servlet 配置初始化值 需要在在xml中加init-param</li>
+<li>getServletContext() : 获取ServletContex对象</li>
+</ol>
+<h2 id="1-7-ServletContext对象"><a href="#1-7-ServletContext对象" class="headerlink" title="1.7 ServletContext对象"></a>1.7 ServletContext对象</h2><h3 id="1-7-1-概述"><a href="#1-7-1-概述" class="headerlink" title="1.7.1 概述"></a>1.7.1 概述</h3><p>ServletContext对象，tomcat为每一个web项目单独创建的一个上下文（知上知下贯穿全文）对象。服务器启动的时候,为每个WEB应用创建一个单独的ServletContext对象,我们可以使用这个对象存取数据,用这个对象存取的数据可以在整个WEB应用中获得。</p>
+<h3 id="1-7-1-常用功能"><a href="#1-7-1-常用功能" class="headerlink" title="1.7.1 常用功能"></a>1.7.1 常用功能</h3><ol>
+<li>可以使用如下方法可以在多个servlet之间共享数据</li>
+</ol>
+<p><img src="/2020/04/01/day37servlet/day37Servlet%5C8.png" alt></p>
+<ol start="2">
+<li>可以获得当前WEB项目中的指定资源（文件）</li>
+</ol>
+<p><img src="/2020/04/01/day37servlet/day37Servlet%5C9.png" alt></p>
+<ol start="3">
+<li>ServletContext.getMimeType(filename) , 传入文件名,获取对应的MIME类型</li>
+</ol>
+<ol start="4">
+<li>可以进行整个web项目初始化数据设置 , 在web.xml可以给整个web项目配置初始化参数</li>
+</ol>
+<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-app</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://xmlns.jcp.org/xml/ns/javaee<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd<span class="token punctuation">"</span></span>
+         <span class="token attr-name">version</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>4.0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>context-param</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-name</span><span class="token punctuation">></span></span>参数名<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-name</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-value</span><span class="token punctuation">></span></span>参数值<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-value</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>context-param</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-app</span><span class="token punctuation">></span></span></code></pre>
+<h3 id="1-7-2-应用举例-加载配置文件"><a href="#1-7-2-应用举例-加载配置文件" class="headerlink" title="1.7.2 应用举例 : 加载配置文件"></a>1.7.2 应用举例 : 加载配置文件</h3><p>在实际开发中，有时候可能会需要读取Web应用中的一些资源文件，比如配置文件，图片等。为此，在ServletContext接口中定义了一些读取Web资源的方法，这些方法是ServletContext来实现的。</p>
+<p>ServletContext根据资源文件名相对于Web应用的路径，返回关联资源文件的IO流、资源文件在文件系统的绝对路径等。</p>
+<p><img src="/2020/04/01/day37servlet/day37Servlet%5C10.png" alt></p>
+<p>资源路径问题,项目部署到Tomcat后会发生资源位置的改变</p>
+<ol>
+<li>src下           :   发布到 /WEB-INF/classes/文件名</li>
+<li>web目录下       :   发布到 /文件名</li>
+<li>WEB-INF目录下   :   发布到 /WEB-INF/文件名</li>
+</ol>
+<p>示例代码</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@WebServlet</span><span class="token punctuation">(</span>urlPatterns <span class="token operator">=</span> <span class="token string">"/file3"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">File3Servlet</span> <span class="token keyword">extends</span> <span class="token class-name">HttpServlet</span> <span class="token punctuation">{</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doPost</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token punctuation">{</span>
+        <span class="token function">doGet</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doGet</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token punctuation">{</span>
+
+        <span class="token comment" spellcheck="true">// 读取 a.jpg</span>
+        <span class="token comment" spellcheck="true">// 使用路径读取方式 (较麻烦)</span>
+<span class="token comment" spellcheck="true">//        String realPath = getServletContext().getRealPath("/a.jpg");</span>
+<span class="token comment" spellcheck="true">//        FileInputStream fileInputStream = new FileInputStream(realPath);</span>
+
+        <span class="token comment" spellcheck="true">// 使用 流 读取方式 (较简单)</span>
+        InputStream in <span class="token operator">=</span> <span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getResourceAsStream</span><span class="token punctuation">(</span><span class="token string">"/a.jpg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// 回写字节数据</span>
+        ServletOutputStream out <span class="token operator">=</span> response<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// 读写数据</span>
+        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>len <span class="token operator">=</span> in<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            out<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>b <span class="token punctuation">,</span> <span class="token number">0</span> <span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">//释放资源</span>
+        out<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        in<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2020/04/02/day38response-request-jsp/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            day38Response-Request-JSP
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2020/03/31/day36tomcat-http-xie-yi/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">day36Tomcat&amp;Servlet入门</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    <link rel="stylesheet" href="/css/gitment.css"> 
+<script src="/js/gitment.js"></script>
+
+<div id="gitmentContainer"></div>
+
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpg" title="图片来自网络"></img>
+    <h3 class="avatar-name">
+      
+        清风伴酒
+      
+    </h3>
+    <p class="avatar-slogan">
+      进击的后端渣渣
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javaSE/">javaSE</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag">编程语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">编程语言</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/12/day47-maven/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/gong-han-mo-shi/">day46_maven</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day46-redis/">day46_redis</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day45-ajax-json/">day45-AJAX-Json</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/day44jquery-gao-ji/">day44jQuery高级</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+      <div class="widget-box">
+    <h3 class="widget-title">友链</h3>
+    <div class="widget">
+      
+        <a style="display: block;" href="https://yiluyanxia.github.io/" title target='_blank'
+        >一路眼瞎</a>
+      
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 fantasy &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity" target="_blank" rel="noopener">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">不蒜子告之   阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>
