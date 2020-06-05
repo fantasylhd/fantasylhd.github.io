@@ -1,0 +1,1608 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="day50-Git, fantasyblog">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>day50-Git | fantasyblog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="fantasyblog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">fantasyblog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">fantasyblog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">day50-Git</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    .toc-fixed .toc-link::before{
+        position: fixed!important;/*当toc的位置改为fixed时，.toc-link::before也要改为fixed*/
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7/">
+                                <span class="chip bg-color">版本控制工具</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-04-14
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-06-05
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    6.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    24 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h1><ul>
+<li>了解Git基本概念</li>
+<li>能够概述git工作流程</li>
+<li>熟悉Git代码托管服务</li>
+<li>能够使用Git常用命令</li>
+<li>能够使用idea操作git</li>
+<li>了解Git标签</li>
+<li>了解SSH协议传输数据</li>
+</ul>
+<h2 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h2><h4 id="1-1、开发中的实际场景"><a href="#1-1、开发中的实际场景" class="headerlink" title="1.1、开发中的实际场景"></a>1.1、开发中的实际场景</h4><pre><code>场景一：备份
+       小明负责的模块就要完成了，就在即将Release之前的一瞬间，电脑突然蓝屏，硬盘光荣牺牲！几个月来的努力付之东流
+
+场景二：代码还原
+        这个项目中需要一个很复杂的功能，老王摸索了一个星期终于有眉目了，可是这被改得面目全非的代码已经回不到从前了。什么地方能买到哆啦A梦的时光机啊？
+
+场景三：协同开发
+        小刚和小强先后从文件服务器上下载了同一个文件：Analysis.java。小刚在Analysis.java文件中的第30行声明了一个方法，叫count()，先保存到了文件服务器上；小强在Analysis.java文件中的第50行声明了一个方法，叫sum()，也随后保存到了文件服务器上，于是，count()方法就只存在于小刚的记忆中了
+
+场景四：多版本同步开发不同期上线
+        老许是一位项目经理，根据产品经理的要求，需要同步开发多个功能，但是会在不同的时间节点上线，针对同一工程和项目，应该怎么解决这个问题？
+
+场景五：追溯问题代码的编写人和编写时间！
+        老王是另一位项目经理，每次因为项目进度挨骂之后，他都不知道该扣哪个程序员的工资！就拿这次来说吧，有个Bug调试了30多个小时才知道是因为相关属性没有在应用初始化时赋值！可是二胖、王东、刘流和正经牛都不承认是自己干的！</code></pre><h4 id="1-2、版本控制器的方式"><a href="#1-2、版本控制器的方式" class="headerlink" title="1.2、版本控制器的方式"></a>1.2、版本控制器的方式</h4><pre><code>a、集中式版本控制工具
+    集中式版本控制工具，版本库是集中存放在中央服务器的，team里每个人work时从中央服务器下载代码，是必须联网才能工作，局域网或互联网。个人修改后然后提交到中央版本库。
+    举例：SVN和CVS
+b、分布式版本控制工具
+    分布式版本控制系统没有“中央服务器”，每个人的电脑上都是一个完整的版本库，这样工作的时候，无需要联网了，因为版本库就在你自己的电脑上。多人协作只需要各自的修改推送给对方，就能互相看到对方的修改了。
+    举例：Git</code></pre><h4 id="1-3、SVN"><a href="#1-3、SVN" class="headerlink" title="1.3、SVN"></a>1.3、SVN</h4><pre><code>SVN是一个开放源代码的版本控制系统，是Apache Subversion的缩写。SVN是集中式的管理。SVN必须有一个服务器版本库就放在一个中央服务器，所有开发人员都是与服务器进行交互的。
+优点：具有很强的权限控制
+缺点：严重依赖中央服务器</code></pre><p><img src="/2020/04/14/day50-git/01.png" alt>    </p>
+<h4 id="1-4、Git"><a href="#1-4、Git" class="headerlink" title="1.4、Git"></a>1.4、Git</h4><pre><code>   Git是分布式的,Git不需要有中心服务器，我们每台电脑拥有的东西都是一样的。我们使用Git并且有个中心服务器，仅仅是为了方便交换大家的修改，但是这个服务器的地位和我们每个人的PC是一样的。我们可以把它当做一个开发者的pc就可以就是为了大家代码容易交流不关机用的。没有它大家一样可以工作，只不过“交换”修改不方便而已。
+  git是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。Git是Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。
+同生活中的许多伟大事物一样，Git 诞生于一个极富纷争大举创新的年代。Linux 内核开源项目有着为数众多的参与者。 绝大多数的 Linux 内核维护工作都花在了提交补丁和保存归档的繁琐事务上（1991－2002年间）。 到 2002 年，整个项目组开始启用一个专有的分布式版本控制系统 BitKeeper 来管理和维护代码。
+到了 2005 年，开发 BitKeeper 的商业公司同 Linux 内核开源社区的合作关系结束，他们收回了 Linux 内核社区免费使用 BitKeeper 的权力。 这就迫使 Linux 开源社区（特别是 Linux 的缔造者 Linus Torvalds）基于使用 BitKeeper 时的经验教训，开发出自己的版本系统。 他们对新的系统制订了若干目标：
+ 速度
+ 简单的设计
+ 对非线性开发模式的强力支持（允许成千上万个并行开发的分支）
+ 完全分布式
+ 有能力高效管理类似 Linux 内核一样的超大规模项目（速度和数据量）</code></pre><p><img src="/2020/04/14/day50-git/02.png" alt>    </p>
+<p>备注：</p>
+<p>​    Clone：克隆，就是将远程仓库复制到本地</p>
+<p>​    Push：推送，就是将本地仓库代码上传到远程仓库</p>
+<p>​    Pull：拉取，就是将远程仓库代码下载到本地仓库    </p>
+<p>​    commit：提交，将工作区代码提交到本地仓库    </p>
+<h4 id="1-5、Git工作流程图"><a href="#1-5、Git工作流程图" class="headerlink" title="1.5、Git工作流程图"></a>1.5、Git工作流程图</h4><p><img src="/2020/04/14/day50-git/1562485928102.png" alt>        </p>
+<p>基本概念：</p>
+<ol>
+<li><p>远程仓库 ： 在局域网或互联网上的一个主机，存放代码库的主机或平台，比如gitee.com(码云)</p>
+</li>
+<li><p>本地仓库：  在本地主机上的一个代码库，可以独立存在，也可以与远程仓库进行关联</p>
+<p>凡是一个文件夹，包含.git隐藏文件夹（git工作目录），说明此文件目录使用git版本管理。.git文件目录中存储了很多配置信息、日志信息和文件版本信息、工作区、暂存区信息等。.git文件夹中有很多文件，其中有一个index文件就是暂存区，也可以叫做stage。暂存区是一个临时保存修改文件的地方。</p>
+<p><img src="/2020/04/14/day50-git/1562480991142.png" alt></p>
+<p><img src="/2020/04/14/day50-git/1562481056327.png" alt></p>
+</li>
+<li><p>工作区：对任何文件的修订(增删改)，都先放在工作区，工作区不与任何仓库分支进行关联</p>
+</li>
+<li><p>暂存区：把修订的文件，从工作区经过add（添加）后与某一个仓库分支进行关联，只要进入缓存区的文件才能commit(提交)到本地仓库。</p>
+</li>
+<li><p>分支：代码存放在仓库，默认是主分支(master)，可以在主分支基础上创建很多子分支，比如develop（开发）、bugfix（bug修复）等。</p>
+</li>
+</ol>
+<p>命令如下：</p>
+<p>1．clone（克隆）: 从远程仓库中克隆代码到本地仓库</p>
+<p>​     fetch (抓取) ： 从远程库，抓取到本地仓库，不进行任何的合并动作，一般操作比较少。</p>
+<p>2．checkout （检出）:从本地仓库中检出一个仓库分支然后进行修订</p>
+<p>3．add（添加）: 在提交前先将代码提交到暂存区</p>
+<p>4．commit（提交）: 提交到本地仓库。本地仓库中保存修改的各个历史版本</p>
+<p>5 . pull (拉取)  ： 从远程库拉到本地库，自动进行合并(merge)，然后放到到工作区，相当于fetch+merge</p>
+<p>6．push（推送） : 修改完成后，需要和团队成员共享代码时，将代码推送到远程仓库    </p>
+<h4 id="1-6、工作目录下的状态"><a href="#1-6、工作目录下的状态" class="headerlink" title="1.6、工作目录下的状态"></a>1.6、工作目录下的状态</h4><p>Git工作目录下的文件存在两种状态：</p>
+<p>​    untracked 未跟踪（未被纳入版本控制）</p>
+<pre><code> tracked 已跟踪（被纳入版本控制）        </code></pre><p>​    Unmodified 未修改状态        </p>
+<p>​    Modified 已修改状态       </p>
+<pre><code> Staged  已暂存状态</code></pre><p>这些文件的状态会随着我们执行Git的命令而发生变化</p>
+<h2 id="2、Git远程仓库"><a href="#2、Git远程仓库" class="headerlink" title="2、Git远程仓库"></a>2、Git远程仓库</h2><h4 id="2-1、-常用的托管服务-远程仓库"><a href="#2-1、-常用的托管服务-远程仓库" class="headerlink" title="2.1、 常用的托管服务[远程仓库]"></a>2.1、 常用的托管服务[远程仓库]</h4><pre><code>前面我们已经知道了Git中存在两种类型的仓库，即本地仓库和远程仓库。那么我们如何搭建Git远程仓库呢？我们可以借助互联网上提供的一些代码托管服务来实现，其中比较常用的有GitHub、码云、GitLab等。
+ gitHub（ 地址：https://github.com/ ）是一个面向开源及私有软件项目的托管平台，因为只支持Git 作为唯一的版本库格式进行托管，故名gitHub
+ 码云（地址： https://gitee.com/ ）是国内的一个代码托管平台，由于服务器在国内，所以相比于GitHub，码云速度会更快
+ GitLab （地址： https://about.gitlab.com/ ）是一个用于仓库管理系统的开源项目，使用Git作为代码管理工具，并在此基础上搭建起来的web服务,一般用于在企业、学校等内部网络搭建git私服。</code></pre><h4 id="2-2、-注册码云"><a href="#2-2、-注册码云" class="headerlink" title="2.2、 注册码云"></a>2.2、 注册码云</h4><p>要想使用码云的相关服务，需要注册账号（地址： <a href="https://gitee.com/signup" target="_blank" rel="noopener">https://gitee.com/signup</a> ）    </p>
+<p><img src="/2020/04/14/day50-git/08.png" alt>    </p>
+<h4 id="2-3、-创建远程仓库"><a href="#2-3、-创建远程仓库" class="headerlink" title="2.3、 创建远程仓库"></a>2.3、 创建远程仓库</h4><p><img src="/2020/04/14/day50-git/09.png" alt>    </p>
+<p>​    <img src="/2020/04/14/day50-git/1562483716761.png" alt></p>
+<p>仓库创建好之后，可以查看仓库的信息</p>
+<p>​    <img src="/2020/04/14/day50-git/1562483949307.png" alt></p>
+<p>点击克隆/下载中的复制可以获取该仓库的地址                </p>
+<p>该仓库的地址为</p>
+<p><a href="https://gitee.com/mobapp/studygit.git" target="_blank" rel="noopener">https://gitee.com/mobapp/studygit.git</a></p>
+<h4 id="2-4、-邀请其他开发人员"><a href="#2-4、-邀请其他开发人员" class="headerlink" title="2.4、 邀请其他开发人员"></a>2.4、 邀请其他开发人员</h4><p>前面已经在码云上创建了自己的远程仓库，目前仓库成员只有自己一个人（身份为管理员）。在企业实际开发中，一个项目往往是由多个人共同开发完成的，为了使多个参与者都有权限操作远程仓库，就需要邀请其他项目参与者成为当前仓库的成员。    </p>
+<ul>
+<li>进入仓库管理中心，点击仓库成员管理</li>
+</ul>
+<p><img src="/2020/04/14/day50-git/1562476768081.png" alt></p>
+<ul>
+<li>直接添加成员，输入成员在gitee的邮箱地址</li>
+</ul>
+<p><img src="/2020/04/14/day50-git/1562476824506.png" alt></p>
+<ul>
+<li>输入邮箱后，自动提示码云用户信息，确定后点击添加</li>
+</ul>
+<p><img src="/2020/04/14/day50-git/1562476917506.png" alt></p>
+<p><img src="/2020/04/14/day50-git/1562476928894.png" alt>    </p>
+<ul>
+<li>确定成员信息，点击提交</li>
+</ul>
+<p><img src="/2020/04/14/day50-git/1562477038658.png" alt></p>
+<ul>
+<li>被要求人员，确认加入</li>
+</ul>
+<p>被邀请人员，自己登录gitee.com,点击右上角通知，然后进入私信列表，然后点击确认加入</p>
+<p><img src="/2020/04/14/day50-git/1562477300079.png" alt></p>
+<p><img src="/2020/04/14/day50-git/1562477344804.png" alt="1562477344804"></p>
+<h2 id="3、Git常用命令"><a href="#3、Git常用命令" class="headerlink" title="3、Git常用命令"></a>3、Git常用命令</h2><h4 id="3-1、-Git环境配置"><a href="#3-1、-Git环境配置" class="headerlink" title="3.1、 Git环境配置"></a>3.1、 Git环境配置</h4><h5 id="3-1-1-下载与安装"><a href="#3-1-1-下载与安装" class="headerlink" title="3.1.1 下载与安装"></a>3.1.1 下载与安装</h5><p>下载地址： <a href="https://git-scm.com/download" target="_blank" rel="noopener">https://git-scm.com/download</a></p>
+<p><img src="/2020/04/14/day50-git/03.png" alt>    </p>
+<p>下载完成后可以得到如下安装文件：</p>
+<p><img src="/2020/04/14/day50-git/04.png" alt="1562163394090">    </p>
+<p>双击下载的安装文件来安装Git。安装完成后在电脑桌面（也可以是其他目录）点击右键，如果能够看到如下两个菜单则说明Git安装成功。</p>
+<p><img src="/2020/04/14/day50-git/05.png" alt>    </p>
+<p>备注：    </p>
+<p>​    Git GUI：Git提供的图形界面工具</p>
+<p>​    Git Bash：Git提供的命令行工具</p>
+<p>​    当安装Git后首先要做的事情是设置用户名称和email地址。这是非常重要的，因为每次Git提交都会使用该用户信息</p>
+<h5 id="3-1-2基本配置"><a href="#3-1-2基本配置" class="headerlink" title="3.1.2基本配置"></a>3.1.2基本配置</h5><p> 设置用户信息   </p>
+<p>​        git config –global user.name “itcast”   </p>
+<p>​        git config –global user.email “<a href="mailto:hello@itcast.cn">hello@itcast.cn</a>” </p>
+<p>​        git config –global credential.helper store   # git push的时候记住用户名和密码</p>
+<p>​                以上配置信息默认存储在用户目录下，如果设置错误，可以删除以下如图文件，重新操作以上命令即可。</p>
+<p><img src="/2020/04/14/day50-git/1562457545737.png" alt></p>
+<p>​    查看配置信息   </p>
+<p>​        git config –list   </p>
+<p>​        git config user.name</p>
+<p>​    通过上面的命令设置的信息会保存在~/.gitconfig文件中</p>
+<h4 id="3-2、获取本地仓库"><a href="#3-2、获取本地仓库" class="headerlink" title="3.2、获取本地仓库"></a>3.2、获取本地仓库</h4><p>​    要使用Git对我们的代码进行版本控制，首先需要获得构建本地仓库</p>
+<p>​    通常有两种方式： </p>
+<p>​        在本地初始化一个Git仓库 </p>
+<p>​        从远程仓库克隆一个仓库     </p>
+<h5 id="3-2-1-在本地初始化一个Git仓库"><a href="#3-2-1-在本地初始化一个Git仓库" class="headerlink" title="3.2.1 在本地初始化一个Git仓库"></a>3.2.1 在本地初始化一个Git仓库</h5><p>1）在电脑的任意位置创建一个空目录（例如test）作为我们的本地Git仓库</p>
+<p>2）进入这个目录中，点击右键打开Git bash窗口</p>
+<p>3）执行命令git init如果在当前目录中看到.git文件夹（此文件夹为隐藏文件夹）则说明Git仓库创建成功</p>
+<p>命令为： git init</p>
+<p><img src="/2020/04/14/day50-git/14.png" alt>    </p>
+<h5 id="3-2-2-从远程仓库克隆"><a href="#3-2-2-从远程仓库克隆" class="headerlink" title="3.2.2 从远程仓库克隆"></a>3.2.2 从远程仓库克隆</h5><p>可以通过Git提供的命令从远程仓库进行克隆，将远程仓库克隆到本地</p>
+<p>​    命令为： git clone 远程Git仓库地址     </p>
+<ul>
+<li><p>clone 私有库，</p>
+<p>用户必须是当前仓库的成员，克隆时必须提供码云平台的登录邮箱及密码</p>
+</li>
+</ul>
+<p><img src="/2020/04/14/day50-git/1562483291295.png" alt></p>
+<ul>
+<li>clone 公开库，无需提供用户名及密码</li>
+</ul>
+<p><img src="/2020/04/14/day50-git/1562483399752.png" alt>    </p>
+<p>​        </p>
+<h4 id="3-3、操作本地仓库"><a href="#3-3、操作本地仓库" class="headerlink" title="3.3、操作本地仓库"></a>3.3、操作本地仓库</h4><h5 id="3-3-1、查看本地仓库的状态"><a href="#3-3-1、查看本地仓库的状态" class="headerlink" title="3.3.1、查看本地仓库的状态"></a>3.3.1、查看本地仓库的状态</h5><p> 命令形式：git status [-s]  </p>
+<p><img src="/2020/04/14/day50-git/18.png" alt>    </p>
+<p>更简洁的信息</p>
+<p><img src="/2020/04/14/day50-git/19.png" alt>        </p>
+<h5 id="3-3-2、添加工作区到暂存区"><a href="#3-3-2、添加工作区到暂存区" class="headerlink" title="3.3.2、添加工作区到暂存区"></a>3.3.2、添加工作区到暂存区</h5><p> 命令形式：git add 单个文件名|通配符     ( . 代表全部文件)</p>
+<p>添加一个或多个文件到暂存区</p>
+<p>​    <img src="/2020/04/14/day50-git/1564358537278.png" alt></p>
+<h5 id="3-3-3、取消已跟踪文件"><a href="#3-3-3、取消已跟踪文件" class="headerlink" title="3.3.3、取消已跟踪文件"></a>3.3.3、取消已跟踪文件</h5><p>命令形式：git reset  单个文件名或通配符    ( . 代表全部文件)</p>
+<p>撤销当前文件或全部内容到修改之前的状态</p>
+<p><img src="/2020/04/14/day50-git/21.png" alt>    </p>
+<h5 id="3-3-4、提交暂存区到本地仓库"><a href="#3-3-4、提交暂存区到本地仓库" class="headerlink" title="3.3.4、提交暂存区到本地仓库"></a>3.3.4、提交暂存区到本地仓库</h5><p>命令形式：git commit  -m ‘注释内容’  提交暂存区内容到本地仓库的当前分支</p>
+<p><img src="/2020/04/14/day50-git/22.png" alt>        </p>
+<h5 id="3-3-5、查看日志文件"><a href="#3-3-5、查看日志文件" class="headerlink" title="3.3.5、查看日志文件"></a>3.3.5、查看日志文件</h5><p>命令形式：git log </p>
+<p><img src="/2020/04/14/day50-git/24.png" alt>    </p>
+<p><img src="/2020/04/14/day50-git/25.png" alt>            </p>
+<p><img src="/2020/04/14/day50-git/27.png" alt>    </p>
+<h5 id="3-3-6、添加文件至忽略列表"><a href="#3-3-6、添加文件至忽略列表" class="headerlink" title="3.3.6、添加文件至忽略列表"></a>3.3.6、添加文件至忽略列表</h5><p>一般我们总会有些文件无需纳入Git 的管理，也不希望它们总出现在未跟踪文件列表。 通常都是些自动生成的文件，比如日志文件，或者编译过程中创建的临时文件等。 在这种情况下，我们可以在工作目录中创建一个名为 .gitignore 的文件（文件名称固定），列出要忽略的文件模式。下面是一个示例：    </p>
+<pre><code># no .a files
+*.a
+# but do track lib.a, even though you&#39;re ignoring .a files above
+!lib.a
+# only ignore the TODO file in the current directory, not subdir/TODO
+/TODO
+# ignore all files in the build/ directory
+build/
+# ignore doc/notes.txt, but not doc/server/arch.txt
+doc/*.txt
+# ignore all .pdf files in the doc/ directory
+doc/**/*.pdf</code></pre><p><img src="/2020/04/14/day50-git/30.png" alt>        </p>
+<p><strong>一定在工程初始化时，提前准备好需要忽略的文件列表</strong></p>
+<h5 id="3-3-7、将文件恢复到工作区的初期状态"><a href="#3-3-7、将文件恢复到工作区的初期状态" class="headerlink" title="3.3.7、将文件恢复到工作区的初期状态"></a>3.3.7、将文件恢复到工作区的初期状态</h5><h4 id="3-4、操作远程仓库"><a href="#3-4、操作远程仓库" class="headerlink" title="3.4、操作远程仓库"></a>3.4、操作远程仓库</h4><h5 id="3-4-1、添加远程仓库"><a href="#3-4-1、添加远程仓库" class="headerlink" title="3.4.1、添加远程仓库"></a>3.4.1、添加远程仓库</h5><p><strong>此操作是先初始化本地库，然后与已创建的远程库进行对接</strong>。</p>
+<p>命令形式： git remote add &lt;远端名称&gt;  &lt;仓库路径&gt;  </p>
+<p>远端名称，默认是origin，取决于远端服务器设置</p>
+<p>仓库路径，从远端服务器获取此URL</p>
+<p><img src="/2020/04/14/day50-git/31.png" alt>    </p>
+<h5 id="3-4-2、查看远程仓库"><a href="#3-4-2、查看远程仓库" class="headerlink" title="3.4.2、查看远程仓库"></a>3.4.2、查看远程仓库</h5><p>命令形式：git remote</p>
+<p><img src="/2020/04/14/day50-git/32.png" alt>    </p>
+<h5 id="3-4-3、推送到远程仓库"><a href="#3-4-3、推送到远程仓库" class="headerlink" title="3.4.3、推送到远程仓库"></a>3.4.3、推送到远程仓库</h5><p> 命令形式：git push 【remote name】【branch name】    </p>
+<p>当你想分享你的代码时，可以将其推送到远程仓库。</p>
+<p><img src="/2020/04/14/day50-git/33.png" alt>    </p>
+<p>查询远程仓库</p>
+<p><img src="/2020/04/14/day50-git/34.png" alt>    </p>
+<p><strong>注意</strong></p>
+<p>推送之前，需要先pull远端仓库，如果发现提交版本不一致，出现如下错误：</p>
+<p><img src="/2020/04/14/day50-git/1562456027094.png" alt></p>
+<p>需要在GIT命令中添加一句代码：–allow-unrelated-histories允许不相关历史进行提交,</p>
+<p><img src="/2020/04/14/day50-git/1562456133121.png" alt></p>
+<h5 id="3-4-4、从远程仓库克隆"><a href="#3-4-4、从远程仓库克隆" class="headerlink" title="3.4.4、从远程仓库克隆"></a>3.4.4、从远程仓库克隆</h5><p><strong>此操作是先创建远程库，本地Clone，然后在基于clone的本地库进行操作，建议按此方式</strong></p>
+<p>此章节内容，4.2.2已操作过。</p>
+<h5 id="3-4-5、从远程仓库中抓取和拉取"><a href="#3-4-5、从远程仓库中抓取和拉取" class="headerlink" title="3.4.5、从远程仓库中抓取和拉取"></a>3.4.5、从远程仓库中抓取和拉取</h5><ul>
+<li>抓取 命令形式：git fetch【remote name】【branch name】    </li>
+</ul>
+<p>git fetch 是从远程仓库获取最新版本到本地仓库，不会自动merge</p>
+<p><img src="/2020/04/14/day50-git/37.png" alt>    </p>
+<ul>
+<li>拉取 命令形式：git pull【remote name】【branch name】    </li>
+</ul>
+<p><img src="/2020/04/14/day50-git/39.png" alt>    </p>
+<h5 id="3-4-6、解决合并冲突"><a href="#3-4-6、解决合并冲突" class="headerlink" title="3.4.6、解决合并冲突"></a>3.4.6、解决合并冲突</h5><p>在一段时间，A、B用户修改了同一个文件，且修改了同一行位置的代码，此时会发生合并冲突。</p>
+<p> A用户在本地修改代码后优先推送到远程仓库，此时B用户在本地修订代码，提交到本地仓库后，也需要推送到远程仓库，此时B用户晚于A用户吐司，故需要先拉取远程仓库代码，经过合并后才能推送代码。在B用户拉取代码时，因为A、B用户同一段时间修改了同一个文件的相同位置代码，故会发生合并冲突。</p>
+<p>A用户修改代码推送到远程仓库</p>
+<p><img src="/2020/04/14/day50-git/40.png" alt>    </p>
+<p>B用户修改代码提交到本地仓库</p>
+<p>B用户修改代码准备推送到远程仓库</p>
+<p><img src="/2020/04/14/day50-git/41.png" alt>    </p>
+<p><img src="/2020/04/14/day50-git/42.png" alt>            </p>
+<h4 id="3-5、分支"><a href="#3-5、分支" class="headerlink" title="3.5、分支"></a>3.5、分支</h4><p>几乎所有的版本控制系统都以某种形式支持分支。 使用分支意味着你可以把你的工作从开发主线上分离开来进行重大的Bug修改、开发新的功能，以免影响开发主线。</p>
+<p>在开发中，一般有如下分支使用原则与流程：</p>
+<ul>
+<li><p>master （生产） 分支</p>
+<p>线上分支，主分支，中小规模项目作为线上运行的应用对应的分支；</p>
+</li>
+<li><p>test（测试）分支</p>
+<p>从master创建的分支，一般作为测试部门的测试分支，进行预发测试。测试完成后，需要合并到master分支，进行发版上线，中小规模项目可省略此分支；</p>
+</li>
+<li><p>develop（开发）分支</p>
+<p>从test创建的分支，如果开发没有test分支，是从master创建的分支，一般作为开发部门的主要开发分支，如果没有其他并行开发不同期上线要求，都可以在此版本进行开发，阶段开发完成后，需要是合并到test分支继续测试，如果没有test分支，可直接合并到master分支。</p>
+</li>
+<li><p>develop_xxx分支</p>
+<p>从develop创建的分支，一般是同期并行开发，但不同期上线时创建的分支，一般是合并到develop分支。</p>
+</li>
+<li><p>hotfix(bugfix)分支，</p>
+<p>从master派生的分支，一般作为线上bug修复使用，修复完成后需要合并到master、test、develop分支。</p>
+</li>
+</ul>
+<h5 id="3-5-1、查看分支"><a href="#3-5-1、查看分支" class="headerlink" title="3.5.1、查看分支"></a>3.5.1、查看分支</h5><p> 查看本地分支</p>
+<p>​    git branch </p>
+<p>查看远程分支</p>
+<p>​    git branch -r</p>
+<p> 查看所有分支</p>
+<p>​    git branch -a</p>
+<p><img src="/2020/04/14/day50-git/47.png" alt>    </p>
+<h5 id="3-5-2、创建分支"><a href="#3-5-2、创建分支" class="headerlink" title="3.5.2、创建分支"></a>3.5.2、创建分支</h5><p><img src="/2020/04/14/day50-git/48.png" alt>        </p>
+<h5 id="3-5-3、切换分支"><a href="#3-5-3、切换分支" class="headerlink" title="3.5.3、切换分支"></a>3.5.3、切换分支</h5><p><img src="/2020/04/14/day50-git/49.png" alt>    </p>
+<h5 id="3-54、分支推送至远程仓库"><a href="#3-54、分支推送至远程仓库" class="headerlink" title="3.54、分支推送至远程仓库"></a>3.54、分支推送至远程仓库</h5><p>把b1分支推送至远程仓库的b1分支</p>
+<p><img src="/2020/04/14/day50-git/50.png" alt>    </p>
+<h5 id="3-5-5、合并分支"><a href="#3-5-5、合并分支" class="headerlink" title="3.5.5、合并分支"></a>3.5.5、合并分支</h5><p>分支的目标达成后，可以直接合并到主分支上，b1合并到master分支</p>
+<p><img src="/2020/04/14/day50-git/52.png" alt>        </p>
+<p>合并分支时，有时不太顺利，比如两个分支代码都修改过</p>
+<p>修改主分支，提交本地且推送远程</p>
+<p><img src="/2020/04/14/day50-git/53.png" alt>    </p>
+<p>修改b1分支，提交本地且推送远程</p>
+<p><img src="/2020/04/14/day50-git/54.png" alt>    </p>
+<p>合并分支，产生冲突</p>
+<p><img src="/2020/04/14/day50-git/55.png" alt>    </p>
+<h5 id="3-5-6、删除分支"><a href="#3-5-6、删除分支" class="headerlink" title="3.5.6、删除分支"></a>3.5.6、删除分支</h5><p><strong>不能删除当前分支，只能删除其他分支</strong></p>
+<p>git branch -d b1  删除分支时，需要做各种合并冲突检查，检查失败，删除失败</p>
+<p>git branch -D b1 不做任何合并冲突检查，强制删除</p>
+<p><img src="/2020/04/14/day50-git/56.png" alt>    </p>
+<p>git push  origin –d b1 删除远程分支 （<strong>谨慎操作</strong>）</p>
+<p><img src="/2020/04/14/day50-git/1562460127119.png" alt></p>
+<h2 id="4、在Idea中使用Git"><a href="#4、在Idea中使用Git" class="headerlink" title="4、在Idea中使用Git"></a>4、在Idea中使用Git</h2><h4 id="4-1、在Idea中配置Git"><a href="#4-1、在Idea中配置Git" class="headerlink" title="4.1、在Idea中配置Git"></a>4.1、在Idea中配置Git</h4><p>安装好IntelliJ IDEA后，如果Git安装在默认路径下，那么idea会自动找到git的位置，如果更改了Git的安装位置则需要手动配置下Git的路径。选择File→Settings打开设置窗口，找到Version Control下的git选项：    </p>
+<p><img src="/2020/04/14/day50-git/1562248310689.png" alt>    </p>
+<p>点击Test按钮,现在执行成功，配置完成</p>
+<p><img src="/2020/04/14/day50-git/1562248381709.png" alt>    </p>
+<h4 id="4-2、在Idea中操作Git"><a href="#4-2、在Idea中操作Git" class="headerlink" title="4.2、在Idea中操作Git"></a>4.2、在Idea中操作Git</h4><h5 id="4-2-1、初始化远程仓库-【项目leader操作】"><a href="#4-2-1、初始化远程仓库-【项目leader操作】" class="headerlink" title="4.2.1、初始化远程仓库  【项目leader操作】"></a>4.2.1、初始化远程仓库  【项目leader操作】</h5><ul>
+<li><p>创建项目远程仓库</p>
+<p><img src="/2020/04/14/day50-git/1562495218298.png" alt></p>
+</li>
+<li><p>初始化仓库并推送到远程</p>
+<p>主要初始化忽略文件及项目初始化代码，并推送到远程仓库</p>
+<ol>
+<li><p>clone远程仓库到本地</p>
+<ul>
+<li>选定本地磁盘一个文件夹，使用git命令完成此操作</li>
+</ul>
+<p><img src="/2020/04/14/day50-git/1562496218941.png" alt></p>
+<ul>
+<li>clone完成后，如图所示</li>
+</ul>
+<p><img src="/2020/04/14/day50-git/1562496258593.png" alt></p>
+<p><img src="/2020/04/14/day50-git/1562496268998.png" alt="1562496268998"></p>
+</li>
+</ol>
+</li>
+</ul>
+<ol start="2">
+<li><p>切换到开发分支</p>
+<ul>
+<li>查看当前分支</li>
+</ul>
+<p><img src="/2020/04/14/day50-git/1562497619957.png" alt></p>
+<ul>
+<li><p>检出develop分支，并确定是在开发分支</p>
+<p><img src="/2020/04/14/day50-git/1562497770880.png" alt></p>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="3">
+<li><p>添加忽略文件</p>
+<p><img src="/2020/04/14/day50-git/1562496584828.png" alt></p>
+</li>
+<li><p>把初始化项目代码放到git仓库中</p>
+<p><img src="/2020/04/14/day50-git/1562496888800.png" alt></p>
+</li>
+<li><p>通过git命令完成添加、提交、推送</p>
+<p><img src="/2020/04/14/day50-git/1562498090708.png" alt></p>
+<p><img src="/2020/04/14/day50-git/1562498340756.png" alt></p>
+<p><img src="/2020/04/14/day50-git/1562498478287.png" alt></p>
+</li>
+</ol>
+<p><img src="/2020/04/14/day50-git/1562498705708.png" alt></p>
+<h5 id="4-2-2、创建本地仓（不推荐使用）"><a href="#4-2-2、创建本地仓（不推荐使用）" class="headerlink" title="4.2.2、创建本地仓（不推荐使用）"></a>4.2.2、创建本地仓（不推荐使用）</h5><p>  先在本地创建本地仓库，然后与远程仓库关联 ，不建议按此方式操作。</p>
+<p><img src="/2020/04/14/day50-git/1562248554039.png" alt>                </p>
+<h5 id="4-2-3、克隆远程仓库到本地-（推荐使用）"><a href="#4-2-3、克隆远程仓库到本地-（推荐使用）" class="headerlink" title="4.2.3、克隆远程仓库到本地 （推荐使用）"></a>4.2.3、克隆远程仓库到本地 （推荐使用）</h5><ol>
+<li>选定本地磁盘一个文件夹，使用git命令完成clone操作。</li>
+</ol>
+<p><img src="/2020/04/14/day50-git/1562549754551.png" alt></p>
+<ol start="2">
+<li><p>切换到开发分支</p>
+<p><img src="/2020/04/14/day50-git/1562550129087.png" alt></p>
+</li>
+</ol>
+<p><img src="/2020/04/14/day50-git/1562550151799.png" alt></p>
+<h5 id="5-2-4、打开clone的本地仓库项目"><a href="#5-2-4、打开clone的本地仓库项目" class="headerlink" title="5.2.4、打开clone的本地仓库项目"></a>5.2.4、打开clone的本地仓库项目</h5><p><img src="/2020/04/14/day50-git/1562550338308.png" alt></p>
+<p><img src="/2020/04/14/day50-git/1562550520867.png" alt></p>
+<h5 id="4-2-5、本地仓库常规操作"><a href="#4-2-5、本地仓库常规操作" class="headerlink" title="4.2.5、本地仓库常规操作"></a>4.2.5、本地仓库常规操作</h5><ol>
+<li><p>新增文件</p>
+<p>比如在某个包新增一个Java文件，如图所示：</p>
+<p><img src="/2020/04/14/day50-git/1562551200033.png" alt></p>
+<p>​    勾选后，添加新文件，自动添加到暂存区，新文件自动变为绿色</p>
+<p>​    <img src="/2020/04/14/day50-git/1562551942067.png" alt="1562551942067"></p>
+</li>
+<li><p>编辑文件</p>
+<p>比如修改某一个包下已存在的文件内容，如图所示：</p>
+<p><img src="/2020/04/14/day50-git/1562551425825.png" alt></p>
+<p>正常编辑文件，默认放在工作区，如果需要添加到暂存区，选择文件，右键菜单，选择git-Add</p>
+<p><img src="/2020/04/14/day50-git/1562553320888.png" alt></p>
+</li>
+<li><p>重置文件到修改前</p>
+<p>比如修订了某一文件，需要重置到修改文件之前的状态，选择文件，右键菜单，选择git-reset</p>
+<p><img src="/2020/04/14/day50-git/1562553570809.png" alt></p>
+<p><img src="/2020/04/14/day50-git/1562553626336.png" alt="1562553626336"></p>
+<p>重置后，文件颜色自动消失，说明已重置到修改之前的状态。</p>
+<p><img src="/2020/04/14/day50-git/1562553670179.png" alt="1562553670179"></p>
+</li>
+<li><p>提交到本地仓库</p>
+<ul>
+<li>提交当前文件</li>
+</ul>
+<p><img src="/2020/04/14/day50-git/1562551759161.png" alt></p>
+<p><img src="/2020/04/14/day50-git/1562552069157.png" alt="1562552069157"></p>
+<ul>
+<li><p>提交多个文件</p>
+<p><img src="/2020/04/14/day50-git/1562552030276.png" alt></p>
+<p><img src="/2020/04/14/day50-git/1562552099185.png" alt></p>
+</li>
+<li><p>添加注释并提交</p>
+</li>
+</ul>
+<p><img src="/2020/04/14/day50-git/1562552592630.png" alt></p>
+<p><img src="/2020/04/14/day50-git/1562552663993.png" alt></p>
+<ul>
+<li><p>提交完成</p>
+<p><img src="/2020/04/14/day50-git/1562552728964.png" alt></p>
+</li>
+</ul>
+</li>
+</ol>
+<h5 id="4-2-6、推送到远程仓库"><a href="#4-2-6、推送到远程仓库" class="headerlink" title="4.2.6、推送到远程仓库"></a>4.2.6、推送到远程仓库</h5><p>推送操作：</p>
+<ol>
+<li><p>把工作区内容添加到暂存区；</p>
+</li>
+<li><p>把暂存区内容提交到当前分支；</p>
+</li>
+<li><p>拉取远程仓库对应分支，如果有冲突，先解决冲突并提交保存</p>
+</li>
+<li><p>推送当前分支到远程仓库</p>
+</li>
+</ol>
+<p>1、拉取远程仓库对应分支</p>
+<p><img src="/2020/04/14/day50-git/1562250590982.png" alt>        </p>
+<p>​    <img src="/2020/04/14/day50-git/1562553790050.png" alt></p>
+<p>2、解决合并冲突</p>
+<p>​      如果从远程仓库拉取的代码中，同一文件在本地仓库也修改了，需要解决合并冲突，比如如图所示：</p>
+<p><img src="/2020/04/14/day50-git/1562554314071.png" alt></p>
+<p>解决冲突（根据业务情况，进行代码合并，并删除冲突提示）</p>
+<p><img src="/2020/04/14/day50-git/1562554578765.png" alt></p>
+<p>提交合并冲突</p>
+<p><img src="/2020/04/14/day50-git/1562574910236.png" alt></p>
+<p>推送当前版本到远程仓库</p>
+<p><img src="/2020/04/14/day50-git/1562576134084.png" alt></p>
+<p><img src="/2020/04/14/day50-git/1562576297065.png" alt></p>
+<p><img src="/2020/04/14/day50-git/1562576320470.png" alt></p>
+<h5 id="4-2-7、合并版本并推送到远程"><a href="#4-2-7、合并版本并推送到远程" class="headerlink" title="4.2.7、合并版本并推送到远程"></a>4.2.7、合并版本并推送到远程</h5><p>如果当前版本需要发布，需要把develop合并到master版本</p>
+<p>步骤：</p>
+<p>1、切换到需要合并的版本，比如master</p>
+<p><img src="/2020/04/14/day50-git/1562576981337.png" alt></p>
+<p>2、执行合并操作，使用当前版本合并其他版本到当前，比如master合并developer</p>
+<p><img src="/2020/04/14/day50-git/1562576826467.png" alt></p>
+<p>3、合并完成，推送到远程仓库</p>
+<p><img src="/2020/04/14/day50-git/1562577122778.png" alt></p>
+<h5 id="4-2-8、创建分支"><a href="#4-2-8、创建分支" class="headerlink" title="4.2.8、创建分支"></a>4.2.8、创建分支</h5><p>假如线上发生问题，需要解决线上问题，需要在master创建bugfix分支，解决线上问题。</p>
+<p><img src="/2020/04/14/day50-git/1562579737571.png" alt></p>
+<p><img src="/2020/04/14/day50-git/1562579815128.png" alt="1562579815128"></p>
+<p><img src="/2020/04/14/day50-git/1562579835351.png" alt="1562579835351"></p>
+<p>​    </p>
+<h5 id="4-2-9、切换分支"><a href="#4-2-9、切换分支" class="headerlink" title="4.2.9、切换分支"></a>4.2.9、切换分支</h5><p>切换分支，只需要选中分支，然后选择checkout，就可以切换分支</p>
+<p><img src="/2020/04/14/day50-git/1562580052575.png" alt></p>
+<h5 id="4-2-10、版本比较"><a href="#4-2-10、版本比较" class="headerlink" title="4.2.10、版本比较"></a>4.2.10、版本比较</h5><p>对代码修改后，可以点击对比按钮，对比差异</p>
+<p><img src="/2020/04/14/day50-git/1562580218822.png" alt>    </p>
+<p><img src="/2020/04/14/day50-git/1562580322931.png" alt></p>
+<h4 id="4-3-场景分析"><a href="#4-3-场景分析" class="headerlink" title="4.3 场景分析"></a>4.3 场景分析</h4><pre><code> 基于我们后面的实战模式，我们做一个综合练习</code></pre><p>​    当前的开发环境如下，我们每个人都对这个项目已经开发一段时间，接下来我们要切换成团队开发模式。</p>
+<p>也就是我们由一个团队来完成这个项目实战的内容。团队有组长和若干组员组成（组长就是开发中的项目经理）。</p>
+<p>所有操作都在idea中完成。</p>
+<p>​    练习场景如下：</p>
+<p>​    1、由组长，基于本项目创建本地仓库；创建远程仓库，推送项目到远程仓库。（真实环境：项目经理创建空的项目推送，然后逐步添加内容，提交并推送）</p>
+<p>​    2、每一位组员从远程仓库克隆项目到idea中,这样每位同学在自己电脑上就有了一个工作副本，可以正式的开始开发了。我们模拟两个组员(组员A、组员B)，克隆两个工作区。</p>
+<p>​    3、组员A修改工作区，添加到暂存区，提交到本地仓库。如果需要分享代码给另一个组员，推送到远程仓库。组员B可以直接从远程仓库获取代码，组员B可以获取组员A推送的代码。</p>
+<p>​    4、组员A和组员B对同一个文件进行修改，提交代码到本地，这时需要分享代码给其他组员；组员A推送代码到远程仓库；组员B也推送代码到远程仓库，由于两位组员修改了同一个文件，推送失败。    </p>
+<p>​    解决方法：需要先获取远程仓库的代码到本地仓库，编辑冲突，提交并推送代码。</p>
+<p>​    5、组员A接到组长命令，要对某功能进行重大的实验性调整；</p>
+<p>​    操作思路：创建分支B1， 切换到B1分支，在B1分支上进行代码调整。B1分支达到了预期的目标，可以合并到原来的主干上；B1分支没有达到预期的目标，可以继续调整，也可以直接删除分支，切换到主分支继续开发。如果其他组员对主干上代码进行过调整，在合并时会产生冲突，需先解决冲突，再提交并推送。    </p>
+<h2 id="5、Git标签"><a href="#5、Git标签" class="headerlink" title="5、Git标签"></a>5、Git标签</h2><p>像其他版本控制系统（VCS）一样，Git 可以给历史中的某一个提交打上标签，以示重要。 比较有代表性的是人们会使用这个功能来标记发布结点（v1.0 、v1.2等）。标签指的是某个分支某个特定时间点的状态。通过标签，可以很方便的切换到标记时的状态。例如mybatis-3.4.5.jar ,mybatis-3.4.1.jar 多个版本。</p>
+<h4 id="5-1、创建标签"><a href="#5-1、创建标签" class="headerlink" title="5.1、创建标签"></a>5.1、创建标签</h4><p><img src="/2020/04/14/day50-git/57.png" alt>    </p>
+<h4 id="5-2、查看标签"><a href="#5-2、查看标签" class="headerlink" title="5.2、查看标签"></a>5.2、查看标签</h4><p>查询所有标签</p>
+<p><img src="/2020/04/14/day50-git/58.png" alt>    </p>
+<p>查询某个标签</p>
+<p><img src="/2020/04/14/day50-git/60.png" alt>    </p>
+<h4 id="5-3、推送远程"><a href="#5-3、推送远程" class="headerlink" title="5.3、推送远程"></a>5.3、推送远程</h4><p><img src="/2020/04/14/day50-git/61.png" alt>        </p>
+<h4 id="5-4、检出标签"><a href="#5-4、检出标签" class="headerlink" title="5.4、检出标签"></a>5.4、检出标签</h4><p><img src="/2020/04/14/day50-git/62.png" alt>    </p>
+<h4 id="5-5、删除标签"><a href="#5-5、删除标签" class="headerlink" title="5.5、删除标签"></a>5.5、删除标签</h4><p><img src="/2020/04/14/day50-git/63.png" alt>    </p>
+<h2 id="6、SSH协议传输数据"><a href="#6、SSH协议传输数据" class="headerlink" title="6、SSH协议传输数据"></a>6、SSH协议传输数据</h2><h4 id="6-1、Git支持的传输协议"><a href="#6-1、Git支持的传输协议" class="headerlink" title="6.1、Git支持的传输协议"></a>6.1、Git支持的传输协议</h4><pre><code>由于Git的远程仓库并不在我们本地，当我们在使用远程仓库的时候（例如克隆、拉取、推送）就会涉及到数据的网络传输，Git支持多种数据传输协议
+ 本地协议（Local）
+ HTTPS 协议
+ SSH（Secure Shell）协议
+ Git 协议
+
+我们前面的操作都是基于HTTPS协议进行的，本章节我们会学习如何使用SSH协议</code></pre><p><img src="/2020/04/14/day50-git/1562252114736.png" alt>    </p>
+<h4 id="6-2、什么是SSH协议"><a href="#6-2、什么是SSH协议" class="headerlink" title="6.2、什么是SSH协议"></a>6.2、什么是SSH协议</h4><pre><code>SSH 为 Secure Shell（安全外壳协议）的缩写，由 IETF 的网络小组（Network Working Group）所制定。SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。
+
+由于本地Git仓库和远程仓库之间的传输是通过SSH加密的，所以必须要让远程仓库服务器认证你的SSH key，在此之前，必须要生成SSH key。
+
+使用ssh协议通信时，推荐使用基于密钥的验证方式。你必须为自己创建一对密匙（公钥和私钥），并把公匙放在需要访问的服务器上。</code></pre><h4 id="6-3、配置SSH协议"><a href="#6-3、配置SSH协议" class="headerlink" title="6.3、配置SSH协议"></a>6.3、配置SSH协议</h4><h5 id="6-3-1、使用git命令创建公钥和私钥"><a href="#6-3-1、使用git命令创建公钥和私钥" class="headerlink" title="6.3.1、使用git命令创建公钥和私钥"></a>6.3.1、使用git命令创建公钥和私钥</h5><pre><code>使用命令ssh-keygen –t rsa生成公钥和私钥，执行完成后在windows本地用户.ssh目录C:\Users\用户名\.ssh下面生成如下名称的公钥和私钥</code></pre><p><img src="/2020/04/14/day50-git/1562252259062.png" alt>    </p>
+<p>window环境下的公钥和私钥</p>
+<p><img src="/2020/04/14/day50-git/1562252307412.png" alt>        </p>
+<h5 id="6-3-2、配置公钥至远程仓库"><a href="#6-3-2、配置公钥至远程仓库" class="headerlink" title="6.3.2、配置公钥至远程仓库"></a>6.3.2、配置公钥至远程仓库</h5><p>在码云的设置中，添加公钥,需要进行密码验证</p>
+<p><img src="/2020/04/14/day50-git/1562252413324.png" alt>    </p>
+<p>推送时配置远程仓库路径为</p>
+<p><img src="/2020/04/14/day50-git/1562253035054.png" alt="1562253035054">    </p>
+<h4 id="6-4、配置SSH的注意事项"><a href="#6-4、配置SSH的注意事项" class="headerlink" title="6.4、配置SSH的注意事项"></a>6.4、配置SSH的注意事项</h4><p><img src="/2020/04/14/day50-git/1562252518582.png" alt></p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://fantasylhd.github.io" rel="external nofollow noreferrer">fantasy</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://fantasylhd.github.io/2020/04/14/day50-git/">https://fantasylhd.github.io/2020/04/14/day50-git/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://fantasylhd.github.io" target="_blank">fantasy</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7/">
+                                    <span class="chip bg-color">版本控制工具</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: null,
+        id: '2020-04-14T13-36-46',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/06/04/day61-springmvc03/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="day61-SpringMVC03">
+                        
+                        <span class="card-title">day61-SpringMVC03</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-04
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            fantasy
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/14/day49-linux/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="day49-linux">
+                        
+                        <span class="card-title">day49-linux</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            fantasy
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="https://fantasylhd.github.io" target="_blank">fantasy</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">140.7k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
