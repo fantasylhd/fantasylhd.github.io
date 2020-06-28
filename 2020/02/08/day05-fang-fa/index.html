@@ -437,12 +437,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
+                                <span class="chip bg-color">编程语言</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/JavaSE/" class="post-category">
+                                JavaSE
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -451,14 +464,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-05
+                    2020-02-08
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-06
+                    2020-06-09
                 </div>
                 
 
@@ -487,7 +500,14 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="day05-方法"><a href="#day05-方法" class="headerlink" title="day05-方法"></a>day05-方法</h1><h2 id="1-方法概述"><a href="#1-方法概述" class="headerlink" title="1. 方法概述"></a>1. 方法概述</h2><h3 id="1-1-方法的概念（理解）"><a href="#1-1-方法的概念（理解）" class="headerlink" title="1.1 方法的概念（理解）"></a>1.1 方法的概念（理解）</h3><p>​    方法（method）是将具有独立功能的代码块组织成为一个整体，使其具有特殊功能的代码集</p>
+                <h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><ul>
+<li>方法的概念</li>
+<li>方法的定义和调用</li>
+<li>方法的注意事项和返回值</li>
+<li>方法的参数传递</li>
+<li>方法重载</li>
+</ul>
+<h2 id="1-方法概述"><a href="#1-方法概述" class="headerlink" title="1. 方法概述"></a>1. 方法概述</h2><h3 id="1-1-方法的概念"><a href="#1-1-方法的概念" class="headerlink" title="1.1 方法的概念"></a>1.1 方法的概念</h3><p>​    方法（method）是将具有独立功能的代码块组织成为一个整体，使其具有特殊功能的代码集</p>
 <ul>
 <li>注意：<ul>
 <li>方法必须先创建才可以使用，该过程成为方法定义</li>
@@ -496,7 +516,7 @@
 </li>
 </ul>
 <h2 id="2-方法的定义和调用"><a href="#2-方法的定义和调用" class="headerlink" title="2. 方法的定义和调用"></a>2. 方法的定义和调用</h2><a id="more"></a>
-<h3 id="2-1-无参数方法定义和调用（掌握）"><a href="#2-1-无参数方法定义和调用（掌握）" class="headerlink" title="2.1 无参数方法定义和调用（掌握）"></a>2.1 无参数方法定义和调用（掌握）</h3><ul>
+<h3 id="2-1-无参数方法定义和调用"><a href="#2-1-无参数方法定义和调用" class="headerlink" title="2.1 无参数方法定义和调用"></a>2.1 无参数方法定义和调用</h3><ul>
 <li><p>定义格式：</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> 方法名 <span class="token punctuation">(</span>   <span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 方法体;</span>
@@ -517,11 +537,11 @@
 <p>​    方法必须先定义，后调用，否则程序将报错</p>
 </li>
 </ul>
-<h3 id="2-2-方法调用过程图解（理解）"><a href="#2-2-方法调用过程图解（理解）" class="headerlink" title="2.2 方法调用过程图解（理解）"></a>2.2 方法调用过程图解（理解）</h3><p><img src="/2020/02/05/day05-fang-fa/p3.png" alt="无参数方法调用图解"></p>
+<h3 id="2-2-方法调用过程图解"><a href="#2-2-方法调用过程图解" class="headerlink" title="2.2 方法调用过程图解"></a>2.2 方法调用过程图解</h3><p><img src="/2020/02/08/day05-fang-fa/p3.png" alt="无参数方法调用图解"></p>
 <ul>
 <li>总结：每个方法在被调用执行的时候，都会进入栈内存，并且拥有自己独立的内存空间，方法内部代码调用完毕之后，会从栈内存中弹栈消失。</li>
 </ul>
-<h3 id="2-3-无参数方法的练习（应用）"><a href="#2-3-无参数方法的练习（应用）" class="headerlink" title="2.3 无参数方法的练习（应用）"></a>2.3 无参数方法的练习（应用）</h3><ul>
+<h3 id="2-3-无参数方法的练习"><a href="#2-3-无参数方法的练习" class="headerlink" title="2.3 无参数方法的练习"></a>2.3 无参数方法的练习</h3><ul>
 <li>需求：设计一个方法用于打印两个数中的较大数 </li>
 <li>思路：<ul>
 <li>①定义一个方法，用于打印两个数字中的较大数，例如getMax() </li>
@@ -552,7 +572,7 @@
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h2 id="3-带参数方法定义和调用"><a href="#3-带参数方法定义和调用" class="headerlink" title="3. 带参数方法定义和调用"></a>3. 带参数方法定义和调用</h2><h3 id="3-1-带参数方法定义和调用（掌握）"><a href="#3-1-带参数方法定义和调用（掌握）" class="headerlink" title="3.1 带参数方法定义和调用（掌握）"></a>3.1 带参数方法定义和调用（掌握）</h3><ul>
+<h2 id="3-带参数方法定义和调用"><a href="#3-带参数方法定义和调用" class="headerlink" title="3. 带参数方法定义和调用"></a>3. 带参数方法定义和调用</h2><h3 id="3-1-带参数方法定义和调用"><a href="#3-1-带参数方法定义和调用" class="headerlink" title="3.1 带参数方法定义和调用"></a>3.1 带参数方法定义和调用</h3><ul>
 <li><p>定义格式：</p>
 <p>参数：由数据类型和变量名组成 -  数据类型 变量名</p>
 <p>参数范例：int a</p>
@@ -592,7 +612,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="3-2-形参和实参（理解）"><a href="#3-2-形参和实参（理解）" class="headerlink" title="3.2 形参和实参（理解）"></a>3.2 形参和实参（理解）</h3><ol>
+<h3 id="3-2-形参和实参"><a href="#3-2-形参和实参" class="headerlink" title="3.2 形参和实参"></a>3.2 形参和实参</h3><ol>
 <li>形参：方法定义中的参数</li>
 </ol>
 <p>​          等同于变量定义格式，例如：int number</p>
@@ -600,7 +620,7 @@
 <li>实参：方法调用中的参数</li>
 </ol>
 <p>​          等同于使用变量或常量，例如： 10  number</p>
-<h3 id="3-3-带参数方法练习（应用）"><a href="#3-3-带参数方法练习（应用）" class="headerlink" title="3.3 带参数方法练习（应用）"></a>3.3 带参数方法练习（应用）</h3><ul>
+<h3 id="3-3-带参数方法练习"><a href="#3-3-带参数方法练习" class="headerlink" title="3.3 带参数方法练习"></a>3.3 带参数方法练习</h3><ul>
 <li>需求：设计一个方法用于打印两个数中的较大数，数据来自于方法参数 }</li>
 <li>思路：<ul>
 <li>①定义一个方法，用于打印两个数字中的较大数，例如getMax() </li>
@@ -637,7 +657,7 @@
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h2 id="4-带返回值方法的定义和调用"><a href="#4-带返回值方法的定义和调用" class="headerlink" title="4. 带返回值方法的定义和调用"></a>4. 带返回值方法的定义和调用</h2><h3 id="4-1-带返回值方法定义和调用（掌握）"><a href="#4-1-带返回值方法定义和调用（掌握）" class="headerlink" title="4.1 带返回值方法定义和调用（掌握）"></a>4.1 带返回值方法定义和调用（掌握）</h3><ul>
+<h2 id="4-带返回值方法的定义和调用"><a href="#4-带返回值方法的定义和调用" class="headerlink" title="4. 带返回值方法的定义和调用"></a>4. 带返回值方法的定义和调用</h2><h3 id="4-1-带返回值方法定义和调用"><a href="#4-1-带返回值方法定义和调用" class="headerlink" title="4.1 带返回值方法定义和调用"></a>4.1 带返回值方法定义和调用</h3><ul>
 <li><p>定义格式</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> 数据类型 方法名 <span class="token punctuation">(</span> 参数 <span class="token punctuation">)</span> <span class="token punctuation">{</span> 
     <span class="token keyword">return</span> 数据 <span class="token punctuation">;</span>
@@ -672,7 +692,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="4-2-带返回值方法练习（应用）"><a href="#4-2-带返回值方法练习（应用）" class="headerlink" title="4.2 带返回值方法练习（应用）"></a>4.2 带返回值方法练习（应用）</h3><ul>
+<h3 id="4-2-带返回值方法练习"><a href="#4-2-带返回值方法练习" class="headerlink" title="4.2 带返回值方法练习"></a>4.2 带返回值方法练习</h3><ul>
 <li><p>需求：设计一个方法可以获取两个数的较大值，数据来自于参数</p>
 </li>
 <li><p>思路：</p>
@@ -708,7 +728,7 @@
 <span class="token punctuation">}</span></code></pre>
 </li>
 </ul>
-<h2 id="5-方法的注意事项"><a href="#5-方法的注意事项" class="headerlink" title="5. 方法的注意事项"></a>5. 方法的注意事项</h2><h3 id="5-1-方法的注意事项（掌握）"><a href="#5-1-方法的注意事项（掌握）" class="headerlink" title="5.1 方法的注意事项（掌握）"></a>5.1 方法的注意事项（掌握）</h3><ul>
+<h2 id="5-方法的注意事项"><a href="#5-方法的注意事项" class="headerlink" title="5. 方法的注意事项"></a>5. 方法的注意事项</h2><h3 id="5-1-方法的注意事项"><a href="#5-1-方法的注意事项" class="headerlink" title="5.1 方法的注意事项"></a>5.1 方法的注意事项</h3><ul>
 <li><p>方法不能嵌套定义</p>
 <ul>
 <li><p>示例代码：</p>
@@ -743,7 +763,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="5-2-方法的通用格式（掌握）"><a href="#5-2-方法的通用格式（掌握）" class="headerlink" title="5.2 方法的通用格式（掌握）"></a>5.2 方法的通用格式（掌握）</h3><ul>
+<h3 id="5-2-方法的通用格式"><a href="#5-2-方法的通用格式" class="headerlink" title="5.2 方法的通用格式"></a>5.2 方法的通用格式</h3><ul>
 <li><p>格式：</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> 返回值类型 方法名<span class="token punctuation">(</span>参数<span class="token punctuation">)</span> <span class="token punctuation">{</span>
    方法体<span class="token punctuation">;</span> 
@@ -775,7 +795,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="6-方法重载"><a href="#6-方法重载" class="headerlink" title="6. 方法重载"></a>6. 方法重载</h2><h3 id="6-1-方法重载（理解）"><a href="#6-1-方法重载（理解）" class="headerlink" title="6.1 方法重载（理解）"></a>6.1 方法重载（理解）</h3><ul>
+<h2 id="6-方法重载"><a href="#6-方法重载" class="headerlink" title="6. 方法重载"></a>6. 方法重载</h2><h3 id="6-1-方法重载"><a href="#6-1-方法重载" class="headerlink" title="6.1 方法重载"></a>6.1 方法重载</h3><ul>
 <li><p>方法重载概念</p>
 <p>方法重载指同一个类中定义的多个方法之间的关系，满足下列条件的多个方法相互构成重载</p>
 <ul>
@@ -831,7 +851,7 @@
 <span class="token punctuation">}</span></code></pre>
 </li>
 </ul>
-<h3 id="6-2-方法重载练习（掌握）"><a href="#6-2-方法重载练习（掌握）" class="headerlink" title="6.2 方法重载练习（掌握）"></a>6.2 方法重载练习（掌握）</h3><ul>
+<h3 id="6-2-方法重载练习"><a href="#6-2-方法重载练习" class="headerlink" title="6.2 方法重载练习"></a>6.2 方法重载练习</h3><ul>
 <li><p>需求：使用方法重载的思想，设计比较两个整数是否相同的方法，兼容全整数类型（byte,short,int,long） </p>
 </li>
 <li><p>思路：</p>
@@ -879,7 +899,7 @@
 <span class="token punctuation">}</span></code></pre>
 </li>
 </ul>
-<h2 id="7-方法的参数传递"><a href="#7-方法的参数传递" class="headerlink" title="7. 方法的参数传递"></a>7. 方法的参数传递</h2><h3 id="7-1-方法参数传递基本类型（理解）"><a href="#7-1-方法参数传递基本类型（理解）" class="headerlink" title="7.1 方法参数传递基本类型（理解）"></a>7.1 方法参数传递基本类型（理解）</h3><ul>
+<h2 id="7-方法的参数传递"><a href="#7-方法的参数传递" class="headerlink" title="7. 方法的参数传递"></a>7. 方法的参数传递</h2><h3 id="7-1-方法参数传递基本类型"><a href="#7-1-方法参数传递基本类型" class="headerlink" title="7.1 方法参数传递基本类型"></a>7.1 方法参数传递基本类型</h3><ul>
 <li><p>测试代码：</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ArgsDemo01</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -903,12 +923,12 @@
 <li><p>结论依据：</p>
 <ul>
 <li><p>每个方法在栈内存中，都会有独立的栈空间，方法运行结束后就会弹栈消失</p>
-<p><img src="/2020/02/05/day05-fang-fa/p1.png" alt="方法传参-基本数据类型"></p>
+<p><img src="/2020/02/08/day05-fang-fa/p1.png" alt="方法传参-基本数据类型"></p>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="7-2-方法参数传递引用类型（理解）"><a href="#7-2-方法参数传递引用类型（理解）" class="headerlink" title="7.2 方法参数传递引用类型（理解）"></a>7.2 方法参数传递引用类型（理解）</h3><ul>
+<h3 id="7-2-方法参数传递引用类型"><a href="#7-2-方法参数传递引用类型" class="headerlink" title="7.2 方法参数传递引用类型"></a>7.2 方法参数传递引用类型</h3><ul>
 <li><p>测试代码：</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ArgsDemo02</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -932,12 +952,12 @@
 <li><p>结论依据：</p>
 <ul>
 <li><p>引用数据类型的传参，传入的是地址值，内存中会造成两个引用指向同一个内存的效果，所以即使方法弹栈，堆内存中的数据也已经是改变后的结果 </p>
-<p>  <img src="/2020/02/05/day05-fang-fa/p2.png" alt="方法传参-引用数据类型"></p>
+<p>  <img src="/2020/02/08/day05-fang-fa/p2.png" alt="方法传参-引用数据类型"></p>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="7-3-数组遍历（应用）"><a href="#7-3-数组遍历（应用）" class="headerlink" title="7.3 数组遍历（应用）"></a>7.3 数组遍历（应用）</h3><ul>
+<h3 id="7-3-数组遍历"><a href="#7-3-数组遍历" class="headerlink" title="7.3 数组遍历"></a>7.3 数组遍历</h3><ul>
 <li><p>需求：设计一个方法用于数组遍历，要求遍历的结果是在一行上的。例如：[11, 22, 33, 44, 55] </p>
 </li>
 <li><p>思路：</p>
@@ -987,7 +1007,7 @@
 <span class="token punctuation">}</span></code></pre>
 </li>
 </ul>
-<h3 id="7-4-数组最大值（应用）"><a href="#7-4-数组最大值（应用）" class="headerlink" title="7.4 数组最大值（应用）"></a>7.4 数组最大值（应用）</h3><ul>
+<h3 id="7-4-数组最大值"><a href="#7-4-数组最大值" class="headerlink" title="7.4 数组最大值"></a>7.4 数组最大值</h3><ul>
 <li><p>需求：设计一个方法用于获取数组中元素的最大值 </p>
 </li>
 <li><p>思路：</p>
@@ -1055,7 +1075,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://fantasylhd.github.io/2020/02/05/day05-fang-fa/">https://fantasylhd.github.io/2020/02/05/day05-fang-fa/</a>
+                    <a href="https://fantasylhd.github.io/2020/02/08/day05-fang-fa/">https://fantasylhd.github.io/2020/02/08/day05-fang-fa/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1092,7 +1112,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
+                                    <span class="chip bg-color">编程语言</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1261,7 +1285,7 @@
         repo: '',
         owner: '',
         admin: null,
-        id: '2020-02-05T17-31-13',
+        id: '2020-02-08T01-01-10',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1289,7 +1313,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/02/06/day06-debug-ji-chu-lian-xi/">
+                <a href="/2020/02/08/day06-debug-ji-chu-lian-xi/">
                     <div class="card-image">
                         
                         
@@ -1301,22 +1325,32 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            day06-Debug&amp;基础练习1.Debug模式1.1什么是Debug模式【理解】是供程序员使用的程序调试工具，它可以用于查看程序的执行流程，也可以用于追踪程序执行过程来调试程序。
-1.2Debug模式操作流程【应用】
-如何加断点
+                            介绍Debug和前面知识的应用
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-06
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-08
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            fantasy
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JavaSE/" class="post-category">
+                                    JavaSE
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">编程语言</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1328,28 +1362,32 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/05/day04-shu-zu/">
+                <a href="/2020/02/07/day08-chang-yong-api/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="day04数组">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="day08-常用API">
                         
-                        <span class="card-title">day04数组</span>
+                        <span class="card-title">day08-常用API</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            day04数组1.数组1.1什么是数组【理解】​    数组就是存储数据长度固定的容器，存储多个数据的数据类型要一致。 
+                            day08-常用API1.API1.1API概述【理解】
+什么是API
+​    API (Application Programming Interface) ：应用程序编程接口
 
-1.2数组定义格式【记忆】1.2.1第一种​    数据类型[] 数组名
-​    示例：
-int[] arr;  
+java中的API
+
+
+
+  ​    指的就是 JDK
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-07
                             </span>
                         <span class="publish-author">
                             

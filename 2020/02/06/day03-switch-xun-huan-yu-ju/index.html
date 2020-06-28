@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="day03-switch, fantasyblog">
+    <meta name="keywords" content="day03-switch&amp;循环语句, fantasyblog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>day03-switch | fantasyblog</title>
+    <title>day03-switch&amp;循环语句 | fantasyblog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">day03-switch</h1>
+                    <h1 class="description center-align post-title">day03-switch&amp;循环语句</h1>
                 </div>
             </div>
         </div>
@@ -437,12 +437,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
+                                <span class="chip bg-color">编程语言</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/JavaSE/" class="post-category">
+                                JavaSE
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -451,21 +464,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-04
+                    2020-02-06
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-06-04
+                    2020-06-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.4k
+                    3.3k
                 </div>
                 
 
@@ -487,7 +500,12 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="day03-控制语句"><a href="#day03-控制语句" class="headerlink" title="day03 - 控制语句"></a>day03 - 控制语句</h1><h2 id="1-switch语句"><a href="#1-switch语句" class="headerlink" title="1. switch语句"></a>1. switch语句</h2><h3 id="1-1-switch语句结构（掌握）"><a href="#1-1-switch语句结构（掌握）" class="headerlink" title="1.1 switch语句结构（掌握）"></a>1.1 switch语句结构（掌握）</h3><ul>
+                <h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><ul>
+<li>switch语句</li>
+<li>for和while和do while</li>
+<li>随机数类</li>
+</ul>
+<h2 id="1-switch语句"><a href="#1-switch语句" class="headerlink" title="1. switch语句"></a>1. switch语句</h2><h3 id="1-1-switch语句结构"><a href="#1-1-switch语句结构" class="headerlink" title="1.1 switch语句结构"></a>1.1 switch语句结构</h3><ul>
 <li><p>格式</p>
 <a id="more"></a>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">switch</span> <span class="token punctuation">(</span>表达式<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -511,7 +529,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="1-2-switch语句练习-春夏秋冬（应用）"><a href="#1-2-switch语句练习-春夏秋冬（应用）" class="headerlink" title="1.2 switch语句练习-春夏秋冬（应用）"></a>1.2 switch语句练习-春夏秋冬（应用）</h3><ul>
+<h3 id="1-2-switch语句练习-春夏秋冬"><a href="#1-2-switch语句练习-春夏秋冬" class="headerlink" title="1.2 switch语句练习-春夏秋冬"></a>1.2 switch语句练习-春夏秋冬</h3><ul>
 <li>需求：一年有12个月，分属于春夏秋冬4个季节，键盘录入一个月份，请用程序实现判断该月份属于哪个季节，并输出。 </li>
 <li>运行结果：</li>
 </ul>
@@ -557,7 +575,7 @@
 <ul>
 <li>注意：如果switch中得case，没有对应break的话，则会出现case穿透的现象。</li>
 </ul>
-<h2 id="2-for循环"><a href="#2-for循环" class="headerlink" title="2. for循环"></a>2. for循环</h2><h3 id="2-1-for循环结构（掌握）"><a href="#2-1-for循环结构（掌握）" class="headerlink" title="2.1 for循环结构（掌握）"></a>2.1 for循环结构（掌握）</h3><ul>
+<h2 id="2-for循环"><a href="#2-for循环" class="headerlink" title="2. for循环"></a>2. for循环</h2><h3 id="2-1-for循环结构"><a href="#2-1-for循环结构" class="headerlink" title="2.1 for循环结构"></a>2.1 for循环结构</h3><ul>
 <li><p>循环：</p>
 <p>循环语句可以在满足循环条件的情况下，反复执行某一段代码，这段被重复执行的代码被称为循环体语句，当反复 执行这个循环体时，需要在合适的时候把循环判断条件修改为false，从而结束循环，否则循环将一直执行下去，形 成死循环。 </p>
 </li>
@@ -586,7 +604,7 @@
 <p>⑤回到②继续</p>
 </li>
 </ul>
-<h3 id="2-2-for循环练习-输出数据（应用）"><a href="#2-2-for循环练习-输出数据（应用）" class="headerlink" title="2.2 for循环练习-输出数据（应用）"></a>2.2 for循环练习-输出数据（应用）</h3><ul>
+<h3 id="2-2-for循环练习-输出数据"><a href="#2-2-for循环练习-输出数据" class="headerlink" title="2.2 for循环练习-输出数据"></a>2.2 for循环练习-输出数据</h3><ul>
 <li>需求：在控制台输出1-5和5-1的数据 </li>
 <li>示例代码：</li>
 </ul>
@@ -603,7 +621,7 @@
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="2-3-for循环练习-求和（应用）"><a href="#2-3-for循环练习-求和（应用）" class="headerlink" title="2.3 for循环练习-求和（应用）"></a>2.3 for循环练习-求和（应用）</h3><ul>
+<h3 id="2-3-for循环练习-求和"><a href="#2-3-for循环练习-求和" class="headerlink" title="2.3 for循环练习-求和"></a>2.3 for循环练习-求和</h3><ul>
 <li>需求：求1-5之间的数据和，并把求和结果在控制台输出 </li>
 <li>示例代码：</li>
 </ul>
@@ -636,7 +654,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="2-4-for循环练习-求偶数和（应用）"><a href="#2-4-for循环练习-求偶数和（应用）" class="headerlink" title="2.4 for循环练习-求偶数和（应用）"></a>2.4 for循环练习-求偶数和（应用）</h3><ul>
+<h3 id="2-4-for循环练习-求偶数和"><a href="#2-4-for循环练习-求偶数和" class="headerlink" title="2.4 for循环练习-求偶数和"></a>2.4 for循环练习-求偶数和</h3><ul>
 <li>需求：求1-100之间的偶数和，并把求和结果在控制台输出 }</li>
 <li>示例代码：</li>
 </ul>
@@ -655,7 +673,7 @@
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"1-100之间的偶数和是："</span> <span class="token operator">+</span> sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="2-5-for循环练习-水仙花（应用）"><a href="#2-5-for循环练习-水仙花（应用）" class="headerlink" title="2.5 for循环练习-水仙花（应用）"></a>2.5 for循环练习-水仙花（应用）</h3><ul>
+<h3 id="2-5-for循环练习-水仙花"><a href="#2-5-for循环练习-水仙花" class="headerlink" title="2.5 for循环练习-水仙花"></a>2.5 for循环练习-水仙花</h3><ul>
 <li>需求：在控制台输出所有的“水仙花数” </li>
 <li>解释：什么是水仙花数？<ul>
 <li>水仙花数，指的是一个三位数，个位、十位、百位的数字立方和等于原数<ul>
@@ -688,7 +706,7 @@
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="2-6-for循环练习-统计水仙花数个数（应用）"><a href="#2-6-for循环练习-统计水仙花数个数（应用）" class="headerlink" title="2.6 for循环练习-统计水仙花数个数（应用）"></a>2.6 for循环练习-统计水仙花数个数（应用）</h3><ul>
+<h3 id="2-6-for循环练习-统计水仙花数个数"><a href="#2-6-for循环练习-统计水仙花数个数" class="headerlink" title="2.6 for循环练习-统计水仙花数个数"></a>2.6 for循环练习-统计水仙花数个数</h3><ul>
 <li>需求：统计“水仙花数”一共有多少个，并在控制台输出个数 </li>
 <li>示例代码：</li>
 </ul>
@@ -718,7 +736,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="3-while循环"><a href="#3-while循环" class="headerlink" title="3. while循环"></a>3. while循环</h2><h3 id="3-1-while结构（掌握）"><a href="#3-1-while结构（掌握）" class="headerlink" title="3.1 while结构（掌握）"></a>3.1 while结构（掌握）</h3><ul>
+<h2 id="3-while循环"><a href="#3-while循环" class="headerlink" title="3. while循环"></a>3. while循环</h2><h3 id="3-1-while结构"><a href="#3-1-while结构" class="headerlink" title="3.1 while结构"></a>3.1 while结构</h3><ul>
 <li><p>while循环完整格式：</p>
 <pre class=" language-java"><code class="language-java">初始化语句<span class="token punctuation">;</span>
 <span class="token keyword">while</span> <span class="token punctuation">(</span>条件判断语句<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -754,7 +772,7 @@
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="3-2-while循环练习-珠穆朗玛峰（应用）"><a href="#3-2-while循环练习-珠穆朗玛峰（应用）" class="headerlink" title="3.2 while循环练习-珠穆朗玛峰（应用）"></a>3.2 while循环练习-珠穆朗玛峰（应用）</h3><ul>
+<h3 id="3-2-while循环练习-珠穆朗玛峰"><a href="#3-2-while循环练习-珠穆朗玛峰" class="headerlink" title="3.2 while循环练习-珠穆朗玛峰"></a>3.2 while循环练习-珠穆朗玛峰</h3><ul>
 <li>需求：世界最高山峰是珠穆朗玛峰(8844.43米=8844430毫米)，假如我有一张足够大的纸，它的厚度是0.1毫米。请问，我折叠多少次，可以折成珠穆朗玛峰的高度?</li>
 <li>示例代码：</li>
 </ul>
@@ -778,7 +796,7 @@
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"需要折叠："</span> <span class="token operator">+</span> count <span class="token operator">+</span> <span class="token string">"次"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h2 id="4-循环细节"><a href="#4-循环细节" class="headerlink" title="4. 循环细节"></a>4. 循环细节</h2><h3 id="4-1-do…while循环结构（掌握）"><a href="#4-1-do…while循环结构（掌握）" class="headerlink" title="4.1 do…while循环结构（掌握）"></a>4.1 do…while循环结构（掌握）</h3><ul>
+<h2 id="4-循环细节"><a href="#4-循环细节" class="headerlink" title="4. 循环细节"></a>4. 循环细节</h2><h3 id="4-1-do…while循环结构"><a href="#4-1-do…while循环结构" class="headerlink" title="4.1 do…while循环结构"></a>4.1 do…while循环结构</h3><ul>
 <li><p>完整格式：</p>
 <pre class=" language-java"><code class="language-java">初始化语句<span class="token punctuation">;</span>
 <span class="token keyword">do</span> <span class="token punctuation">{</span>
@@ -814,7 +832,7 @@
         <span class="token punctuation">}</span><span class="token keyword">while</span><span class="token punctuation">(</span>j<span class="token operator">&lt;=</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="4-2-三种循环的区别（理解）"><a href="#4-2-三种循环的区别（理解）" class="headerlink" title="4.2 三种循环的区别（理解）"></a>4.2 三种循环的区别（理解）</h3><ul>
+<h3 id="4-2-三种循环的区别"><a href="#4-2-三种循环的区别" class="headerlink" title="4.2 三种循环的区别"></a>4.2 三种循环的区别</h3><ul>
 <li>三种循环的区别<ul>
 <li>for循环和while循环先判断条件是否成立，然后决定是否执行循环体（先判断后执行）</li>
 <li>do…while循环先执行一次循环体，然后判断条件是否成立，是否继续执行循环体（先执行后判断）</li>
@@ -832,7 +850,7 @@
 </ol>
 </li>
 </ul>
-<h3 id="4-3-跳转控制语句（掌握）"><a href="#4-3-跳转控制语句（掌握）" class="headerlink" title="4.3 跳转控制语句（掌握）"></a>4.3 跳转控制语句（掌握）</h3><ul>
+<h3 id="4-3-跳转控制语句"><a href="#4-3-跳转控制语句" class="headerlink" title="4.3 跳转控制语句"></a>4.3 跳转控制语句</h3><ul>
 <li>跳转控制语句（break）<ul>
 <li>跳出循环，结束循环</li>
 </ul>
@@ -843,7 +861,7 @@
 </li>
 <li>注意： continue只能在循环中进行使用！</li>
 </ul>
-<h3 id="4-4-循环嵌套（理解）"><a href="#4-4-循环嵌套（理解）" class="headerlink" title="4.4 循环嵌套（理解）"></a>4.4 循环嵌套（理解）</h3><ul>
+<h3 id="4-4-循环嵌套"><a href="#4-4-循环嵌套" class="headerlink" title="4.4 循环嵌套"></a>4.4 循环嵌套</h3><ul>
 <li><p>循环嵌套概述：在循环中，继续定义循环</p>
 </li>
 <li><p>示例代码：</p>
@@ -868,7 +886,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="5-Random"><a href="#5-Random" class="headerlink" title="5. Random"></a>5. Random</h2><h3 id="5-1-Random产生随机数（掌握）"><a href="#5-1-Random产生随机数（掌握）" class="headerlink" title="5.1 Random产生随机数（掌握）"></a>5.1 Random产生随机数（掌握）</h3><ul>
+<h2 id="5-Random"><a href="#5-Random" class="headerlink" title="5. Random"></a>5. Random</h2><h3 id="5-1-Random产生随机数"><a href="#5-1-Random产生随机数" class="headerlink" title="5.1 Random产生随机数"></a>5.1 Random产生随机数</h3><ul>
 <li><p>概述：</p>
 <ul>
 <li>Random类似Scanner，也是Java提供好的API，内部提供了产生随机数的功能<ul>
@@ -910,7 +928,7 @@
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="5-3-Random练习-猜数字（应用）"><a href="#5-3-Random练习-猜数字（应用）" class="headerlink" title="5.3 Random练习-猜数字（应用）"></a>5.3 Random练习-猜数字（应用）</h3><ul>
+<h3 id="5-3-Random练习-猜数字"><a href="#5-3-Random练习-猜数字" class="headerlink" title="5.3 Random练习-猜数字"></a>5.3 Random练习-猜数字</h3><ul>
 <li><p>需求：</p>
 <p>程序自动生成一个1-100之间的数字，使用程序实现猜出这个数字是多少？</p>
 <p>当猜错的时候根据不同情况给出相应的提示</p>
@@ -976,7 +994,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://fantasylhd.github.io/2020/02/04/day03-switch/">https://fantasylhd.github.io/2020/02/04/day03-switch/</a>
+                    <a href="https://fantasylhd.github.io/2020/02/06/day03-switch-xun-huan-yu-ju/">https://fantasylhd.github.io/2020/02/06/day03-switch-xun-huan-yu-ju/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1013,7 +1031,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
+                                    <span class="chip bg-color">编程语言</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1182,7 +1204,7 @@
         repo: '',
         owner: '',
         admin: null,
-        id: '2020-02-04T01-20-10',
+        id: '2020-02-06T01-20-10',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1210,6 +1232,48 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2020/02/06/day07-mian-xiang-dui-xiang/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="day07-面向对象">
+                        
+                        <span class="card-title">day07-面向对象</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            day07-面向对象1. 类和对象1.1 类和对象的理解【理解】客观存在的事物皆为对象 ，所以我们也常常说万物皆对象。
+
+类
+类的理解
+类是对现实生活中一类具有共同属性和行为的事物的抽象
+类是对象的数据类型，类是具有相同属性和行为的一组对象
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            fantasy
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2020/02/05/day02-java-de-yun-suan-fu-he-if-yu-ju/">
                     <div class="card-image">
                         
@@ -1226,57 +1290,8 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-05
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/JavaSE/" class="post-category">
-                                    JavaSE
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
-                        <span class="chip bg-color">编程语言</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/02/04/day01-java-ji-chu-ru-men/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="day01-Java入门">
-                        
-                        <span class="card-title">day01-Java入门</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            介绍一些Java的基本入门知识
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-05
                             </span>
                         <span class="publish-author">
                             

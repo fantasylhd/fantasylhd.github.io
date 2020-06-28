@@ -471,7 +471,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-06-04
+                    2020-06-05
                 </div>
                 
 
@@ -500,7 +500,12 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-运算符"><a href="#1-运算符" class="headerlink" title="1. 运算符"></a>1. 运算符</h2><h3 id="1-1-算术运算符"><a href="#1-1-算术运算符" class="headerlink" title="1.1 算术运算符"></a>1.1 算术运算符</h3><h4 id="1-1-1-运算符和表达式"><a href="#1-1-1-运算符和表达式" class="headerlink" title="1.1.1 运算符和表达式"></a>1.1.1 运算符和表达式</h4><a id="more"></a>
+                <h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><ul>
+<li>运算符</li>
+<li>外部输入类</li>
+<li>流程控制语句介绍之if语句</li>
+</ul>
+<h2 id="1-运算符"><a href="#1-运算符" class="headerlink" title="1. 运算符"></a>1. 运算符</h2><h3 id="1-1-算术运算符"><a href="#1-1-算术运算符" class="headerlink" title="1.1 算术运算符"></a>1.1 算术运算符</h3><h4 id="1-1-1-运算符和表达式"><a href="#1-1-1-运算符和表达式" class="headerlink" title="1.1.1 运算符和表达式"></a>1.1.1 运算符和表达式</h4><a id="more"></a>
 <p>运算符：对常量或者变量进行操作的符号</p>
 <p>表达式：用运算符把常量或者变量连接起来符合Java语法的式子就可以称为表达式。</p>
 <p>​                    不同运算符连接的表达式体现的是不同类型的表达式。</p>
@@ -587,7 +592,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token string">"itheima"</span> <span class="token operator">+</span> <span class="token number">3</span> <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 输出：3itheima34</span>
 <span class="token comment" spellcheck="true">// 可以使用小括号改变运算的优先级 </span>
 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token string">"itheima"</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">3</span> <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 输出：3itheima7</span></code></pre>
-<h3 id="1-2-赋值运算符（应用）"><a href="#1-2-赋值运算符（应用）" class="headerlink" title="1.2 赋值运算符（应用）"></a>1.2 赋值运算符（应用）</h3><p>赋值运算符的作用是将一个表达式的值赋给左边，左边必须是可修改的，不能是常量。</p>
+<h3 id="1-2-赋值运算符"><a href="#1-2-赋值运算符" class="headerlink" title="1.2 赋值运算符"></a>1.2 赋值运算符</h3><p>赋值运算符的作用是将一个表达式的值赋给左边，左边必须是可修改的，不能是常量。</p>
 <table>
 <thead>
 <tr>
@@ -633,7 +638,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 s <span class="token operator">=</span> s <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 此行代码报出，因为运算中s提升为int类型，运算结果int赋值给short可能损失精度</span>
 
 s <span class="token operator">+=</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 此行代码没有问题，隐含了强制类型转换，相当于 s = (short) (s + 10);</span></code></pre>
-<h3 id="1-3-自增自减运算符（理解）"><a href="#1-3-自增自减运算符（理解）" class="headerlink" title="1.3 自增自减运算符（理解）"></a>1.3 自增自减运算符（理解）</h3><table>
+<h3 id="1-3-自增自减运算符"><a href="#1-3-自增自减运算符" class="headerlink" title="1.3 自增自减运算符"></a>1.3 自增自减运算符</h3><table>
 <thead>
 <tr>
 <th>符号</th>
@@ -683,7 +688,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 输出结果为33。
 */</span>
 注意：通过此练习深刻理解自增和自减的规律，但实际开发中强烈建议不要写这样的代码！小心挨打！</code></pre>
-<h3 id="1-4-关系运算符（应用）"><a href="#1-4-关系运算符（应用）" class="headerlink" title="1.4 关系运算符（应用）"></a>1.4 关系运算符（应用）</h3><p>关系运算符有6种关系，分别为小于、小于等于、大于、等于、大于等于、不等于。</p>
+<h3 id="1-4-关系运算符"><a href="#1-4-关系运算符" class="headerlink" title="1.4 关系运算符"></a>1.4 关系运算符</h3><p>关系运算符有6种关系，分别为小于、小于等于、大于、等于、大于等于、不等于。</p>
 <table>
 <thead>
 <tr>
@@ -731,7 +736,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 <span class="token comment" spellcheck="true">// 关系运算的结果肯定是boolean类型，所以也可以将运算结果赋值给boolean类型的变量</span>
 <span class="token keyword">boolean</span> flag <span class="token operator">=</span> a <span class="token operator">></span> b<span class="token punctuation">;</span>
 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 输出false</span></code></pre>
-<h3 id="1-5-逻辑运算符（应用）"><a href="#1-5-逻辑运算符（应用）" class="headerlink" title="1.5 逻辑运算符（应用）"></a>1.5 逻辑运算符（应用）</h3><p>逻辑运算符把各个运算的关系表达式连接起来组成一个复杂的逻辑表达式，以判断程序中的表达式是否成立，判断的结果是 true 或 false。</p>
+<h3 id="1-5-逻辑运算符"><a href="#1-5-逻辑运算符" class="headerlink" title="1.5 逻辑运算符"></a>1.5 逻辑运算符</h3><p>逻辑运算符把各个运算的关系表达式连接起来组成一个复杂的逻辑表达式，以判断程序中的表达式是否成立，判断的结果是 true 或 false。</p>
 <table>
 <thead>
 <tr>
@@ -829,7 +834,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token operator">++</span> <span class="token operator">></span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>y<span class="token operator">++</span> <span class="token operator">></span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 左边已经可以确定结果为false，右边不参与运算</span>
 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 4</span>
 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 4</span></code></pre>
-<h3 id="1-6-三元运算符（理解）"><a href="#1-6-三元运算符（理解）" class="headerlink" title="1.6 三元运算符（理解）"></a>1.6 三元运算符（理解）</h3><p>三元运算符语法格式：</p>
+<h3 id="1-6-三元运算符"><a href="#1-6-三元运算符" class="headerlink" title="1.6 三元运算符"></a>1.6 三元运算符</h3><p>三元运算符语法格式：</p>
 <pre class=" language-java"><code class="language-java">关系表达式 <span class="token operator">?</span> 表达式<span class="token number">1</span> <span class="token operator">:</span> 表达式<span class="token number">2</span><span class="token punctuation">;</span></code></pre>
 <p>解释：问号前面的位置是判断的条件，判断结果为boolean型，为true时调用表达式1，为false时调用表达式2。其逻辑为：如果条件表达式成立或者满足则执行表达式1，否则执行第二个。</p>
 <p>举例：</p>
@@ -864,7 +869,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"maxHeight:"</span> <span class="token operator">+</span> maxHeight<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h2 id="2-数据输入（应用）"><a href="#2-数据输入（应用）" class="headerlink" title="2. 数据输入（应用）"></a>2. 数据输入（应用）</h2><p>我们可以通过 Scanner 类来获取用户的输入。使用步骤如下：</p>
+<h2 id="2-数据输入"><a href="#2-数据输入" class="headerlink" title="2. 数据输入"></a>2. 数据输入</h2><p>我们可以通过 Scanner 类来获取用户的输入。使用步骤如下：</p>
 <p>1、导包。Scanner 类在Java.util包下，所以需要将该类导入。导包的语句需要定义在类的上面。</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Scanner<span class="token punctuation">;</span> </code></pre>
 <p>2、创建Scanner对象。</p>
@@ -904,7 +909,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"这三个和尚中身高最高的是："</span> <span class="token operator">+</span> maxHeight <span class="token operator">+</span><span class="token string">"cm"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h2 id="3-流程控制语句（应用）"><a href="#3-流程控制语句（应用）" class="headerlink" title="3. 流程控制语句（应用）"></a>3. 流程控制语句（应用）</h2><p>在一个程序执行的过程中，各条语句的执行顺序对程序的结果是有直接影响的。所以，我们必须清楚每条语句的执行流程。而且，很多时候要通过控制语句的执行顺序来实现我们想要的功能。</p>
+<h2 id="3-流程控制语句"><a href="#3-流程控制语句" class="headerlink" title="3. 流程控制语句"></a>3. 流程控制语句</h2><p>在一个程序执行的过程中，各条语句的执行顺序对程序的结果是有直接影响的。所以，我们必须清楚每条语句的执行流程。而且，很多时候要通过控制语句的执行顺序来实现我们想要的功能。</p>
 <h3 id="3-1-流程控制语句分类"><a href="#3-1-流程控制语句分类" class="headerlink" title="3.1 流程控制语句分类"></a>3.1 流程控制语句分类</h3><p>​    顺序结构</p>
 <p>​    分支结构(if, switch)</p>
 <p>​    循环结构(for, while, do…while)</p>
@@ -1331,36 +1336,44 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/02/05/day04-shu-zu/">
+                <a href="/2020/02/06/day03-switch-xun-huan-yu-ju/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="day04数组">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="day03-switch&amp;循环语句">
                         
-                        <span class="card-title">day04数组</span>
+                        <span class="card-title">day03-switch&amp;循环语句</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            day04数组1.数组1.1什么是数组【理解】​    数组就是存储数据长度固定的容器，存储多个数据的数据类型要一致。 
-
-1.2数组定义格式【记忆】1.2.1第一种​    数据类型[] 数组名
-​    示例：
-int[] arr;  
+                            介绍Java中的流程控制语句
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-05
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-06
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            fantasy
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JavaSE/" class="post-category">
+                                    JavaSE
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">编程语言</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1372,27 +1385,19 @@ int[] arr;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/04/day03-switch/">
+                <a href="/2020/02/04/day01-java-ji-chu-ru-men/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="day03-switch">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="day01-Java入门">
                         
-                        <span class="card-title">day03-switch</span>
+                        <span class="card-title">day01-Java入门</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            day03 - 控制语句1. switch语句1.1 switch语句结构（掌握）
-格式
-
-switch (表达式) {
-    case 1:
-        语句体1;
-        break;
-    case 2:
-      
+                            介绍一些Java的基本入门知识
                         
                     </div>
                     <div class="publish-info">
@@ -1401,11 +1406,23 @@ switch (表达式) {
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            fantasy
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JavaSE/" class="post-category">
+                                    JavaSE
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">编程语言</span>
+                    </a>
+                    
                 </div>
                 
             </div>
