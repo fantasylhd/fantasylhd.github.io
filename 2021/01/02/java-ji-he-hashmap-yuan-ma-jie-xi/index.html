@@ -462,7 +462,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-01-03
+                    2021-02-19
                 </div>
                 
 
@@ -501,7 +501,7 @@
 <h2 id="3-3-MAXIMUM-CAPACITY"><a href="#3-3-MAXIMUM-CAPACITY" class="headerlink" title="3.3 MAXIMUM_CAPACITY"></a>3.3 MAXIMUM_CAPACITY</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> MAXIMUM_CAPACITY <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">30</span><span class="token punctuation">;</span></code></pre>
 <p>允许的最大容量</p>
 <h2 id="3-4-DEFAULT-LOAD-FACTOR"><a href="#3-4-DEFAULT-LOAD-FACTOR" class="headerlink" title="3.4 DEFAULT_LOAD_FACTOR"></a>3.4 DEFAULT_LOAD_FACTOR</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">float</span> DEFAULT_LOAD_FACTOR <span class="token operator">=</span> <span class="token number">0.75f</span><span class="token punctuation">;</span></code></pre>
-<p>默认复杂因子: 是用来衡量HashMap稀疏程度，影响到Hash冲突的概率，如果太大数组就会比较的拥挤，影响操作的时间复杂度，如果太小就会比较的稀疏，浪费很多的内存。而0.75是官方给出的一个在时间和空间上的一个比较平衡的值。</p>
+<p>默认负载因子: 是用来衡量HashMap稀疏程度，影响到Hash冲突的概率，如果太大数组就会比较的拥挤，影响操作的时间复杂度，如果太小就会比较的稀疏，浪费很多的内存。而0.75是官方给出的一个在时间和空间上的一个比较平衡的值。</p>
 <h2 id="3-5-TREEIFY-THRESHOLD"><a href="#3-5-TREEIFY-THRESHOLD" class="headerlink" title="3.5 TREEIFY_THRESHOLD"></a>3.5 TREEIFY_THRESHOLD</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> TREEIFY_THRESHOLD <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span></code></pre>
 <p>判断是否需要树化的阈值</p>
 <p><strong>思考：</strong>为什么是链表节点的个数大于8时进行树化，1. 因为树节点的大小是普通节点的2倍，得需要足够得节点才能树化，2. <strong>在用户的实现的hashCode方法散列性比较好的时候，链表节点个数为8的概率服从泊松分布，为很低的概率，几乎为不可能事件</strong>，如果hashCode方法实现的不好,JDK也没有办法阻止用户，所以引用红黑树来改善链表节点过多的情况</p>
@@ -1161,7 +1161,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/01/07/she-ji-mo-shi-zhi-dan-li-she-ji-mo-shi/">
+                <a href="/2021/01/07/she-ji-mo-shi-zhi-dan-li-mo-shi/">
                     <div class="card-image">
                         
                         
@@ -1173,7 +1173,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            介绍Java单例设计模式
                         
                     </div>
                     <div class="publish-info">
@@ -1187,6 +1187,14 @@
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
+                        <span class="chip bg-color">软件工程</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1430,7 +1438,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19k</span>&nbsp;字
+                class="white-color">22.6k</span>&nbsp;字
             
             
             
